@@ -65,7 +65,7 @@ public class Campus {
 
     @Override
     public String toString() {
-        return "Campus{" + "nome=" + nome + '}';
+        return  nome;
     }
     
     
