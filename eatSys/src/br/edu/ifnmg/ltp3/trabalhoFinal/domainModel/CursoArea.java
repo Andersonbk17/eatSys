@@ -11,16 +11,19 @@ import java.util.Objects;
  * @author lewandowsky
  */
 public class CursoArea {
+    private int idCursoArea;
     private String nome;
     private String sigla;
     private boolean status;
 
-    public CursoArea(String nome, String sigla) {
+    public CursoArea(int idCursoArea,String nome, String sigla) {
+        this.idCursoArea = idCursoArea;
         this.nome = nome;
         this.sigla = sigla;
     }
     
     public CursoArea(){
+        this.idCursoArea = 0;
         this.nome = "";
         this.sigla = "";
         this.status = true;
@@ -51,6 +54,15 @@ public class CursoArea {
         this.status = status;
     }
 
+    public int getIdCursoArea() {
+        return idCursoArea;
+    }
+
+    public void setIdCursoArea(int idCursoArea) {
+        this.idCursoArea = idCursoArea;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 7;
