@@ -25,7 +25,7 @@ public class CidadeDAO {
     public Cidade Abrir(int idCidade) throws SQLException{
         try{
             PreparedStatement comando = conexao.getConexao().prepareStatement(""
-                    + "SELE * FROM Cidade WHERE idCidade = ?");
+                    + "SELECT * FROM Cidade WHERE idCidade = ?");
             comando.setInt(1, idCidade);
             ResultSet consulta = comando.executeQuery();
 
