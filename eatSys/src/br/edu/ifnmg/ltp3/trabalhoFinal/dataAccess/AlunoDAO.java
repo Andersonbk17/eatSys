@@ -65,8 +65,8 @@ public class AlunoDAO {
                 comando.setString(3, obj.getZonaEleitoral());
                 comando.setString(4, obj.getSituacaoMilitar());
                 comando.setString(5, obj.getCertidaoMilitar());
-                comando.setInt(6, pessoaDAO.ChaveEstrangeira(obj.getCpf()));
-                comando.setInt(7, 1);
+                comando.setInt(6, 4);
+                comando.setInt(7, 7);
                 comando.setInt(8, obj.getMatricula());
                 comando.setInt(9, obj.getAlunoCurso().getIdCursoArea());
                 comando.setString(10, obj.getNomePai());
@@ -130,7 +130,7 @@ public class AlunoDAO {
                      + "SELECT pe.idPessoa,pe.nome,pe.cpf,pe.rg,pe.dataNascimento,pe.orgaoExpedidor,pe.dataExpedicao,pe.status, "
                      + "pe.idCampus,pe.idNacionalidade,pe.idEstado,pe.rua,pe.numero,pe.complemento,pe.bairro,pe.cep, "
                      + "pe.telefoneResidencial,pe.celular,pe.email,pe.idCidade, "
-                     + "al.idAluno,al.tituloEleidor,al.secaoEleitoral,al.zonaEleitoral,al.situacaoMilitar,al.certidaoMilitar, "
+                     + "al.idAluno,al.tituloEleitor,al.secaoEleitoral,al.zonaEleitoral,al.situacaoMilitar,al.certidaoMilitar, "
                      + "al.status,al.matricula,al.idCurso,al.nomeResponsavel,al.rgResponsavel,al.orgaoExpedidorResponsavel,al.cpfResponsavel,al.nomeMae, "
                      + "al.orgaoExpedidor,al.rgMae,al.cpfMae,al.localTrabalho,al.telefoneLocalTrabalho "
                      + "FROM Pessoa pe "
@@ -146,7 +146,7 @@ public class AlunoDAO {
                 NacionalidadeDAO nacionalidade = new NacionalidadeDAO();
                 EstadoDAO estado = new EstadoDAO();
                 CidadeDAO cidade = new CidadeDAO();
-                CursoAreaDAO curso = new CursoAreaDAO();
+                CursoDAO curso = new CursoDAO();
 
                 aluno.setIdPessoa(resultado.getInt("pe.idPessoa"));
                 aluno.setNome(resultado.getString("pe.nome"));
@@ -166,9 +166,9 @@ public class AlunoDAO {
                 aluno.setEnderecoRua(resultado.getString("pe.telefoneResidencial"));
                 aluno.setEnderecoRua(resultado.getString("pe.celular"));
                 aluno.setEnderecoRua(resultado.getString("pe.email"));
-                aluno.setPessoaCidade(cidade.Abrir(resultado.getInt("pe.cidade")));
+                aluno.setPessoaCidade(cidade.Abrir(resultado.getInt("pe.idCidade")));
                 aluno.setIdAluno(resultado.getInt("al.idAluno"));
-                aluno.setTituloEleitoral(resultado.getString("al.tituloEleitoral"));
+                aluno.setTituloEleitoral(resultado.getString("al.tituloEleitor"));
                 aluno.setSecaoEleitoral(resultado.getString("al.secaoEleitoral"));
                 aluno.setZonaEleitoral(resultado.getString("al.zonaEleitoral"));
                 aluno.setSituacaoMilitar(resultado.getString("al.situacaoMilitar"));
@@ -219,7 +219,7 @@ public class AlunoDAO {
                 NacionalidadeDAO nacionalidade = new NacionalidadeDAO();
                 EstadoDAO estado = new EstadoDAO();
                 CidadeDAO cidade = new CidadeDAO();
-                CursoAreaDAO curso = new CursoAreaDAO();
+                CursoDAO curso = new CursoDAO();
 
                 aluno.setIdPessoa(resultado.getInt("pe.idPessoa"));
                 aluno.setNome(resultado.getString("pe.nome"));
@@ -267,6 +267,23 @@ public class AlunoDAO {
         }catch(SQLException ex){
             ex.printStackTrace();
             return null;
+        }finally{
+            conexao.getConexao().close();
+        }
+    
+    }
+     
+     public boolean Apagar(int idAluno) throws SQLException{
+        try{
+            PreparedStatement comando = conexao.getConexao().prepareStatement("UPDATE Aluno SET status = 0 "
+                    + "WHERE idAluno = ?");
+            comando.setInt(1, idAluno);
+            
+            comando.executeUpdate();
+            return true;
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
         }finally{
             conexao.getConexao().close();
         }

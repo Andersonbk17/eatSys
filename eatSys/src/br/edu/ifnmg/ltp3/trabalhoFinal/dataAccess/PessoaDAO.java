@@ -120,4 +120,21 @@ public class PessoaDAO {
             conexao.getConexao().close();
         }
     }
+    
+     public boolean Apagar(int idPessoa) throws SQLException{
+        try{
+            PreparedStatement comando = conexao.getConexao().prepareStatement("UPDATE Pessoa SET status = 0 "
+                    + "WHERE idPessoa = ?");
+            comando.setInt(1, idPessoa);
+            
+            comando.executeUpdate();
+            return true;
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }finally{
+            conexao.getConexao().close();
+        }
+    
+    }
 }
