@@ -51,9 +51,9 @@ public class teseB {
             lista = dao.ListarTodos();
             //lista.get(0).setUsuario("Ronaldo");
             dao.Salvar(al);
-            dao.ListarTodos();
+            lista = dao.ListarTodos();
             //dao.Apagar(3);
-            //System.out.print(dao.Salvar(lista.get(0)));
+            System.out.print(lista);
             System.out.print(dao.Abrir(4));
         } catch (SQLException ex) {
             Logger.getLogger(testeA.class.getName()).log(Level.SEVERE, null, ex);
