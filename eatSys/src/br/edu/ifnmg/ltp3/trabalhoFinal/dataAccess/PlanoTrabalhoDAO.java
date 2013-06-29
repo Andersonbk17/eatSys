@@ -83,7 +83,7 @@ public class PlanoTrabalhoDAO {
     public PlanoDeTrabalho Abrir(int idPlanoDeTrabalho) throws SQLException{
         try{
             PreparedStatement comando = conexao.getConexao().prepareStatement(""
-                    + "SELECT * FROM PlanoDeTrabaho WHERE idPlanoDeTrabaho = ?  AND status = 1");
+                    + "SELECT * FROM PlanoDeTrabaho WHERE idPlanoDeTrabalho = ?  AND status = 1");
             comando.setInt(1, idPlanoDeTrabalho);
 
             ResultSet resultado = comando.executeQuery();
