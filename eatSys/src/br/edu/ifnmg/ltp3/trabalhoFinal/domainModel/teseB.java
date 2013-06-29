@@ -21,6 +21,8 @@ public class teseB {
         AlunoDAO dao = new AlunoDAO();
         Nacionalidade n = new Nacionalidade();
         Campus c = new Campus();
+        Cidade ci = new Cidade();
+        CursoArea ca= new CursoArea();
         Estado e = new Estado();
         List<Aluno> lista;
      
@@ -30,8 +32,16 @@ public class teseB {
         al.setRgOrgaoExpedidor("SSP");
         n.setIdNacionalidade(25);
         al.setPessoaNacionalidade(n);
-        c.setIdCampus(1);
+        c.setIdCampus(3);
+        al.setPessoaCampus(c);
         e.setIdEstado(5);
+        al.setPessoaEstado(e);
+        ci.setIdCidade(25);
+        al.setPessoaCidade(ci);
+       
+        ca.setIdCursoArea(1);
+        al.setAlunoCurso(ca);
+        
         
        
         
@@ -41,9 +51,10 @@ public class teseB {
             lista = dao.ListarTodos();
             //lista.get(0).setUsuario("Ronaldo");
             dao.Salvar(al);
+            dao.ListarTodos();
             //dao.Apagar(3);
-            System.out.print(dao.Salvar(lista.get(0)));
-            System.out.print(dao.Abrir(1));
+            //System.out.print(dao.Salvar(lista.get(0)));
+            System.out.print(dao.Abrir(4));
         } catch (SQLException ex) {
             Logger.getLogger(testeA.class.getName()).log(Level.SEVERE, null, ex);
         }
