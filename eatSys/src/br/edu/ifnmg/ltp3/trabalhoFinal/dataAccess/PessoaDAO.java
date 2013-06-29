@@ -64,7 +64,7 @@ public class PessoaDAO {
                 comando.setInt(9, obj.getPessoaNacionalidade().getIdNacionalidade());
                 comando.setInt(10, obj.getPessoaEstado().getIdEstado());
                 comando.setString(11, obj.getEnderecoRua());
-                comando.setString(12, obj.getEnderecNumero());
+                comando.setString(12, obj.getEnderecoNumero());
                 comando.setString(13, obj.getEnderecoComplmento());
                 comando.setString(14, obj.getEnderecoBairro());
                 comando.setInt(15, obj.getEnderecoCep());
@@ -99,7 +99,7 @@ public class PessoaDAO {
                 comando.setInt(9, obj.getPessoaNacionalidade().getIdNacionalidade());
                 comando.setInt(10, obj.getPessoaEstado().getIdEstado());
                 comando.setString(11, obj.getEnderecoRua());
-                comando.setString(12, obj.getEnderecNumero());
+                comando.setString(12, obj.getEnderecoNumero());
                 comando.setString(13, obj.getEnderecoComplmento());
                 comando.setString(14, obj.getEnderecoBairro());
                 comando.setInt(15, obj.getEnderecoCep());

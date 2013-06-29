@@ -22,7 +22,7 @@ public class Pessoa {
     private boolean status;
     
     private String enderecoRua;
-    private String enderecNumero;
+    private String enderecoNumero;
     private String enderecoBairro;
     private String enderecoComplmento;
     private int enderecoCep;
@@ -37,7 +37,7 @@ public class Pessoa {
     private Cidade pessoaCidade; 
     private Estado pessoaEstado;
 
-    public Pessoa(int idPessoa, String nome, int cpf, String rg, String rgOrgaoExpedidor, Date rgDataExpedicao, Date dataNascimento, boolean status, String enderecoRua, String enderecNumero, String enderecoBairro, String enderecoComplmento, int enderecoCep, String telefoneFixo, String telefoneCelular, String emailEndereco, Campus pessoaCampus, Nacionalidade pessoaNacionalidade, Cidade pessoaCidade, Estado pessoaEstado) {
+    public Pessoa(int idPessoa, String nome, int cpf, String rg, String rgOrgaoExpedidor, Date rgDataExpedicao, Date dataNascimento, boolean status, String enderecoRua, String enderecoNumero, String enderecoBairro, String enderecoComplmento, int enderecoCep, String telefoneFixo, String telefoneCelular, String emailEndereco, Campus pessoaCampus, Nacionalidade pessoaNacionalidade, Cidade pessoaCidade, Estado pessoaEstado) {
         this.idPessoa = idPessoa;
         this.nome = nome;
         this.cpf = cpf;
@@ -47,7 +47,7 @@ public class Pessoa {
         this.dataNascimento = dataNascimento;
         this.status = status;
         this.enderecoRua = enderecoRua;
-        this.enderecNumero = enderecNumero;
+        this.enderecoNumero = enderecoNumero;
         this.enderecoBairro = enderecoBairro;
         this.enderecoComplmento = enderecoComplmento;
         this.enderecoCep = enderecoCep;
@@ -70,7 +70,7 @@ public class Pessoa {
         this.dataNascimento = new Date();
         this.status = true;
         this.enderecoRua = "";
-        this.enderecNumero = "";
+        this.enderecoNumero = "";
         this.enderecoBairro = "";
         this.enderecoComplmento = "";
         this.enderecoCep = 0;
@@ -158,12 +158,12 @@ public class Pessoa {
         this.enderecoRua = enderecoRua;
     }
 
-    public String getEnderecNumero() {
-        return enderecNumero;
+    public String getEnderecoNumero() {
+        return enderecoNumero;
     }
 
-    public void setEnderecNumero(String enderecNumero) {
-        this.enderecNumero = enderecNumero;
+    public void setEnderecoNumero(String enderecoNumero) {
+        this.enderecoNumero = enderecoNumero;
     }
 
     public String getEnderecoBairro() {
@@ -258,7 +258,7 @@ public class Pessoa {
         hash = 97 * hash + Objects.hashCode(this.dataNascimento);
         hash = 97 * hash + (this.status ? 1 : 0);
         hash = 97 * hash + Objects.hashCode(this.enderecoRua);
-        hash = 97 * hash + Objects.hashCode(this.enderecNumero);
+        hash = 97 * hash + Objects.hashCode(this.enderecoNumero);
         hash = 97 * hash + Objects.hashCode(this.enderecoBairro);
         hash = 97 * hash + Objects.hashCode(this.enderecoComplmento);
         hash = 97 * hash + this.enderecoCep;
@@ -308,7 +308,7 @@ public class Pessoa {
         if (!Objects.equals(this.enderecoRua, other.enderecoRua)) {
             return false;
         }
-        if (!Objects.equals(this.enderecNumero, other.enderecNumero)) {
+        if (!Objects.equals(this.enderecoNumero, other.enderecoNumero)) {
             return false;
         }
         if (!Objects.equals(this.enderecoBairro, other.enderecoBairro)) {
@@ -349,7 +349,7 @@ public class Pessoa {
         return "Pessoa{" + "idPessoa=" + idPessoa + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", "
                 + "rgOrgaoExpedidor=" + rgOrgaoExpedidor + ", rgDataExpedicao=" + rgDataExpedicao + ", "
                 + "dataNascimento=" + dataNascimento + ", status=" + status + ", "
-                + "enderecoRua=" + enderecoRua + ", enderecNumero=" + enderecNumero + ", "
+                + "enderecoRua=" + enderecoRua + ", enderecoNumero=" + enderecoNumero + ", "
                 + "enderecoBairro=" + enderecoBairro + ", enderecoComplmento=" + enderecoComplmento + ", "
                 + "enderecoCep=" + enderecoCep + ", telefoneFixo=" + telefoneFixo + ", "
                 + "telefoneCelular=" + telefoneCelular + ", emailEndereco=" + emailEndereco + ", "

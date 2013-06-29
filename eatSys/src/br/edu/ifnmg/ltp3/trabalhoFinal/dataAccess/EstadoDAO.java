@@ -25,7 +25,7 @@ public class EstadoDAO {
     public Estado Abrir(int idEstado) throws SQLException{
         try{
             PreparedStatement comando = conexao.getConexao().prepareStatement(""
-                    + "SELE * FROM ESTADO WHERE idEstado = ?");
+                    + "SELE * FROM Estado WHERE idEstado = ?");
             comando.setInt(1, idEstado);
             ResultSet consulta = comando.executeQuery();
 
@@ -34,8 +34,8 @@ public class EstadoDAO {
             if(consulta.first()){
                 estadoNovo = new Estado();
                 estadoNovo.setIdEstado(idEstado);
-                estadoNovo.setNomeEstado("nome");
-                estadoNovo.setUf("uf");
+                estadoNovo.setNomeEstado(consulta.getString("nome"));
+                estadoNovo.setUf(consulta.getString("uf"));
             } 
             return estadoNovo;
         }catch(SQLException ex){
