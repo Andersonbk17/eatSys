@@ -8,6 +8,8 @@ import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AreaConhecimento_CnpqDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CampusDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CidadeDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CursoAreaDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.EstadoDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.NacionalidadeDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.UsuarioDAO;
 import java.sql.SQLException;
@@ -28,19 +30,27 @@ public class testeA {
         CursoAreaDAO curso = new CursoAreaDAO();
         CampusDAO campus = new CampusDAO();
         CidadeDAO cidade = new CidadeDAO();
-        a.setCpf(111222333);
+        NacionalidadeDAO nacionalidade = new NacionalidadeDAO();
+        EstadoDAO estado = new EstadoDAO();
+        //CursoAreaDAO curso = new CursoAreaDAO();
+        
         
         try {
             a.setCursoArea(curso.Abrir(1));
+            a.setCpf(111222333);
             a.setEmailEndereco("aaa@aaa");
             a.setEnderecoBairro("fatima");
             a.setEnderecoCep(12356);
             a.setEnderecoComplmento("nenum");
             a.setEnderecoRua("rua 13");
             a.setFormacaoUniversitaria("vagabundo");
-            a.setNome("Ronaldo");
-            a.setPessoaCampus(campus.Abrir(1));
+            a.setNome("novo");
+            a.setPessoaCampus(campus.Abrir(3));
             a.setPessoaCidade(cidade.Abrir(1));
+            a.setPessoaNacionalidade(nacionalidade.Abrir(10));
+            a.setPessoaEstado(estado.Abrir(12));
+            a.setCursoArea(curso.Abrir(3));
+            
             
         } catch (SQLException ex) {
             Logger.getLogger(testeA.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,8 +63,8 @@ public class testeA {
             lista = dao.ListarTodos();
             //lista.get(0).setUsuario("Ronaldo");
             //dao.Apagar(3);
-            System.out.print(dao.Salvar(a));
-            System.out.print(dao.Abrir(1));
+            //System.out.print(dao.Salvar(a));
+            System.out.print(lista);
         } catch (SQLException ex) {
             Logger.getLogger(testeA.class.getName()).log(Level.SEVERE, null, ex);
         }

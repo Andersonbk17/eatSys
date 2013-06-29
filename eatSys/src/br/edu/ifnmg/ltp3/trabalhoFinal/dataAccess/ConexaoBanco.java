@@ -22,8 +22,8 @@ public class ConexaoBanco {
             Class.forName("com.mysql.jdbc.Driver");
             conexao = DriverManager
             //.getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","");
-            .getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","epo123");
-            //.getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","170737");
+            //.getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","epo123");
+            .getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","170737");
             //conexao.setAutoCommit(false);
         
         }catch(ClassNotFoundException | SQLException ex){

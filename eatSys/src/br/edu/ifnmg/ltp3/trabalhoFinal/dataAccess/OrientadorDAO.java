@@ -6,6 +6,7 @@ import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Pessoa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -190,8 +191,17 @@ public class OrientadorDAO {
     
     public List<Orientador> ListarTodos() throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Orientador WHERE STATUS = 1");
-            ResultSet consulta = comando.executeQuery();
+            Statement comando = conexao.getConexao().createStatement();
+                    
+                    
+                  
+            ResultSet consulta = comando.executeQuery("SELECT pe.idPessoa, pe.nome, pe.cpf, pe.rg, pe."
+                    + "dataNascimento, pe.orgaoExpedidor, pe.dataExpedicao, pe.idCampus, pe.idNacionalidade, pe.idEstado, "
+                    + "pe.rua, pe.numero, pe.complemento, pe.bairro, pe.cep, pe.telefoneResidencial, pe.celular,"
+                    + " pe.email, pe.idCidade, o.idOrientador, o.matriculaSiape, o.localPermanencia, o.formacaoUniversitaria, "
+                    + "o.tituloAcademico, o.telefoneRamal, pe.status, o.status FROM Pessoa pe"
+                    + "INNER JOIN Orientador o ON o.idPessoa = pe.idPessoa "
+                    + "WHERE pe.status =1 AND o.status =1");
             List<Orientador> lista = new LinkedList<>();
             while(consulta.next()){
                 Orientador novo = new Orientador();
