@@ -56,7 +56,7 @@ public class CursoAreaDAO {
     
     public CursoArea Abrir(int idCursoArea) throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM CursoArea WHERE idCursoArea = ? AND status = 1");
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM CursoArea WHERE idCurso = ? AND status = 1");
             comando.setInt(1, idCursoArea);
             ResultSet consulta = comando.executeQuery();
             CursoArea novo = null;
