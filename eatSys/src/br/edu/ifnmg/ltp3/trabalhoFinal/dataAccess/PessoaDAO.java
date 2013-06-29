@@ -1,0 +1,103 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess;
+
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Pessoa;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+/**
+ *
+ * @author emerson
+ */
+public class PessoaDAO {
+    ConexaoBanco conexao;
+    
+    public PessoaDAO() throws SQLException{
+        conexao = new ConexaoBanco();
+    }
+    
+    public boolean SalvarPessoa(Pessoa obj) throws SQLException{
+        try{
+            if(obj.getIdPessoa() == 0){
+                PreparedStatement comando = conexao.getConexao().prepareStatement(""
+                        + "INSERT INTO Pessoa(nome,cpf,rg,dataNascimento,orgaoExpedidor,dataExpedicao,status, "
+                        + "idCampus,idNacionalidade,idEstado,rua,numero,complemento,bairro,cep, "
+                        + "telefoneResidencial,celular,email,idCidade) "
+                        + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                comando.setString(1, obj.getNome());
+                comando.setInt(2, obj.getCpf());
+                comando.setString(3, obj.getRg());
+
+                java.sql.Date dataNascimento = new java.sql.Date(obj.getDataNascimento().getTime());
+                comando.setDate(4,dataNascimento);
+
+                comando.setString(5, obj.getRgOrgaoExpedidor());
+
+                java.sql.Date dataExpedicao = new java.sql.Date(obj.getRgDataExpedicao().getTime());
+                comando.setDate(6,dataExpedicao);
+
+                comando.setInt(7, 1);
+                comando.setInt(8, obj.getPessoaCampus().getIdCampus());
+                comando.setInt(9, obj.getPessoaNacionalidade().getIdNacionalidade());
+                comando.setInt(10, obj.getPessoaEstado().getIdEstado());
+                comando.setString(11, obj.getEnderecoRua());
+                comando.setString(12, obj.getEnderecNumero());
+                comando.setString(13, obj.getEnderecoComplmento());
+                comando.setString(14, obj.getEnderecoBairro());
+                comando.setInt(15, obj.getEnderecoCep());
+                comando.setString(16, obj.getTelefoneFixo());
+                comando.setString(17, obj.getTelefoneCelular());
+                comando.setString(18, obj.getEmailEndereco());
+                comando.setInt(19, obj.getPessoaCidade().getIdCidade());
+
+                comando.execute();
+
+            }else{
+                 PreparedStatement comando = conexao.getConexao().prepareStatement(""
+                         + "UPDATE Pessoa SET nome = ?,cpf = ?,rg = ?,dataNascimento = ?,orgaoExpedidor = ?, "
+                         + "dataExpedicao = ?,status = ?,idCampus = ?,idNacionalidade = ?,idEstado = ?,rua = ?, "
+                         + "numero = ?,complemento = ?,bairro = ?,cep = ?,telefoneResidencial = ?,celular = ?, "
+                         + "email = ?,idCidade = ? "
+                         + "WHERE idPessoa = ?");
+                comando.setString(1, obj.getNome());
+                comando.setInt(2, obj.getCpf());
+                comando.setString(3, obj.getRg());
+
+                java.sql.Date dataNascimento = new java.sql.Date(obj.getDataNascimento().getTime());
+                comando.setDate(4,dataNascimento);
+
+                comando.setString(5, obj.getRgOrgaoExpedidor());
+
+                java.sql.Date dataExpedicao = new java.sql.Date(obj.getRgDataExpedicao().getTime());
+                comando.setDate(6,dataExpedicao);
+
+                comando.setInt(7, 1);
+                comando.setInt(8, obj.getPessoaCampus().getIdCampus());
+                comando.setInt(9, obj.getPessoaNacionalidade().getIdNacionalidade());
+                comando.setInt(10, obj.getPessoaEstado().getIdEstado());
+                comando.setString(11, obj.getEnderecoRua());
+                comando.setString(12, obj.getEnderecNumero());
+                comando.setString(13, obj.getEnderecoComplmento());
+                comando.setString(14, obj.getEnderecoBairro());
+                comando.setInt(15, obj.getEnderecoCep());
+                comando.setString(16, obj.getTelefoneFixo());
+                comando.setString(17, obj.getTelefoneCelular());
+                comando.setString(18, obj.getEmailEndereco());
+                comando.setInt(19, obj.getPessoaCidade().getIdCidade());
+                comando.setInt(20, obj.getIdPessoa());
+
+                comando.executeUpdate();   
+            }
+            return true;
+        
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }finally{
+            conexao.getConexao().close();
+        }
+    }
+}
