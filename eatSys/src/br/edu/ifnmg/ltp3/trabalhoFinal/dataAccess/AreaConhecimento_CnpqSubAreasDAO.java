@@ -4,7 +4,7 @@
  */
 package br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess;
 
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.AreaConhecimento_Cnpq;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.AreaConhecimento_CnpqSubAreas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,10 +17,10 @@ import java.util.logging.Logger;
  *
  * @author 
  */
-public class AreaConhecimentoCnpqDAO {
+public class AreaConhecimento_CnpqSubAreasDAO {
     private ConexaoBanco conexao;
     
-    public AreaConhecimentoCnpqDAO(){
+    public AreaConhecimento_CnpqSubAreasDAO (){
         try {
             conexao = new ConexaoBanco();
         } catch (SQLException ex) {
@@ -29,18 +29,19 @@ public class AreaConhecimentoCnpqDAO {
     }
     
     
-    public AreaConhecimento_Cnpq Abrir(int idAreaConhecimentoCnpq) throws SQLException{
+    public AreaConhecimento_CnpqSubAreas Abrir(int idAreaConhecimentoCnpqSubAreas) throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM AreaConhecimento_CNPq "
-                    + "WHERE idAreaConhecimento = ?");
-            comando.setInt(1, idAreaConhecimentoCnpq);
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM AreaConhecimento_CNPqSubAreas "
+                    + "WHERE idAreaConhecimento_CNPqSubAreas = ?");
+            comando.setInt(1, idAreaConhecimentoCnpqSubAreas);
             ResultSet consulta = comando.executeQuery();
-            AreaConhecimento_Cnpq novo = null;
+            AreaConhecimento_CnpqSubAreas novo = null;
             if(consulta.first()){
-                novo = new AreaConhecimento_Cnpq();
-                novo.setIdAreaConhecimento_Cnpq(idAreaConhecimentoCnpq);
+                novo = new AreaConhecimento_CnpqSubAreas();
+                novo.setIdAreaConhecimento_CnpqSubAreas(idAreaConhecimentoCnpqSubAreas);
                 novo.setCodigo(consulta.getString("codigo"));
                 novo.setNome(consulta.getString("nome"));
+                
             }
             return novo;
         }catch(SQLException ex){
@@ -53,14 +54,14 @@ public class AreaConhecimentoCnpqDAO {
     
     }
     
-    public List<AreaConhecimento_Cnpq> ListarTodos() throws SQLException{
+    public List<AreaConhecimento_CnpqSubAreas> ListarTodos() throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM AreaConhecimentoCNPq");
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM AreaConhecimento_CNPqSubAreas");
             ResultSet consulta = comando.executeQuery();
-            List<AreaConhecimento_Cnpq> lista = new LinkedList<>();
+            List<AreaConhecimento_CnpqSubAreas> lista = new LinkedList<>();
             while(consulta.next()){
-                AreaConhecimento_Cnpq novo = new AreaConhecimento_Cnpq();
-                novo.setIdAreaConhecimento_Cnpq(consulta.getInt("idAreaConhecimento_CNPq"));
+                AreaConhecimento_CnpqSubAreas novo = new AreaConhecimento_CnpqSubAreas();
+                novo.setIdAreaConhecimento_CnpqSubAreas(consulta.getInt("idAreaConhecimento_CNPq"));
                 novo.setCodigo(consulta.getString("codigo"));
                 novo.setNome(consulta.getString("nome"));
                 lista.add(novo);

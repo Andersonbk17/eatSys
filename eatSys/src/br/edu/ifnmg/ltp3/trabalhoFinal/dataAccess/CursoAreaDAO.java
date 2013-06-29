@@ -31,10 +31,18 @@ public class CursoAreaDAO {
     
     public boolean Salvar(CursoArea obj) throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("INSERT INTO CursoArea(nome,sigla) VAULES(?,?)");
-            comando.setString(1, obj.getNome());
-            comando.setString(2, obj.getSigla());
-            comando.executeUpdate();
+            if(obj.getIdCursoArea() == 0){
+                PreparedStatement comando = conexao.getConexao().prepareStatement("INSERT INTO CursoArea(nome,sigla,status) VALUES(?,?,1)");
+                comando.setString(1, obj.getNome());
+                comando.setString(2, obj.getSigla());
+                comando.executeUpdate();
+            }else{
+                PreparedStatement comando1 = conexao.getConexao().prepareStatement("UPDATE CursoArea SET nome = ?,sigla = ? WHERE idCurso =?");
+                comando1.setString(1, obj.getNome());
+                comando1.setString(2, obj.getSigla());
+                comando1.setInt(3, obj.getIdCursoArea());
+                comando1.executeUpdate();
+            }
             return true;
         }catch(SQLException ex){
             ex.printStackTrace();
@@ -96,7 +104,7 @@ public class CursoAreaDAO {
     public boolean Apagar(int idCursoArea) throws SQLException{
         try{
             PreparedStatement comando = conexao.getConexao().prepareStatement("UPDATE CursoArea SET status = 0 "
-                    + "WHERE idCursoArea = ?");
+                    + "WHERE idCurso = ?");
             comando.setInt(1, idCursoArea);
             
             comando.executeUpdate();

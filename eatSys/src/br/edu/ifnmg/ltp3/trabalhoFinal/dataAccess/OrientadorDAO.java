@@ -1,9 +1,8 @@
 
 package br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess;
 
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Cidade;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Pessoa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,24 +31,79 @@ public class OrientadorDAO {
         try{
             if(obj.getIdOrientador()== 0){
                 
+                Pessoa tmp = new Pessoa();
+                PessoaDAO daoPessoa = new PessoaDAO();
                 
+                tmp.setCpf(obj.getCpf());
+                tmp.setDataNascimento(obj.getDataNascimento());
+                tmp.setEmailEndereco(obj.getEmailEndereco());
+                tmp.setEnderecNumero(obj.getEnderecNumero());
+                tmp.setEnderecoBairro(obj.getEnderecoBairro());
+                tmp.setEnderecoCep(obj.getEnderecoCep());
+                tmp.setEnderecoComplmento(obj.getEnderecoComplmento());
+                tmp.setEnderecoRua(obj.getEnderecoRua());
+                tmp.setIdPessoa(obj.getIdPessoa());
+                tmp.setNome(obj.getNome());
+                tmp.setPessoaCampus(obj.getPessoaCampus());
+                tmp.setPessoaCidade(obj.getPessoaCidade());
+                tmp.setPessoaEstado(obj.getPessoaEstado());
+                tmp.setPessoaNacionalidade(obj.getPessoaNacionalidade());
+                tmp.setRg(obj.getRg());
+                tmp.setRgDataExpedicao(obj.getRgDataExpedicao());
+                tmp.setRgOrgaoExpedidor(obj.getRgOrgaoExpedidor());
+                tmp.setTelefoneCelular(obj.getTelefoneCelular());
+                tmp.setTelefoneFixo(obj.getTelefoneFixo());
                 
-                int idPessoa = 0;//mudar o valor inicial
+                daoPessoa.SalvarPessoa(tmp);
                 
-                PreparedStatement comando = conexao.getConexao().prepareCall("INSERT INTO Orientador(matriculaSiape,localPermanencia,"
-                        + "formacaoUniversitaria,tituloAcademico,idPessoa,status,idCurso,telefoneRamal) VALUES(?,?,?,?,?,?,?,?)");
-                comando.setInt(1, obj.getMatriculaSiape());
-                comando.setString(2, obj.getLocalPermanencia());
-                comando.setString(3, obj.getFormacaoUniversitaria());
-                comando.setString(4, obj.getTituloAcademico());
-                comando.setInt(5, idPessoa);
-                comando.setInt(6, 1);
-                comando.setInt(7, obj.getCursoArea().getIdCursoArea());
-                comando.setString(8,obj.getTelefoneRamal());
-                comando.execute();
+                PreparedStatement consulta = conexao.getConexao().prepareStatement("SELECT max(idPessoa) FROM Pessoa WHERE cpf = ?");
+                consulta.setInt(1, obj.getCpf());
+                ResultSet rs = consulta.executeQuery();//verificar
+                
+                if(rs.first()){
+                    int idPessoa = rs.getInt("max(idPessoa)");//mudar o valor inicial
+
+                    PreparedStatement comando = conexao.getConexao().prepareCall("INSERT INTO Orientador(matriculaSiape,localPermanencia,"
+                            + "formacaoUniversitaria,tituloAcademico,idPessoa,status,idCurso,telefoneRamal) VALUES(?,?,?,?,?,?,?,?)");
+                    comando.setInt(1, obj.getMatriculaSiape());
+                    comando.setString(2, obj.getLocalPermanencia());
+                    comando.setString(3, obj.getFormacaoUniversitaria());
+                    comando.setString(4, obj.getTituloAcademico());
+                    comando.setInt(5, idPessoa);
+                    comando.setInt(6, 1);
+                    comando.setInt(7, obj.getCursoArea().getIdCursoArea());
+                    comando.setString(8,obj.getTelefoneRamal());
+                    comando.execute();
+                }else{
+                    return false;
+                }
             }else{
                 
-                /*Colocar o Update PEssoaDAO*/
+                Pessoa tmp = new Pessoa();
+                PessoaDAO daoPessoa = new PessoaDAO();
+                
+                tmp.setCpf(obj.getCpf());
+                tmp.setDataNascimento(obj.getDataNascimento());
+                tmp.setEmailEndereco(obj.getEmailEndereco());
+                tmp.setEnderecNumero(obj.getEnderecNumero());
+                tmp.setEnderecoBairro(obj.getEnderecoBairro());
+                tmp.setEnderecoCep(obj.getEnderecoCep());
+                tmp.setEnderecoComplmento(obj.getEnderecoComplmento());
+                tmp.setEnderecoRua(obj.getEnderecoRua());
+                tmp.setIdPessoa(obj.getIdPessoa());
+                tmp.setNome(obj.getNome());
+                tmp.setPessoaCampus(obj.getPessoaCampus());
+                tmp.setPessoaCidade(obj.getPessoaCidade());
+                tmp.setPessoaEstado(obj.getPessoaEstado());
+                tmp.setPessoaNacionalidade(obj.getPessoaNacionalidade());
+                tmp.setRg(obj.getRg());
+                tmp.setRgDataExpedicao(obj.getRgDataExpedicao());
+                tmp.setRgOrgaoExpedidor(obj.getRgOrgaoExpedidor());
+                tmp.setTelefoneCelular(obj.getTelefoneCelular());
+                tmp.setTelefoneFixo(obj.getTelefoneFixo());
+                
+                daoPessoa.SalvarPessoa(tmp);
+                
                 
                 PreparedStatement comando1 = conexao.getConexao().prepareCall("UPDATE Orientador SET matriculaSiape = ?,localPermanencia = ?,"
                         + "formacaoUniversitaria = ?,tituloAcademico = ?,idPessoa = ?,status = ?,idCurso = ?,telefoneRamal = ? WHERE idOrientador = ?");
@@ -77,7 +131,7 @@ public class OrientadorDAO {
     
     public Orientador Abrir(int idOrientador) throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Orientador WHERE idOrientador = ? AND STATUS = 1");
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Orientador WHERE idOrientador = ? AND status = 1");
             comando.setInt(1, idOrientador);
             ResultSet consulta = comando.executeQuery();
             Orientador novo = null;

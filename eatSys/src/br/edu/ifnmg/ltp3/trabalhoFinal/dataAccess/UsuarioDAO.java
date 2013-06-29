@@ -58,6 +58,33 @@ public class UsuarioDAO {
     }
     
     
+    public Usuario Autenticar(String usuario, String senha) throws SQLException{
+        try{
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Usuario WHERE usuario = ? AND STATUS = 1 AND senha = ?");
+            comando.setString(1, usuario);
+            comando.setString(2, senha);
+            
+            ResultSet consulta = comando.executeQuery();
+                Usuario novo = null;
+            
+                if(consulta.first()){
+                novo = new Usuario();
+                
+                novo.setUsuario(consulta.getString("usuario"));
+                novo.setNivel(consulta.getInt("nivel"));
+                
+                return novo;
+            }
+        return novo;
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }finally{
+            conexao.getConexao().close();
+        }
+    
+    }
+    
     public Usuario Abrir(int idUsuario) throws SQLException{
         try{
             PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Usuario WHERE idUsuario = ? AND STATUS = 1");

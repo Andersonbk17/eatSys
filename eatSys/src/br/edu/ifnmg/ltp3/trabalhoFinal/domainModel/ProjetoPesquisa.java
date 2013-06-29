@@ -36,7 +36,7 @@ public class ProjetoPesquisa {
      
      private Campus campus;
      private Orientador orientador;
-     private AreaConhecimento_Cnpq areaConhecimento;
+     private AreaConhecimento_CnpqSubAreas areaConhecimento;
      private Aluno aluno;
      private List<ParticipanteProjeto> listaParticipantes;
 
@@ -45,7 +45,7 @@ public class ProjetoPesquisa {
             float valorFinanciamento, Date dataFinanciamento, int bolsasIniciacao, 
             int numeroBolsas, String agenciaFinanciadora, int convenio, String nomeConvenio, 
             int status, int funcadao, String fundacaoNome, boolean projetoMulticampi, 
-            Campus campus, Orientador orientador, AreaConhecimento_Cnpq areaConhecimento, Aluno aluno,List<ParticipanteProjeto> listaParticipantes) {
+            Campus campus, Orientador orientador, AreaConhecimento_CnpqSubAreas areaConhecimento, Aluno aluno,List<ParticipanteProjeto> listaParticipantes) {
         this.idProjetoPesquisa = idProjetoPesquisa;
         this.titulo = titulo;
         this.dataInicio = dataInicio;
@@ -90,9 +90,9 @@ public class ProjetoPesquisa {
         this.funcadao = 0;
         this.fundacaoNome = "";
         this.projetoMulticampi = false;
-        this.campus = campus;
-        this.orientador = new Orientador();;
-        this.areaConhecimento = new AreaConhecimento_Cnpq();;
+        this.campus = new Campus();
+        this.orientador = new Orientador();
+        this.areaConhecimento = new AreaConhecimento_CnpqSubAreas();
         this.aluno = new Aluno();
         this.listaParticipantes = new LinkedList<>();
     }
@@ -257,11 +257,11 @@ public class ProjetoPesquisa {
         this.orientador = orientador;
     }
 
-    public AreaConhecimento_Cnpq getAreaConhecimento() {
+    public AreaConhecimento_CnpqSubAreas getAreaConhecimento() {
         return areaConhecimento;
     }
 
-    public void setAreaConhecimento(AreaConhecimento_Cnpq areaConhecimento) {
+    public void setAreaConhecimento(AreaConhecimento_CnpqSubAreas areaConhecimento) {
         this.areaConhecimento = areaConhecimento;
     }
 
@@ -351,9 +351,6 @@ public class ProjetoPesquisa {
         return titulo ;
     }
     
-    
-     
-    
-     
+   
      
 }
