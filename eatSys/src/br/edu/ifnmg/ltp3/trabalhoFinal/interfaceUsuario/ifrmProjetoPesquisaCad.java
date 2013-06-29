@@ -1,0 +1,862 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
+
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AlunoDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AreaConhecimentoDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CampusDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Aluno;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.AreaConhecimento;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
+import java.sql.SQLException;
+import java.util.List;
+
+/**
+ *
+ * @author emerson
+ */
+public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
+
+    ProjetoPesquisa ps = new ProjetoPesquisa();
+    
+    List<Aluno> aluno;
+    List<Campus> campus;
+    List<Campus> campusParticioante;
+    List<AreaConhecimento> area;
+    List<Orientador> orientador;
+    /**
+     * Creates new form ifrmCampusCad
+     */
+    public ifrmProjetoPesquisaCad() throws SQLException {
+        initComponents();
+        
+        ocultarFinan(0);
+        ocultarConv(0);
+        ocultarBolsa(0);
+      
+        AreaConhecimentoDAO areaDao = new AreaConhecimentoDAO(); 
+        OrientadorDAO orientadorDao = new OrientadorDAO();
+        AlunoDAO alunoDao = new AlunoDAO();
+        CampusDAO campusDao = new CampusDAO();
+      
+        /*
+        //Alnuo
+        aluno = alunoDao.ListarTodos();
+        jcbProjetoPesquisaAluno.removeAllItems();
+        for(Aluno al: aluno){
+            jcbProjetoPesquisaAluno.addItem(al);
+        }
+        
+        //Campus
+        campus = campusDao.ListarTodos();
+        jcbProjetoPesquisaCampus.removeAllItems();
+        for(Campus ca: campus){
+            jcbProjetoPesquisaCampus.addItem(ca);
+        }
+        
+       
+        //Area Conhecimento
+        area = areaDao.ListarTodos();
+        jcbProjetoPesquisaAreaConhecimento.removeAllItems();
+        for(AreaConhecimento ac: area){
+            jcbProjetoPesquisaAreaConhecimento.addItem(ac);
+        }
+        
+        //Orientador
+        campus = campusDao.ListarTodos();
+        jcbProjetoPesquisaOrientador.removeAllItems();
+        for(Orientador or: orientador){
+            jcbProjetoPesquisaOrientador.addItem(or);
+        }
+        
+        //Campus_Participante
+        campus = campusDao.ListarTodos();
+        jcbProjetoPesquisaCampusPartici.removeAllItems();
+        for(Campus cap: campus){
+            jcbProjetoPesquisaCampusPartici.addItem(cap);
+        }
+       */
+        
+    }
+    
+    private void ocultarFinan(int confirmacao){
+        
+         if(confirmacao == 1){
+         //Reabrir campus
+         txtProjetoPesquisaAgenciaFinan.setVisible(true);
+         txtProjetoPesquisaValorFinan.setVisible(true);
+         txtProjetoPesquisaDataFinan.setVisible(true);
+         lblAgenciaFinan.setVisible(true);
+         lblValorFinan.setVisible(true);
+         lblDataFinan.setVisible(true);
+         //setar Null
+         txtProjetoPesquisaAgenciaFinan.setText(null);
+         txtProjetoPesquisaValorFinan.setText(null);
+         txtProjetoPesquisaDataFinan.setText(null);
+         }else{
+             //esconder campus
+         txtProjetoPesquisaAgenciaFinan.setVisible(false);
+         txtProjetoPesquisaValorFinan.setVisible(false);
+         txtProjetoPesquisaDataFinan.setVisible(false);
+         lblAgenciaFinan.setVisible(false);
+         lblValorFinan.setVisible(false);
+         lblDataFinan.setVisible(false);      
+         //setar Null
+         txtProjetoPesquisaAgenciaFinan.setText(null);
+         txtProjetoPesquisaValorFinan.setText(null);
+         txtProjetoPesquisaDataFinan.setText(null);
+         }
+    }
+
+    private void ocultarConv(int confirmacao){
+        if(confirmacao == 1){
+            txtProjetoPesquisaConvenioQual.setVisible(true);
+            lblConvenioQual.setVisible(true);
+            txtProjetoPesquisaConvenioQual.setText(null);
+        }else{
+            txtProjetoPesquisaConvenioQual.setVisible(false);
+            lblConvenioQual.setVisible(false);
+            txtProjetoPesquisaConvenioQual.setText(null);
+        }
+    }
+    
+    private void ocultarBolsa(int confirmacao){
+        if(confirmacao == 1){
+            txtProjetoPesquisaNBolsas.setVisible(true);
+            lblNumbolsas.setVisible(true);
+            txtProjetoPesquisaNBolsas.setText(null);
+        }else{
+            txtProjetoPesquisaNBolsas.setVisible(false);
+            lblNumbolsas.setVisible(false);
+            txtProjetoPesquisaNBolsas.setText(null);
+        }
+    }
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        financiomento = new javax.swing.ButtonGroup();
+        convenio = new javax.swing.ButtonGroup();
+        bolsa = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jbtProjetoPesquisa = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtProjetoPesquisaTitulo = new javax.swing.JTextField();
+        txtProjetoPesquisaNCadastro = new javax.swing.JTextField();
+        txtProjetoPesquisaGrupoPesquisa = new javax.swing.JTextField();
+        txtProjetoPesquisaDataTermino = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtProjetoPesquisaDataInicio = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jcbProjetoPesquisaOrientador = new javax.swing.JComboBox();
+        jcbProjetoPesquisaCampus = new javax.swing.JComboBox();
+        jcbProjetoPesquisaAreaConhecimento = new javax.swing.JComboBox();
+        jLabel25 = new javax.swing.JLabel();
+        jcbProjetoPesquisaAluno = new javax.swing.JComboBox();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtProjetoPesquisaResumo = new javax.swing.JTextArea();
+        jPanel4 = new javax.swing.JPanel();
+        lblConvenioQual = new javax.swing.JLabel();
+        txtProjetoPesquisaConvenioQual = new javax.swing.JTextField();
+        jrbConvenioSim = new javax.swing.JRadioButton();
+        jrbConvenioNao = new javax.swing.JRadioButton();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        lblAgenciaFinan = new javax.swing.JLabel();
+        txtProjetoPesquisaAgenciaFinan = new javax.swing.JTextField();
+        lblValorFinan = new javax.swing.JLabel();
+        txtProjetoPesquisaValorFinan = new javax.swing.JTextField();
+        lblDataFinan = new javax.swing.JLabel();
+        txtProjetoPesquisaDataFinan = new javax.swing.JTextField();
+        try{
+            javax.swing.text.MaskFormatter data= new javax.swing.text.MaskFormatter("##/##/####");
+            txtProjetoPesquisaDataFinan = new javax.swing.JFormattedTextField(data);
+        }
+        catch (Exception e){
+        }
+        jrFinanSim = new javax.swing.JRadioButton();
+        jrFinanNao = new javax.swing.JRadioButton();
+        jrFinanSub = new javax.swing.JRadioButton();
+        jrFinanCon = new javax.swing.JRadioButton();
+        jLabel24 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        lblNumbolsas = new javax.swing.JLabel();
+        txtProjetoPesquisaNBolsas = new javax.swing.JTextField();
+        lblPerguntaBolsa = new javax.swing.JLabel();
+        jrbBolsaSim = new javax.swing.JRadioButton();
+        jrbBolsaNao = new javax.swing.JRadioButton();
+        jPanel7 = new javax.swing.JPanel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jcbProjetoPesquisaCampusPartici = new javax.swing.JComboBox();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtProjetoPesquisaObs = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jtbListaParcicipantesProjetoPesquisa = new javax.swing.JTable();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        btnSalvarProjetoPesquisa = new javax.swing.JButton();
+        btnCancelarProjetoPesquisa = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setClosable(true);
+
+        jPanel1.setBackground(new java.awt.Color(102, 204, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Cadastrar Projeto Pesquisa");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ifl.png"))); // NOI18N
+
+        jLabel1.setText("Titulo");
+
+        jLabel4.setText("Nº Cadastro");
+
+        jLabel5.setText("Grupo Pesquisa");
+
+        jLabel6.setText("Data Ter.");
+
+        jLabel7.setText("Data Inicio");
+
+        jLabel13.setText("Orientador");
+
+        jLabel14.setText("Campus");
+
+        jLabel16.setText("Area conecimento");
+
+        jcbProjetoPesquisaOrientador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jcbProjetoPesquisaCampus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jcbProjetoPesquisaAreaConhecimento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel25.setText("Aluno");
+
+        jcbProjetoPesquisaAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(8, 8, 8)
+                                .addComponent(txtProjetoPesquisaDataInicio))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtProjetoPesquisaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                                .addComponent(txtProjetoPesquisaNCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(78, 78, 78))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtProjetoPesquisaDataTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtProjetoPesquisaGrupoPesquisa)
+                        .addGap(78, 78, 78))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(21, 21, 21)
+                                .addComponent(jcbProjetoPesquisaCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jcbProjetoPesquisaOrientador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcbProjetoPesquisaAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbProjetoPesquisaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtProjetoPesquisaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtProjetoPesquisaNCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtProjetoPesquisaDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtProjetoPesquisaDataTermino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtProjetoPesquisaGrupoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jcbProjetoPesquisaOrientador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel16)
+                        .addComponent(jcbProjetoPesquisaAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jcbProjetoPesquisaCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25)
+                    .addComponent(jcbProjetoPesquisaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(129, Short.MAX_VALUE))
+        );
+
+        jbtProjetoPesquisa.addTab("Geral", jPanel2);
+
+        jLabel34.setText("Resumo");
+
+        txtProjetoPesquisaResumo.setColumns(20);
+        txtProjetoPesquisaResumo.setLineWrap(true);
+        txtProjetoPesquisaResumo.setRows(5);
+        jScrollPane4.setViewportView(txtProjetoPesquisaResumo);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel34)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(165, Short.MAX_VALUE))
+        );
+
+        jbtProjetoPesquisa.addTab("Resumo", jPanel3);
+
+        lblConvenioQual.setText("Qual?");
+
+        convenio.add(jrbConvenioSim);
+        jrbConvenioSim.setText("Sim");
+        jrbConvenioSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbConvenioSimActionPerformed(evt);
+            }
+        });
+
+        convenio.add(jrbConvenioNao);
+        jrbConvenioNao.setSelected(true);
+        jrbConvenioNao.setText("Não");
+        jrbConvenioNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbConvenioNaoActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("O Projeto possui convênio?");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jrbConvenioSim)
+                                .addGap(3, 3, 3))
+                            .addComponent(jrbConvenioNao)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(lblConvenioQual)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtProjetoPesquisaConvenioQual, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9))))
+                .addContainerGap(203, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jrbConvenioSim)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbConvenioNao)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtProjetoPesquisaConvenioQual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblConvenioQual))
+                .addContainerGap(138, Short.MAX_VALUE))
+        );
+
+        jbtProjetoPesquisa.addTab("Convenio", jPanel4);
+
+        lblAgenciaFinan.setText("Agência");
+
+        lblValorFinan.setText("Valor");
+
+        lblDataFinan.setText("Data");
+
+        financiomento.add(jrFinanSim);
+        jrFinanSim.setText("Sim");
+        jrFinanSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrFinanSimActionPerformed(evt);
+            }
+        });
+
+        financiomento.add(jrFinanNao);
+        jrFinanNao.setSelected(true);
+        jrFinanNao.setText("Não");
+        jrFinanNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrFinanNaoActionPerformed(evt);
+            }
+        });
+
+        financiomento.add(jrFinanSub);
+        jrFinanSub.setText("Submetido e Arguandando Aprovação");
+        jrFinanSub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrFinanSubActionPerformed(evt);
+            }
+        });
+
+        financiomento.add(jrFinanCon);
+        jrFinanCon.setText("Conduzido com recursos de outras fontes");
+        jrFinanCon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrFinanConActionPerformed(evt);
+            }
+        });
+
+        jLabel24.setText("O Projeto é financiado?");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jrFinanNao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jrFinanSim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrFinanSub)
+                            .addComponent(jrFinanCon)))
+                    .addComponent(jLabel24)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAgenciaFinan)
+                            .addComponent(lblDataFinan))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtProjetoPesquisaDataFinan, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(txtProjetoPesquisaAgenciaFinan, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblValorFinan)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtProjetoPesquisaValorFinan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrFinanSim)
+                    .addComponent(jrFinanSub))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrFinanNao)
+                    .addComponent(jrFinanCon))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtProjetoPesquisaAgenciaFinan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAgenciaFinan)
+                    .addComponent(lblValorFinan)
+                    .addComponent(txtProjetoPesquisaValorFinan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDataFinan)
+                    .addComponent(txtProjetoPesquisaDataFinan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(86, Short.MAX_VALUE))
+        );
+
+        jbtProjetoPesquisa.addTab("Financiamento", jPanel5);
+
+        lblNumbolsas.setText("Nº Bolsa ");
+
+        lblPerguntaBolsa.setText("O Projeto é financiado?");
+
+        bolsa.add(jrbBolsaSim);
+        jrbBolsaSim.setText("Sim");
+        jrbBolsaSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbBolsaSimActionPerformed(evt);
+            }
+        });
+
+        bolsa.add(jrbBolsaNao);
+        jrbBolsaNao.setSelected(true);
+        jrbBolsaNao.setText("Não");
+        jrbBolsaNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbBolsaNaoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPerguntaBolsa)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(lblNumbolsas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtProjetoPesquisaNBolsas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrbBolsaNao)
+                            .addComponent(jrbBolsaSim))))
+                .addContainerGap(331, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(lblPerguntaBolsa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jrbBolsaSim)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbBolsaNao)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNumbolsas)
+                    .addComponent(txtProjetoPesquisaNBolsas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(141, Short.MAX_VALUE))
+        );
+
+        jbtProjetoPesquisa.addTab("Bolsa", jPanel6);
+
+        jLabel22.setText("Titulação");
+
+        jcbProjetoPesquisaCampusPartici.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtProjetoPesquisaObs.setColumns(20);
+        txtProjetoPesquisaObs.setLineWrap(true);
+        txtProjetoPesquisaObs.setRows(5);
+        jScrollPane5.setViewportView(txtProjetoPesquisaObs);
+
+        jtbListaParcicipantesProjetoPesquisa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane6.setViewportView(jtbListaParcicipantesProjetoPesquisa);
+
+        jLabel19.setText("Nome");
+
+        jLabel21.setText("Campus");
+
+        jLabel23.setText("Obs.");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcbProjetoPesquisaCampusPartici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jcbProjetoPesquisaCampusPartici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jbtProjetoPesquisa.addTab("Participante", jPanel7);
+
+        btnSalvarProjetoPesquisa.setText("Salvar");
+
+        btnCancelarProjetoPesquisa.setText("Cancelar");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(193, 193, 193)
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbtProjetoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCancelarProjetoPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSalvarProjetoPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtProjetoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(btnSalvarProjetoPesquisa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelarProjetoPesquisa)))
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jrFinanConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanConActionPerformed
+        // TODO add your handling code here:
+        ps.setFinanciamento(4);
+        ocultarFinan(1);
+        
+    }//GEN-LAST:event_jrFinanConActionPerformed
+
+    private void jrFinanNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanNaoActionPerformed
+        // TODO add your handling code here:
+         ps.setFinanciamento(2);
+         ocultarFinan(0);
+         
+    }//GEN-LAST:event_jrFinanNaoActionPerformed
+
+    private void jrFinanSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanSimActionPerformed
+        // TODO add your handling code here:
+         ps.setFinanciamento(1);
+         ocultarFinan(1);
+        
+    }//GEN-LAST:event_jrFinanSimActionPerformed
+
+    private void jrFinanSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanSubActionPerformed
+        // TODO add your handling code here:
+         ps.setFinanciamento(3);
+         ocultarFinan(1);
+    }//GEN-LAST:event_jrFinanSubActionPerformed
+
+    private void jrbConvenioSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbConvenioSimActionPerformed
+        // TODO add your handling code here:
+        ps.setConvenio(1);
+        ocultarConv(1);
+        
+    }//GEN-LAST:event_jrbConvenioSimActionPerformed
+
+    private void jrbConvenioNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbConvenioNaoActionPerformed
+        // TODO add your handling code here:
+        ps.setConvenio(2);
+        ocultarConv(0);
+      
+    }//GEN-LAST:event_jrbConvenioNaoActionPerformed
+
+    private void jrbBolsaSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBolsaSimActionPerformed
+        // TODO add your handling code here:
+        ps.setBolsa(1);
+        ocultarBolsa(1);
+    }//GEN-LAST:event_jrbBolsaSimActionPerformed
+
+    private void jrbBolsaNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBolsaNaoActionPerformed
+        // TODO add your handling code here:
+        ps.setBolsa(2);
+        ocultarBolsa(0);
+    }//GEN-LAST:event_jrbBolsaNaoActionPerformed
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bolsa;
+    private javax.swing.JButton btnCancelarProjetoPesquisa;
+    private javax.swing.JButton btnSalvarProjetoPesquisa;
+    private javax.swing.ButtonGroup convenio;
+    private javax.swing.ButtonGroup financiomento;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTabbedPane jbtProjetoPesquisa;
+    private javax.swing.JComboBox jcbProjetoPesquisaAluno;
+    private javax.swing.JComboBox jcbProjetoPesquisaAreaConhecimento;
+    private javax.swing.JComboBox jcbProjetoPesquisaCampus;
+    private javax.swing.JComboBox jcbProjetoPesquisaCampusPartici;
+    private javax.swing.JComboBox jcbProjetoPesquisaOrientador;
+    private javax.swing.JRadioButton jrFinanCon;
+    private javax.swing.JRadioButton jrFinanNao;
+    private javax.swing.JRadioButton jrFinanSim;
+    private javax.swing.JRadioButton jrFinanSub;
+    private javax.swing.JRadioButton jrbBolsaNao;
+    private javax.swing.JRadioButton jrbBolsaSim;
+    private javax.swing.JRadioButton jrbConvenioNao;
+    private javax.swing.JRadioButton jrbConvenioSim;
+    private javax.swing.JTable jtbListaParcicipantesProjetoPesquisa;
+    private javax.swing.JLabel lblAgenciaFinan;
+    private javax.swing.JLabel lblConvenioQual;
+    private javax.swing.JLabel lblDataFinan;
+    private javax.swing.JLabel lblNumbolsas;
+    private javax.swing.JLabel lblPerguntaBolsa;
+    private javax.swing.JLabel lblValorFinan;
+    private javax.swing.JTextField txtProjetoPesquisaAgenciaFinan;
+    private javax.swing.JTextField txtProjetoPesquisaConvenioQual;
+    private javax.swing.JTextField txtProjetoPesquisaDataFinan;
+    private javax.swing.JTextField txtProjetoPesquisaDataInicio;
+    private javax.swing.JTextField txtProjetoPesquisaDataTermino;
+    private javax.swing.JTextField txtProjetoPesquisaGrupoPesquisa;
+    private javax.swing.JTextField txtProjetoPesquisaNBolsas;
+    private javax.swing.JTextField txtProjetoPesquisaNCadastro;
+    private javax.swing.JTextArea txtProjetoPesquisaObs;
+    private javax.swing.JTextArea txtProjetoPesquisaResumo;
+    private javax.swing.JTextField txtProjetoPesquisaTitulo;
+    private javax.swing.JTextField txtProjetoPesquisaValorFinan;
+    // End of variables declaration//GEN-END:variables
+}

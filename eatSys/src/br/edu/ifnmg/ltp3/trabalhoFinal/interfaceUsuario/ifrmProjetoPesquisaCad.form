@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="financiomento">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="convenio">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="bolsa">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
+    <Property name="closable" type="boolean" value="true"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jbtProjetoPesquisa" min="-2" pref="525" max="-2" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnCancelarProjetoPesquisa" max="32767" attributes="0"/>
+                          <Component id="btnSalvarProjetoPesquisa" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jbtProjetoPesquisa" min="-2" pref="251" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="btnSalvarProjetoPesquisa" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnCancelarProjetoPesquisa" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="60" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="cc" red="66" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Cadastrar Projeto Pesquisa"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/imagens/ifl.png"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JTabbedPane" name="jbtProjetoPesquisa">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel2">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Geral">
+                <Property name="tabTitle" type="java.lang.String" value="Geral"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                      <Component id="txtProjetoPesquisaDataInicio" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtProjetoPesquisaTitulo" min="-2" pref="130" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="19" max="32767" attributes="0"/>
+                                      <Component id="txtProjetoPesquisaNCadastro" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtProjetoPesquisaDataTermino" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtProjetoPesquisaGrupoPesquisa" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Component id="jcbProjetoPesquisaCampus" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jcbProjetoPesquisaOrientador" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel16" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel25" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jcbProjetoPesquisaAreaConhecimento" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcbProjetoPesquisaAluno" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProjetoPesquisaTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProjetoPesquisaNCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProjetoPesquisaDataInicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProjetoPesquisaDataTermino" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtProjetoPesquisaGrupoPesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="jcbProjetoPesquisaOrientador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jcbProjetoPesquisaAreaConhecimento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbProjetoPesquisaCampus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbProjetoPesquisaAluno" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="129" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Titulo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="N&#xba; Cadastro"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Grupo Pesquisa"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Data Ter."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaTitulo">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaNCadastro">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaGrupoPesquisa">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaDataTermino">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Data Inicio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaDataInicio">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel13">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Orientador"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel14">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Campus"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel16">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Area conecimento"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcbProjetoPesquisaOrientador">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcbProjetoPesquisaCampus">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcbProjetoPesquisaAreaConhecimento">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel25">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Aluno"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcbProjetoPesquisaAluno">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel3">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Resumo">
+                <Property name="tabTitle" type="java.lang.String" value="Resumo"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane4" min="-2" pref="417" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="165" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel34">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Resumo"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="txtProjetoPesquisaResumo">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="lineWrap" type="boolean" value="true"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel4">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Convenio">
+                <Property name="tabTitle" type="java.lang.String" value="Convenio"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jrbConvenioSim" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jrbConvenioNao" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblConvenioQual" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtProjetoPesquisaConvenioQual" min="-2" pref="250" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="203" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jrbConvenioSim" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jrbConvenioNao" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtProjetoPesquisaConvenioQual" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblConvenioQual" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="138" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblConvenioQual">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qual?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaConvenioQual">
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jrbConvenioSim">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="convenio"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Sim"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbConvenioSimActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jrbConvenioNao">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="convenio"/>
+                </Property>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbConvenioNaoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="O Projeto possui conv&#xea;nio?"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel5">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Financiamento">
+                <Property name="tabTitle" type="java.lang.String" value="Financiamento"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jrFinanNao" max="32767" attributes="0"/>
+                                  <Component id="jrFinanSim" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jrFinanSub" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jrFinanCon" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblAgenciaFinan" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDataFinan" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtProjetoPesquisaDataFinan" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtProjetoPesquisaAgenciaFinan" min="-2" pref="251" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblValorFinan" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtProjetoPesquisaValorFinan" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jrFinanSim" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jrFinanSub" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jrFinanNao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jrFinanCon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtProjetoPesquisaAgenciaFinan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAgenciaFinan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblValorFinan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProjetoPesquisaValorFinan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblDataFinan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProjetoPesquisaDataFinan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="86" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblAgenciaFinan">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ag&#xea;ncia"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaAgenciaFinan">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblValorFinan">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Valor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaValorFinan">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDataFinan">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Data"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaDataFinan">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="try{  &#xa;   javax.swing.text.MaskFormatter data= new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;);  &#xa;   txtProjetoPesquisaDataFinan = new javax.swing.JFormattedTextField(data);  &#xa;}  &#xa;   catch (Exception e){  &#xa;}   "/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jrFinanSim">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="financiomento"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Sim"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrFinanSimActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jrFinanNao">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="financiomento"/>
+                </Property>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrFinanNaoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jrFinanSub">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="financiomento"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Submetido e Arguandando Aprova&#xe7;&#xe3;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrFinanSubActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jrFinanCon">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="financiomento"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Conduzido com recursos de outras fontes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrFinanConActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel24">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="O Projeto &#xe9; financiado?"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel6">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Bolsa">
+                <Property name="tabTitle" type="java.lang.String" value="Bolsa"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblPerguntaBolsa" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblNumbolsas" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtProjetoPesquisaNBolsas" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jrbBolsaNao" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jrbBolsaSim" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="331" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="lblPerguntaBolsa" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jrbBolsaSim" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jrbBolsaNao" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblNumbolsas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProjetoPesquisaNBolsas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="141" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblNumbolsas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="N&#xba; Bolsa "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaNBolsas">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblPerguntaBolsa">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="O Projeto &#xe9; financiado?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jrbBolsaSim">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="bolsa"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Sim"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbBolsaSimActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jrbBolsaNao">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="bolsa"/>
+                </Property>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbBolsaNaoActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel7">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Participante">
+                <Property name="tabTitle" type="java.lang.String" value="Participante"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jTextField1" min="-2" pref="200" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jTextField2" pref="122" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jcbProjetoPesquisaCampusPartici" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane5" min="-2" pref="257" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="jScrollPane6" min="-2" pref="473" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane5" min="-2" pref="62" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jcbProjetoPesquisaCampusPartici" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane6" min="-2" pref="120" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="jTextField2">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel22">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Titula&#xe7;&#xe3;o"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField1">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcbProjetoPesquisaCampusPartici">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="txtProjetoPesquisaObs">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="lineWrap" type="boolean" value="true"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jtbListaParcicipantesProjetoPesquisa">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="0" rowCount="0"/>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="jLabel19">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel21">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Campus"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel23">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Obs."/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnSalvarProjetoPesquisa">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salvar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCancelarProjetoPesquisa">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
