@@ -101,11 +101,11 @@ public class CursoDAO {
         
   }
     
-    public boolean Apagar(int idCursoArea) throws SQLException{
+    public boolean Apagar(int idCurso) throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("UPDATE CursoArea SET status = 0 "
+            PreparedStatement comando = conexao.getConexao().prepareStatement("UPDATE Curso SET status = 0 "
                     + "WHERE idCurso = ?");
-            comando.setInt(1, idCursoArea);
+            comando.setInt(1, idCurso);
             
             comando.executeUpdate();
             return true;

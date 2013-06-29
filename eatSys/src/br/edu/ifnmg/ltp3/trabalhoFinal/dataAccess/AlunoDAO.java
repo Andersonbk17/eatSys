@@ -65,8 +65,8 @@ public class AlunoDAO {
                 comando.setString(3, obj.getZonaEleitoral());
                 comando.setString(4, obj.getSituacaoMilitar());
                 comando.setString(5, obj.getCertidaoMilitar());
-                comando.setInt(6, pessoaDAO.ChaveEstrangeira(obj.getCpf()));
-                comando.setInt(7, 1);
+                comando.setInt(6, 4);
+                comando.setInt(7, 7);
                 comando.setInt(8, obj.getMatricula());
                 comando.setInt(9, obj.getAlunoCurso().getIdCursoArea());
                 comando.setString(10, obj.getNomePai());
@@ -146,7 +146,7 @@ public class AlunoDAO {
                 NacionalidadeDAO nacionalidade = new NacionalidadeDAO();
                 EstadoDAO estado = new EstadoDAO();
                 CidadeDAO cidade = new CidadeDAO();
-                CursoAreaDAO curso = new CursoAreaDAO();
+                CursoDAO curso = new CursoDAO();
 
                 aluno.setIdPessoa(resultado.getInt("pe.idPessoa"));
                 aluno.setNome(resultado.getString("pe.nome"));
@@ -219,7 +219,7 @@ public class AlunoDAO {
                 NacionalidadeDAO nacionalidade = new NacionalidadeDAO();
                 EstadoDAO estado = new EstadoDAO();
                 CidadeDAO cidade = new CidadeDAO();
-                CursoAreaDAO curso = new CursoAreaDAO();
+                CursoDAO curso = new CursoDAO();
 
                 aluno.setIdPessoa(resultado.getInt("pe.idPessoa"));
                 aluno.setNome(resultado.getString("pe.nome"));
@@ -267,6 +267,23 @@ public class AlunoDAO {
         }catch(SQLException ex){
             ex.printStackTrace();
             return null;
+        }finally{
+            conexao.getConexao().close();
+        }
+    
+    }
+     
+     public boolean Apagar(int idAluno) throws SQLException{
+        try{
+            PreparedStatement comando = conexao.getConexao().prepareStatement("UPDATE Aluno SET status = 0 "
+                    + "WHERE idAluno = ?");
+            comando.setInt(1, idAluno);
+            
+            comando.executeUpdate();
+            return true;
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
         }finally{
             conexao.getConexao().close();
         }
