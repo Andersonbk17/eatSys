@@ -37,7 +37,7 @@ public class OrientadorDAO {
                 tmp.setCpf(obj.getCpf());
                 tmp.setDataNascimento(obj.getDataNascimento());
                 tmp.setEmailEndereco(obj.getEmailEndereco());
-                tmp.setEnderecNumero(obj.getEnderecNumero());
+                tmp.setEnderecoNumero(obj.getEnderecoNumero());
                 tmp.setEnderecoBairro(obj.getEnderecoBairro());
                 tmp.setEnderecoCep(obj.getEnderecoCep());
                 tmp.setEnderecoComplmento(obj.getEnderecoComplmento());
@@ -85,7 +85,7 @@ public class OrientadorDAO {
                 tmp.setCpf(obj.getCpf());
                 tmp.setDataNascimento(obj.getDataNascimento());
                 tmp.setEmailEndereco(obj.getEmailEndereco());
-                tmp.setEnderecNumero(obj.getEnderecNumero());
+                tmp.setEnderecoNumero(obj.getEnderecoNumero());
                 tmp.setEnderecoBairro(obj.getEnderecoBairro());
                 tmp.setEnderecoCep(obj.getEnderecoCep());
                 tmp.setEnderecoComplmento(obj.getEnderecoComplmento());
@@ -146,7 +146,7 @@ public class OrientadorDAO {
                 novo.setCursoArea(novoCursoArea.Abrir(consulta.getInt("idCurso")));
                 //novo.setDataNascimento(null);
                 novo.setEmailEndereco(consulta.getString("email"));
-                novo.setEnderecNumero(consulta.getString("numero"));
+                novo.setEnderecoNumero(consulta.getString("numero"));
                 novo.setEnderecoBairro(consulta.getString("bairro"));
                 novo.setEnderecoCep(consulta.getInt("cep"));
                 novo.setEnderecoComplmento(consulta.getString("complemento"));
@@ -205,7 +205,7 @@ public class OrientadorDAO {
                 novo.setCursoArea(novoCursoArea.Abrir(consulta.getInt("idCurso")));
                 //novo.setDataNascimento(null);
                 novo.setEmailEndereco(consulta.getString("email"));
-                novo.setEnderecNumero(consulta.getString("numero"));
+                novo.setEnderecoNumero(consulta.getString("numero"));
                 novo.setEnderecoBairro(consulta.getString("bairro"));
                 novo.setEnderecoCep(consulta.getInt("cep"));
                 novo.setEnderecoComplmento(consulta.getString("complemento"));
