@@ -26,6 +26,14 @@ public class ParticipanteProjeto {
         this.observacao = observacao;
         this.campus = campus;
     }
+    
+    public ParticipanteProjeto() {
+        this.idParticipante = 0;
+        this.nome = "";
+        this.titulacao = "";
+        this.observacao = "";
+        this.campus = new Campus();
+    }
 
     public int getIdParticipante() {
         return idParticipante;

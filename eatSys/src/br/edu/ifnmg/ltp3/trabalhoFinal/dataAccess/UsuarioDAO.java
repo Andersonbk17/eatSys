@@ -90,9 +90,9 @@ public class UsuarioDAO {
             PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Usuario WHERE idUsuario = ? AND STATUS = 1");
             comando.setInt(1, idUsuario);
             ResultSet consulta = comando.executeQuery();
-            
+                Usuario novo = null;
             if(consulta.first()){
-                Usuario novo = new Usuario();
+                novo = new Usuario();
                 
                 novo.setIdUsuario(idUsuario);
                 novo.setUsuario(consulta.getString("usuario"));
@@ -100,7 +100,8 @@ public class UsuarioDAO {
                 
                 return novo;
            
-            }else return null;
+            }
+            return novo;
             
         }catch(SQLException ex){
             ex.printStackTrace();
