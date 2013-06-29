@@ -6,6 +6,7 @@ package br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess;
 
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Pessoa;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -17,6 +18,25 @@ public class PessoaDAO {
     
     public PessoaDAO() throws SQLException{
         conexao = new ConexaoBanco();
+    }
+    
+    //Função para pegar chave estrangeira
+    public int ChaveEstrangeira(int Cpf) throws SQLException{
+         
+         //Aqui estou fazendo uma consulta de Pessoa(idPessoa) atravez do cpf, se e somente se cpf for igual a obj.getCpf
+         PreparedStatement comandoConsulta = conexao.getConexao().prepareStatement(""
+                 + "SELECT pe.idPessoa FROM Pessoa pe "
+                 + "INNER JOIN Aluno al ON (pe.idPessoa = al.idPessoa) "
+                 + "WHERE pe.cpf = ? ");
+         comandoConsulta.setInt(1,Cpf); 
+         ResultSet resultado = comandoConsulta.executeQuery();
+         resultado.first();
+                
+         //Aqui criei uma variavel do tipo inteiro para armazenar o valor da consulta Pessoa(idPessoa)
+         int aux;
+         aux = resultado.getInt("pe.idPessoa");
+                  
+         return aux;
     }
     
     public boolean SalvarPessoa(Pessoa obj) throws SQLException{
