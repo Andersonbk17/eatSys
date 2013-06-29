@@ -4,7 +4,7 @@
  */
 package br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess;
 
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,10 +17,10 @@ import java.util.logging.Logger;
  *
  * @author lewandowsky
  */
-public class CampusDAO {
+public class UsuarioDAO {
     private ConexaoBanco conexao;
     
-    public CampusDAO(){
+    public UsuarioDAO(){
         try {
             conexao = new ConexaoBanco();
         } catch (SQLException ex) {
@@ -29,17 +29,22 @@ public class CampusDAO {
     }
     
     
-    public boolean Salvar(Campus obj ) throws SQLException{
+    public boolean Salvar(Usuario obj ) throws SQLException{
         try{
-            if(obj.getIdCampus()== 0){
-                PreparedStatement comando = conexao.getConexao().prepareCall("INSERT INTO Campus(nome,status) VALUES(?,?)");
-                comando.setString(1, obj.getNome());
-                comando.setInt(2, 1);
+            if(obj.getIdUsuario()== 0){
+                PreparedStatement comando = conexao.getConexao().prepareCall("INSERT INTO Usuario(usuario,senha,nivel,status) VALUES(?,?,?,?)");
+                comando.setString(1, obj.getUsuario());
+                comando.setString(2, obj.getSenha());
+                comando.setInt(3, obj.getNivel());
+                comando.setInt(4,1);
                 comando.execute();
             }else{
-                PreparedStatement comando1 = conexao.getConexao().prepareCall("UPDATE Campus SET nome = ? WHERE idCampus = ?");
-                comando1.setString(1, obj.getNome());
-                comando1.setInt(2, obj.getIdCampus());
+                PreparedStatement comando1 = conexao.getConexao().prepareCall("UPDATE Usuario SET usuario = ?,senha = ?,"
+                        + "nivel = ? WHERE idUsuario = ?");
+                comando1.setString(1, obj.getUsuario());
+                comando1.setString(2, obj.getSenha());
+                comando1.setInt(3, obj.getNivel());
+                comando1.setInt(4, obj.getIdUsuario());
                 comando1.executeUpdate();
            }
             return true;
@@ -53,17 +58,18 @@ public class CampusDAO {
     }
     
     
-    public Campus Abrir(int idCampus) throws SQLException{
+    public Usuario Abrir(int idUsuario) throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Campus WHERE idCampus = ? AND STATUS = 1");
-            comando.setInt(1, idCampus);
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Usuario WHERE idUsuario = ? AND STATUS = 1");
+            comando.setInt(1, idUsuario);
             ResultSet consulta = comando.executeQuery();
             
             if(consulta.first()){
-                Campus novo = new Campus();
+                Usuario novo = new Usuario();
                 
-                novo.setIdCampus(idCampus);
-                novo.setNome(consulta.getString("nome"));
+                novo.setIdUsuario(idUsuario);
+                novo.setUsuario(consulta.getString("usuario"));
+                novo.setNivel(consulta.getInt("nivel"));
                 
                 return novo;
            
@@ -81,16 +87,16 @@ public class CampusDAO {
     }
     
     
-    public List<Campus> ListarTodos() throws SQLException{
+    public List<Usuario> ListarTodos() throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Campus WHERE STATUS = 1");
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Usuario WHERE status = 1");
             ResultSet consulta = comando.executeQuery();
-            List<Campus> lista = new LinkedList<>();
+            List<Usuario> lista = new LinkedList<>();
             while(consulta.next()){
-                Campus novo = new Campus();
-                novo.setNome(consulta.getString("nome"));
-                novo.setIdCampus(consulta.getInt("idCampus"));
-                
+                Usuario novo = new Usuario();
+                novo.setIdUsuario(consulta.getInt("idUsuario"));
+                novo.setUsuario(consulta.getString("usuario"));
+                novo.setNivel(consulta.getInt("nivel"));
                 lista.add(novo);
             }
             return lista;
@@ -102,11 +108,11 @@ public class CampusDAO {
         }
      }
     
-    public boolean Apagar(int idCampus ) throws SQLException{
+    public boolean Apagar(int idUsuario ) throws SQLException{
         try{
             PreparedStatement comando = conexao.getConexao().prepareStatement(""
-                    + "UPDATE Campus SET status = 0 WHERE idCampus = ?");
-            comando.setInt(1, idCampus);
+                    + "UPDATE Usuario SET status = 0 WHERE idUsuario = ?");
+            comando.setInt(1, idUsuario);
             comando.executeUpdate();
             return true;
         }catch(SQLException ex){
