@@ -65,15 +65,17 @@ public class UsuarioDAO {
             comando.setString(2, senha);
             
             ResultSet consulta = comando.executeQuery();
-                Usuario novo = null;
+            Usuario novo = null;
             
-                if(consulta.first()){
-                novo = new Usuario();
+            if(consulta.first()){
+                if(consulta.getString("usuario").equals(usuario) && consulta.getString("senha").equals(senha)){
                 
-                novo.setUsuario(consulta.getString("usuario"));
-                novo.setNivel(consulta.getInt("nivel"));
+                    novo = new Usuario();
+                    novo.setUsuario(consulta.getString("usuario"));
+                    novo.setNivel(consulta.getInt("nivel"));
                 
-                return novo;
+            return novo;
+                }
             }
         return novo;
         }catch(SQLException ex){

@@ -6,6 +6,7 @@ package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.UsuarioDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Usuario;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,6 +54,20 @@ public class frmLogin extends javax.swing.JFrame {
         lblLoginUsuario.setText("Usuário");
 
         lblLoginSenha.setText("Senha");
+
+        txtloginSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtloginSenhaActionPerformed(evt);
+            }
+        });
+        txtloginSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtloginSenhaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtloginSenhaKeyTyped(evt);
+            }
+        });
 
         jpnLoginFaixa.setBackground(new java.awt.Color(102, 204, 0));
 
@@ -156,8 +171,8 @@ public class frmLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLoginEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginEntrarActionPerformed
-        if(!txtLoginUsuario.getText().isEmpty() && !txtloginSenha.getText().isEmpty()){
+    private void Autenticar(){
+       if(!txtLoginUsuario.getText().isEmpty() && !txtloginSenha.getText().isEmpty()){
             UsuarioDAO usuario = new UsuarioDAO();
             Usuario usuarioAtual = null;
             try {
@@ -166,17 +181,38 @@ public class frmLogin extends javax.swing.JFrame {
                 Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
             if(usuarioAtual == null){
-                JOptionPane.showMessageDialog(rootPane, "Usuario/Senha não encontrado");
+                JOptionPane.showMessageDialog(rootPane, "Usuario/Senha não encontrado !");
+                txtLoginUsuario.setText("");
+                txtloginSenha.setText("");
             }else{
-                new frmBody().setVisible(true);  
+                new frmBody(usuarioAtual).setVisible(true);  
                 this.dispose();
             }
         }else{
-            JOptionPane.showMessageDialog(rootPane, "Os campos não podem ser Vazios !");
+            JOptionPane.showMessageDialog(rootPane, "Todos os Campos devem ser preenchidos !");
         }
-        
+     
+    
+    }
+    private void btnLoginEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginEntrarActionPerformed
+        Autenticar();
         
     }//GEN-LAST:event_btnLoginEntrarActionPerformed
+
+    private void txtloginSenhaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtloginSenhaKeyTyped
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtloginSenhaKeyTyped
+
+    private void txtloginSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtloginSenhaActionPerformed
+       
+    }//GEN-LAST:event_txtloginSenhaActionPerformed
+
+    private void txtloginSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtloginSenhaKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Autenticar();
+        }
+    }//GEN-LAST:event_txtloginSenhaKeyPressed
 
     /**
      * @param args the command line arguments
