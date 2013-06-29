@@ -37,6 +37,55 @@ public class Pessoa {
     private Cidade pessoaCidade; 
     private Estado pessoaEstado;
 
+    public Pessoa(int idPessoa, String nome, int cpf, String rg, String rgOrgaoExpedidor, Date rgDataExpedicao, Date dataNascimento, boolean status, String enderecoRua, String enderecNumero, String enderecoBairro, String enderecoComplmento, int enderecoCep, String telefoneFixo, String telefoneCelular, String emailEndereco, Campus pessoaCampus, Nacionalidade pessoaNacionalidade, Cidade pessoaCidade, Estado pessoaEstado) {
+        this.idPessoa = idPessoa;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.rg = rg;
+        this.rgOrgaoExpedidor = rgOrgaoExpedidor;
+        this.rgDataExpedicao = rgDataExpedicao;
+        this.dataNascimento = dataNascimento;
+        this.status = status;
+        this.enderecoRua = enderecoRua;
+        this.enderecNumero = enderecNumero;
+        this.enderecoBairro = enderecoBairro;
+        this.enderecoComplmento = enderecoComplmento;
+        this.enderecoCep = enderecoCep;
+        this.telefoneFixo = telefoneFixo;
+        this.telefoneCelular = telefoneCelular;
+        this.emailEndereco = emailEndereco;
+        this.pessoaCampus = pessoaCampus;
+        this.pessoaNacionalidade = pessoaNacionalidade;
+        this.pessoaCidade = pessoaCidade;
+        this.pessoaEstado = pessoaEstado;
+    }
+    
+    public Pessoa() {
+        this.idPessoa = 0;
+        this.nome = "";
+        this.cpf = 0;
+        this.rg = "";
+        this.rgOrgaoExpedidor = "";
+        this.rgDataExpedicao = new Date();
+        this.dataNascimento = new Date();
+        this.status = true;
+        this.enderecoRua = "";
+        this.enderecNumero = "";
+        this.enderecoBairro = "";
+        this.enderecoComplmento = "";
+        this.enderecoCep = 0;
+        this.telefoneFixo = "";
+        this.telefoneCelular = "";
+        this.emailEndereco = "";
+        this.pessoaCampus = new Campus();
+        this.pessoaNacionalidade = new Nacionalidade();
+        this.pessoaCidade = new Cidade();
+        this.pessoaEstado = new Estado();
+    }
+
+    
+    
+    
     public int getIdPessoa() {
         return idPessoa;
     }
