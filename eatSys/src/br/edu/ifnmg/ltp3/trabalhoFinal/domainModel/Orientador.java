@@ -11,6 +11,7 @@ import java.util.Objects;
  * @author lewandowsky
  */
 public class Orientador extends Pessoa{
+    private int idOrientador;
     private int matriculaSiape;
     private String localPermanencia;
     private String formacaoUniversitaria;
@@ -20,13 +21,14 @@ public class Orientador extends Pessoa{
     CursoArea cursoArea;
 
     public Orientador(int matriculaSiape, String localPermanencia, String formacaoUniversitaria, 
-            String tituloAcademico, String telefoneRamal, CursoArea cursoArea) {
+            String tituloAcademico, String telefoneRamal, CursoArea cursoArea, int idOrientador) {
         this.matriculaSiape = matriculaSiape;
         this.localPermanencia = localPermanencia;
         this.formacaoUniversitaria = formacaoUniversitaria;
         this.tituloAcademico = tituloAcademico;
         this.telefoneRamal = telefoneRamal;
         this.cursoArea = cursoArea;
+        this.idOrientador = idOrientador;
     }
     
      public Orientador() {
@@ -36,6 +38,7 @@ public class Orientador extends Pessoa{
         this.tituloAcademico = "";
         this.telefoneRamal = "";
         this.cursoArea = new CursoArea();
+        this.idOrientador = 0;
     }
 
     public int getMatriculaSiape() {
@@ -86,6 +89,16 @@ public class Orientador extends Pessoa{
         this.cursoArea = cursoArea;
     }
 
+    public int getIdOrientador() {
+        return idOrientador;
+    }
+
+    public void setIdOrientador(int idOrientador) {
+        this.idOrientador = idOrientador;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
