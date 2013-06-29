@@ -13,16 +13,19 @@ import java.util.Objects;
 public class Estado {
     private int idEstado;
     private String nomeEstado;
+    private String uf;
    
     
-    public Estado(int idEstado, String nomeEstado) {
+    public Estado(int idEstado, String nomeEstado, String uf) {
         this.idEstado = idEstado;
         this.nomeEstado = nomeEstado;
+        this.uf = uf;
     }
     
      public Estado() {
         this.idEstado = 0;
         this.nomeEstado = "";
+        this.uf = "";
     }
 
     public int getIdEstado() {
@@ -40,6 +43,16 @@ public class Estado {
     public void setNomeEstado(String nomeEstado) {
         this.nomeEstado = nomeEstado;
     }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+    
+    
 
     @Override
     public int hashCode() {
