@@ -30,6 +30,16 @@ public class CronogramaDeAtividade {
         this.status = status;
         this.atividadePlanoTrabalho = atividadePlanoTrabalho;
     }
+    
+     public CronogramaDeAtividade() {
+        this.idCronogramaAtividade = 0;
+        this.descricao = "";
+        this.numeroAtividade = 0;
+        this.dataInicio = new Date();
+        this.dataFim = new Date();
+        this.status = true;
+        this.atividadePlanoTrabalho = new PlanoDeTrabalho();
+    }
 
     public int getIdCronogramaAtividade() {
         return idCronogramaAtividade;
