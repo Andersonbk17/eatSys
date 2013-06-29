@@ -29,7 +29,31 @@ public class AlunoDAO {
         PessoaDAO pessoaDAO = new PessoaDAO();
         try{
             if(obj.getIdAluno() == 0){
-                pessoaDAO.SalvarPessoa(obj);
+                
+                Pessoa tmp = new Pessoa();
+                PessoaDAO daoPessoa = new PessoaDAO();
+                
+                tmp.setCpf(obj.getCpf());
+                tmp.setDataNascimento(obj.getDataNascimento());
+                tmp.setEmailEndereco(obj.getEmailEndereco());
+                tmp.setEnderecoNumero(obj.getEnderecoNumero());
+                tmp.setEnderecoBairro(obj.getEnderecoBairro());
+                tmp.setEnderecoCep(obj.getEnderecoCep());
+                tmp.setEnderecoComplmento(obj.getEnderecoComplmento());
+                tmp.setEnderecoRua(obj.getEnderecoRua());
+                tmp.setIdPessoa(obj.getIdPessoa());
+                tmp.setNome(obj.getNome());
+                tmp.setPessoaCampus(obj.getPessoaCampus());
+                tmp.setPessoaCidade(obj.getPessoaCidade());
+                tmp.setPessoaEstado(obj.getPessoaEstado());
+                tmp.setPessoaNacionalidade(obj.getPessoaNacionalidade());
+                tmp.setRg(obj.getRg());
+                tmp.setRgDataExpedicao(obj.getRgDataExpedicao());
+                tmp.setRgOrgaoExpedidor(obj.getRgOrgaoExpedidor());
+                tmp.setTelefoneCelular(obj.getTelefoneCelular());
+                tmp.setTelefoneFixo(obj.getTelefoneFixo());
+                
+                daoPessoa.SalvarPessoa(tmp);
 
                 PreparedStatement comando = conexao.getConexao().prepareStatement(""
                         + "INSERT INTO Aluno(tituloEleitor,secaoEleitoral,zonaEleitoral,situacaoMilitar,certidaoMilitar,idPessoa, "
@@ -106,9 +130,9 @@ public class AlunoDAO {
                      + "SELECT pe.idPessoa,pe.nome,pe.cpf,pe.rg,pe.dataNascimento,pe.orgaoExpedidor,pe.dataExpedicao,pe.status, "
                      + "pe.idCampus,pe.idNacionalidade,pe.idEstado,pe.rua,pe.numero,pe.complemento,pe.bairro,pe.cep, "
                      + "pe.telefoneResidencial,pe.celular,pe.email,pe.idCidade, "
-                     + "al.idAluno,al.tituloEleitor,al.secaoEleitoral,al.zonaEleitoral,al.situacaoMilitar,al.certidaoMilitar, "
-                     + "al.status,al.matricula,al.idCurso,al.nomeResponsavel,al.rgResponsavel,al.orgaoExpeditorResponsavel,al.cpfResponsavel,al.nomeMae, "
-                     + "al.orgaoExpeditor,al.rgMae,al.cpfMae,al.localTrabalho,al.telefoneLocalTrabalho "
+                     + "al.idAluno,al.tituloEleidor,al.secaoEleitoral,al.zonaEleitoral,al.situacaoMilitar,al.certidaoMilitar, "
+                     + "al.status,al.matricula,al.idCurso,al.nomeResponsavel,al.rgResponsavel,al.orgaoExpedidorResponsavel,al.cpfResponsavel,al.nomeMae, "
+                     + "al.orgaoExpedidor,al.rgMae,al.cpfMae,al.localTrabalho,al.telefoneLocalTrabalho "
                      + "FROM Pessoa pe "
                      + "INNER JOIN Aluno al ON (pe.idPessoa = al.idPessoa)"
                      + "WHERE al.idAluno = ? ");
