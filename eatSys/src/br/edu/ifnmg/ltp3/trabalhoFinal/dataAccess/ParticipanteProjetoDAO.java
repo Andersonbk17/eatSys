@@ -95,9 +95,10 @@ public class ParticipanteProjetoDAO {
     }
     
     
-    public List<ParticipanteProjeto> ListarTodos() throws SQLException{
+    public List<ParticipanteProjeto> ListarTodos(int idProjeto) throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM ParticipanteProjeto WHERE status = 1");
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM ParticipanteProjeto WHERE status = 1 AND idProjetoPesquisa = ?");
+            comando.setInt(1, idProjeto);
             ResultSet consulta = comando.executeQuery();
             List<ParticipanteProjeto> lista = new LinkedList<>();
             while(consulta.next()){
