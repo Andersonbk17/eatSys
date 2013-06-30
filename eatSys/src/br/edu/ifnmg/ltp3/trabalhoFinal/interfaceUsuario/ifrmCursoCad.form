@@ -33,15 +33,15 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jScrollPane1" min="-2" pref="508" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblCursoArea" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCurso" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtCursoAreaCadNome" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="txtCursoCadNome" min="-2" pref="200" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblSigla" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtCursoAreaCadSigla" max="32767" attributes="0"/>
+                              <Component id="txtCursoCadSigla" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnCursoAreaCadSalvar" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCursoCadSalvar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -51,8 +51,8 @@
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
+                      <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -63,16 +63,16 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCursoArea" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCursoAreaCadNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCursoAreaCadSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCurso" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCursoCadNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCursoCadSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblSigla" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCursoAreaCadSigla" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCursoCadSigla" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="169" max="-2" attributes="0"/>
@@ -84,7 +84,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblCursoArea">
+    <Component class="javax.swing.JLabel" name="lblCurso">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nome"/>
       </Properties>
@@ -109,14 +109,14 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JTextField" name="txtCursoAreaCadNome">
+    <Component class="javax.swing.JTextField" name="txtCursoCadNome">
     </Component>
-    <Component class="javax.swing.JButton" name="btnCursoAreaCadSalvar">
+    <Component class="javax.swing.JButton" name="btnCursoCadSalvar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCursoAreaCadSalvarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCursoCadSalvarActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -126,7 +126,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jtbListarCursoArea">
+        <Component class="javax.swing.JTable" name="jtbListarCurso">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="cc" red="66" type="rgb"/>
@@ -142,17 +142,17 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtbListarCursoAreaMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtbListarCursoMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lblTitulo">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Area"/>
+        <Property name="text" type="java.lang.String" value="Curso"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -165,7 +165,7 @@
         <Property name="text" type="java.lang.String" value="Sigla"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCursoAreaCadSigla">
+    <Component class="javax.swing.JTextField" name="txtCursoCadSigla">
     </Component>
   </SubComponents>
 </Form>

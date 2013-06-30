@@ -6,6 +6,7 @@ package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CampusDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CursoAreaDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CursoDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.CursoArea;
 import java.sql.SQLException;
@@ -20,13 +21,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author thaisaContijo
  */
-public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
+public class ifrmCursoCad extends javax.swing.JInternalFrame {
     CursoArea curso;
-    CursoAreaDAO cursoDao = new CursoAreaDAO();
+    CursoDAO cursoDao = new CursoDAO();
     /**
      * Creates new form ifrmCampusCad
      */
-    public ifrmCursoAreaCad() throws SQLException {
+    public ifrmCursoCad() throws SQLException {
         initComponents();
         
         List<CursoArea> lista = cursoDao.ListarTodos();
@@ -48,8 +49,8 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
      
             model.addRow(valores);
         }
-        jtbListarCursoArea.setModel(model);
-        jtbListarCursoArea.repaint();
+        jtbListarCurso.setModel(model);
+        jtbListarCurso.repaint();
         
     }
 
@@ -62,21 +63,21 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblCursoArea = new javax.swing.JLabel();
+        lblCurso = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        txtCursoAreaCadNome = new javax.swing.JTextField();
-        btnCursoAreaCadSalvar = new javax.swing.JButton();
+        txtCursoCadNome = new javax.swing.JTextField();
+        btnCursoCadSalvar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtbListarCursoArea = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        jtbListarCurso = new javax.swing.JTable();
+        lblTitulo = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblSigla = new javax.swing.JLabel();
-        txtCursoAreaCadSigla = new javax.swing.JTextField();
+        txtCursoCadSigla = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
 
-        lblCursoArea.setText("Nome");
+        lblCurso.setText("Nome");
 
         jPanel1.setBackground(new java.awt.Color(102, 204, 0));
 
@@ -91,15 +92,15 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        btnCursoAreaCadSalvar.setText("Salvar");
-        btnCursoAreaCadSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnCursoCadSalvar.setText("Salvar");
+        btnCursoCadSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCursoAreaCadSalvarActionPerformed(evt);
+                btnCursoCadSalvarActionPerformed(evt);
             }
         });
 
-        jtbListarCursoArea.setBackground(new java.awt.Color(102, 204, 0));
-        jtbListarCursoArea.setModel(new javax.swing.table.DefaultTableModel(
+        jtbListarCurso.setBackground(new java.awt.Color(102, 204, 0));
+        jtbListarCurso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -107,15 +108,15 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
 
             }
         ));
-        jtbListarCursoArea.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtbListarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtbListarCursoAreaMouseClicked(evt);
+                jtbListarCursoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtbListarCursoArea);
+        jScrollPane1.setViewportView(jtbListarCurso);
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Area");
+        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        lblTitulo.setText("Curso");
 
         jLabel4.setText("Clique sobre um item para Editar ou Excluir");
 
@@ -133,38 +134,38 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCursoArea)
+                                .addComponent(lblCurso)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCursoAreaCadNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCursoCadNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblSigla)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCursoAreaCadSigla)
+                                .addComponent(txtCursoCadSigla)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCursoAreaCadSalvar)
+                                .addComponent(btnCursoCadSalvar)
                                 .addGap(8, 8, 8))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
                         .addComponent(jLabel4))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(jLabel2)))
+                        .addGap(239, 239, 239)
+                        .addComponent(lblTitulo)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lblTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCursoArea)
-                    .addComponent(txtCursoAreaCadNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCursoAreaCadSalvar)
+                    .addComponent(lblCurso)
+                    .addComponent(txtCursoCadNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCursoCadSalvar)
                     .addComponent(lblSigla)
-                    .addComponent(txtCursoAreaCadSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCursoCadSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -175,14 +176,14 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCursoAreaCadSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCursoAreaCadSalvarActionPerformed
+    private void btnCursoCadSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCursoCadSalvarActionPerformed
         // TODO add your handling code here:
         if(JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar esses dados?")==0){
             
              try {
                 curso = new CursoArea();
-                curso.setNome(txtCursoAreaCadNome.getText());
-                curso.setSigla(txtCursoAreaCadSigla.getText());
+                curso.setNome(txtCursoCadNome.getText());
+                curso.setSigla(txtCursoCadSigla.getText());
                 //----
                
                 try {
@@ -195,8 +196,8 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
                     Logger.getLogger(ifrmAlunoCad.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                txtCursoAreaCadNome.setText(null);
-                txtCursoAreaCadSigla.setText(null);
+                txtCursoCadNome.setText(null);
+                txtCursoCadSigla.setText(null);
                 
                 List<CursoArea> lista = cursoDao.ListarTodos();
 
@@ -208,16 +209,16 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
         }else{
             JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro ao salvar os dados, consulte o administrador do sistema.");
         }
-    }//GEN-LAST:event_btnCursoAreaCadSalvarActionPerformed
+    }//GEN-LAST:event_btnCursoCadSalvarActionPerformed
 
-    private void jtbListarCursoAreaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbListarCursoAreaMouseClicked
+    private void jtbListarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbListarCursoMouseClicked
         try {
             // TODO add your handling code here:
-            Object valor = jtbListarCursoArea.getValueAt( jtbListarCursoArea.getSelectedRow(), 0);
+            Object valor = jtbListarCurso.getValueAt( jtbListarCurso.getSelectedRow(), 0);
             CursoArea ca = null;
             
             ca = cursoDao.Abrir((int)valor);
-            ifrmCursoAreaEdit janela = new ifrmCursoAreaEdit(ca, cursoDao);
+            ifrmCursoEdit janela = new ifrmCursoEdit(ca, cursoDao);
             this.getParent().add(janela);
             janela.setVisible(true);
             this.setVisible(false);
@@ -226,18 +227,18 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
         }
         
         
-    }//GEN-LAST:event_jtbListarCursoAreaMouseClicked
+    }//GEN-LAST:event_jtbListarCursoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCursoAreaCadSalvar;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnCursoCadSalvar;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtbListarCursoArea;
-    private javax.swing.JLabel lblCursoArea;
+    private javax.swing.JTable jtbListarCurso;
+    private javax.swing.JLabel lblCurso;
     private javax.swing.JLabel lblSigla;
-    private javax.swing.JTextField txtCursoAreaCadNome;
-    private javax.swing.JTextField txtCursoAreaCadSigla;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txtCursoCadNome;
+    private javax.swing.JTextField txtCursoCadSigla;
     // End of variables declaration//GEN-END:variables
 }

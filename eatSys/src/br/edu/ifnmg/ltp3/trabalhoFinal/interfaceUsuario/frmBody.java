@@ -47,6 +47,7 @@ public class frmBody extends javax.swing.JFrame {
         jmiOrientador = new javax.swing.JMenuItem();
         jmiPPesquisa = new javax.swing.JMenuItem();
         jmiCampus = new javax.swing.JMenuItem();
+        jmiCursoArea = new javax.swing.JMenuItem();
         jmiCurso = new javax.swing.JMenuItem();
         jmiAreaConhecimento = new javax.swing.JMenuItem();
         jmBodyListar = new javax.swing.JMenu();
@@ -128,6 +129,14 @@ public class frmBody extends javax.swing.JFrame {
             }
         });
         jmBodyCadastrar.add(jmiCampus);
+
+        jmiCursoArea.setText("Curso/Area");
+        jmiCursoArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCursoAreaActionPerformed(evt);
+            }
+        });
+        jmBodyCadastrar.add(jmiCursoArea);
 
         jmiCurso.setText("Curso");
         jmiCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -220,7 +229,7 @@ public class frmBody extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiOrientadorActionPerformed
 
-    private void jmiCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCursoActionPerformed
+    private void jmiCursoAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCursoAreaActionPerformed
         try {
             // TODO add your handling code here:
             ifrmCursoAreaCad janela = new ifrmCursoAreaCad();
@@ -230,7 +239,7 @@ public class frmBody extends javax.swing.JFrame {
             Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
         }
      
-    }//GEN-LAST:event_jmiCursoActionPerformed
+    }//GEN-LAST:event_jmiCursoAreaActionPerformed
 
     private void jmiCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCampusActionPerformed
         try {
@@ -282,6 +291,17 @@ public class frmBody extends javax.swing.JFrame {
         janela.setVisible(true);
         add(janela);
     }//GEN-LAST:event_jMenuItemUsuariosActionPerformed
+
+    private void jmiCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCursoActionPerformed
+        try {
+            // TODO add your handling code here:
+            ifrmCursoCad janela = new ifrmCursoCad();
+            add(janela);
+            janela.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jmiCursoActionPerformed
     private Usuario UsuarioLogado; 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
@@ -300,6 +320,7 @@ public class frmBody extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiAreaConhecimento;
     private javax.swing.JMenuItem jmiCampus;
     private javax.swing.JMenuItem jmiCurso;
+    private javax.swing.JMenuItem jmiCursoArea;
     private javax.swing.JMenuItem jmiOrientador;
     private javax.swing.JMenuItem jmiOrientadorListar;
     private javax.swing.JMenuItem jmiPPesquisa;
