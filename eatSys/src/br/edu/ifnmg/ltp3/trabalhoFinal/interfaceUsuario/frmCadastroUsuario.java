@@ -29,9 +29,9 @@ public class frmCadastroUsuario extends javax.swing.JInternalFrame {
     }
     private boolean verificarSenha(String a , String b){
         if(a.equals(b)){
-            return true;
-        }else {
             return false;
+        }else {
+            return true;
         }
     }
     
@@ -244,8 +244,11 @@ public class frmCadastroUsuario extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
          
-        if(verificarSenha(txtConfirmarSenha.getText(), txtSenha.getText()) && !txtConfirmarSenha.getText().isEmpty() 
-                && !txtSenha.getText().isEmpty() && !txtUsuario.getText().isEmpty()){
+        if(txtConfirmarSenha.getText().isEmpty() ||txtSenha.getText().isEmpty() || txtUsuario.getText().isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "Os campos não podem ser vazios !");
+        }else if(verificarSenha(txtConfirmarSenha.getText(), txtSenha.getText())){
+            JOptionPane.showMessageDialog(rootPane, "As senhas devem ser iguais !");
+        }else {
             /*Salva o usário*/
             
             UsuarioDAO dao = new UsuarioDAO();
@@ -269,12 +272,6 @@ public class frmCadastroUsuario extends javax.swing.JInternalFrame {
             }
             
             preencheTabela(carregaDadosDoBanco());
-        }else if(verificarSenha(txtConfirmarSenha.getText(), txtSenha.getText())){
-            JOptionPane.showMessageDialog(rootPane, "As senhas devem ser iguais !");
-        }else if(!txtConfirmarSenha.getText().isEmpty() 
-                && !txtSenha.getText().isEmpty() && !txtUsuario.getText().isEmpty()){
-            JOptionPane.showMessageDialog(rootPane, "Os campos não podem ser vazios !");
-            
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

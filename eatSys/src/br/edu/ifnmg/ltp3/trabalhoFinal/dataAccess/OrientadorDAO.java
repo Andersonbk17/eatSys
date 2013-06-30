@@ -194,14 +194,13 @@ public class OrientadorDAO {
             Statement comando = conexao.getConexao().createStatement();
                     
                     
-                  
-            ResultSet consulta = comando.executeQuery("SELECT pe.idPessoa, pe.nome, pe.cpf, pe.rg, pe."
-                    + "dataNascimento, pe.orgaoExpedidor, pe.dataExpedicao, pe.idCampus, pe.idNacionalidade, pe.idEstado, "
-                    + "pe.rua, pe.numero, pe.complemento, pe.bairro, pe.cep, pe.telefoneResidencial, pe.celular,"
-                    + " pe.email, pe.idCidade, o.idOrientador, o.matriculaSiape, o.localPermanencia, o.formacaoUniversitaria, "
-                    + "o.tituloAcademico, o.telefoneRamal, pe.status, o.status FROM Pessoa pe"
-                    + "INNER JOIN Orientador o ON o.idPessoa = pe.idPessoa "
-                    + "WHERE pe.status =1 AND o.status =1");
+            /*
+ p.idPessoa,p.nome,p.cpf,p.rg,p.dataNascimento         
+             
+             */
+            
+            ResultSet consulta = comando.executeQuery("SELECT * FROM Pessoa p "
+                    + "INNER JOIN Orientador o ON p.idPessoa = o.idPessoa WHERE p.status = 1 AND o.status = 1");
             List<Orientador> lista = new LinkedList<>();
             while(consulta.next()){
                 Orientador novo = new Orientador();
@@ -232,7 +231,7 @@ public class OrientadorDAO {
                 novo.setPessoaNacionalidade(novoNacionaldiade.Abrir(consulta.getInt("idNacionalidade")));
                 novo.setRg(consulta.getString("rg"));
                 //novo.setRgDataExpedicao(novoEstado);
-                novo.setRgOrgaoExpedidor(consulta.getString("orgaoExpeditor"));
+                novo.setRgOrgaoExpedidor(consulta.getString("orgaoExpedidor"));
                 novo.setTelefoneCelular(consulta.getString("celular"));
                 novo.setTelefoneFixo(consulta.getString("telefoneResidencial"));
                 novo.setTelefoneRamal(consulta.getString("telefoneRamal"));

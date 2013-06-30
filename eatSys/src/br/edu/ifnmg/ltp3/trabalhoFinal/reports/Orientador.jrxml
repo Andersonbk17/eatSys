@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="eb8bf797-3976-488e-b4c7-815b22d30a20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="fc4b10f1-ce52-45ba-8c20-4f0c925dccb7"/>
+	<subDataset name="Table Dataset 2" uuid="b810943a-8fba-4d6c-bc9a-501796c1e990"/>
+	<subDataset name="Table Dataset 3" uuid="1ee9fa5b-13cf-4c5a-a8f6-a484d9632963"/>
+	<parameter name="nomeCompleto" class="java.lang.String"/>
+	<parameter name="campusOndeTrabalha" class="java.lang.String"/>
+	<variable name="nomeCompleto" class="java.lang.String"/>
+	<variable name="campusOndeTrabalha" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<image>
+				<reportElement uuid="193165e8-e283-4d19-9c12-6b7686e437c1" x="0" y="6" width="595" height="63"/>
+				<imageExpression><![CDATA["/home/lewandowsky/Imagens/cabeçalho.JPG"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement uuid="4d7689cc-c16f-4eb0-a262-ab95c1a6067b" x="12" y="15" width="145" height="23"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[DADOS DO ORIENTADOR]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="71699aa5-e185-4c54-adfc-c6ed505f2bb7" x="12" y="41" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[NOME COMPLETO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fcd419a0-ea35-4ab5-b7d2-c85cabeed739" x="365" y="27" width="153" height="34"/>
+				<textElement/>
+				<text><![CDATA[CAMPUS ONDE TRABALHA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="3c06d0f0-e08f-4899-8b50-874623ced45e" x="381" y="41" width="118" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{campusOndeTrabalha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bdfaa850-0457-4328-8746-11aa23026106" x="128" y="41" width="166" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{nomeCompleto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="159" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="159" splitType="Stretch"/>
+	</summary>
+</jasperReport>
