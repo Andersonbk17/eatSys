@@ -193,6 +193,8 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
         txtAlunoddd = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         txtAlunoTelefone = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtAlunoCelular = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         txtAlunoRua = new javax.swing.JTextField();
@@ -206,8 +208,6 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
         txtAlunoComplemento = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jcbCidadeAluno = new javax.swing.JComboBox();
-        lblEstado = new javax.swing.JLabel();
-        jcbEstadoAluno = new javax.swing.JComboBox();
         jPanel7 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         txtResponsavelNomePai = new javax.swing.JTextField();
@@ -563,6 +563,8 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
 
         jLabel20.setText("Telefone");
 
+        jLabel3.setText("Celular");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -571,11 +573,13 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
-                    .addComponent(jLabel19))
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtAlunoddd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAlunoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAlunoTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(txtAlunoCelular))
                 .addContainerGap(356, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -589,7 +593,11 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAlunoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtAlunoCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Telefone", jPanel4);
@@ -614,10 +622,6 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
 
         jcbCidadeAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        lblEstado.setText("Estado");
-
-        jcbEstadoAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -629,8 +633,8 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
                     .addComponent(jLabel16)
                     .addComponent(jLabel14)
                     .addComponent(jLabel13)
-                    .addComponent(lblEstado))
-                .addGap(4, 4, 4)
+                    .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -642,13 +646,8 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtAlunoComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jcbEstadoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbCidadeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(jcbCidadeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -672,11 +671,8 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
                     .addComponent(jLabel17)
                     .addComponent(txtAlunoComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblEstado)
-                        .addComponent(jcbEstadoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel18))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
                     .addComponent(jcbCidadeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
@@ -847,6 +843,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
             Campus ca = (Campus) jcbAlunoCampus.getSelectedItem();
             Nacionalidade na = (Nacionalidade) jcbAlunoNascionalidade.getSelectedItem();
             Estado es = (Estado) jcbAlunoEstado.getSelectedItem();
+            Cidade ci = (Cidade) jcbCidadeAluno.getSelectedItem();
             
             aluno.setMatricula(Integer.parseInt(txtAlunoMatricula.getText()));
             aluno.setNome(txtAlunoNome.getText());
@@ -878,6 +875,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
             aluno.setAlunoCurso(cu);
             aluno.setPessoaNacionalidade(na);
             aluno.setPessoaEstado(es);
+            aluno.setPessoaCidade(ci);
             
             //Dados dos responsaveis legais pelo aluno
             aluno.setNomePai(txtResponsavelNomePai.getText());
@@ -896,6 +894,12 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
             aluno.setEnderecoCep(Integer.parseInt(txtAlunoCep.getText()));
             //----
             aluno.setEmailEndereco(txtEmail.getText());
+            aluno.setLocalTrabalho(txtAlunoLocalTrabalho.getText());
+            //----
+            aluno.setTelefoneLocalTrabalho(txtAlunoTelefoneTrabalho.getText());
+            //----
+            aluno.setTelefoneFixo(txtAlunoTelefone.getText());
+            aluno.setTelefoneCelular(txtAlunoCelular.getText());
            
             try {
                 if(alunoDao.Salvar(aluno)){
@@ -1004,6 +1008,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -1032,12 +1037,11 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox jcbAlunoEstado;
     private javax.swing.JComboBox jcbAlunoNascionalidade;
     private javax.swing.JComboBox jcbCidadeAluno;
-    private javax.swing.JComboBox jcbEstadoAluno;
     private javax.swing.JLabel lblAlunoFoneTrab;
     private javax.swing.JLabel lblAlunoLocalTrab;
     private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblEstado;
     private javax.swing.JTextField txtAlunoBairro;
+    private javax.swing.JTextField txtAlunoCelular;
     private javax.swing.JTextField txtAlunoCep;
     private javax.swing.JTextField txtAlunoCertidaoMilitar;
     private javax.swing.JTextField txtAlunoComplemento;
