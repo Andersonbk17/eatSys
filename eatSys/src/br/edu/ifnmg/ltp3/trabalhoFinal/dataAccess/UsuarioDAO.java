@@ -8,6 +8,7 @@ import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,16 +30,23 @@ public class UsuarioDAO {
     }
     
     
-    public boolean Salvar(Usuario obj ) throws SQLException{
-        try{
-            if(obj.getIdUsuario()== 0){
+    public int Salvar(Usuario obj ) throws SQLException{
+       /*
+        * RETORNA 1 se ok
+        * Retorna 2 se Usuario já cadastrado
+        * REtorna 3 se erro
+        */
+        try {
+
+            if (obj.getIdUsuario() == 0) {
                 PreparedStatement comando = conexao.getConexao().prepareCall("INSERT INTO Usuario(usuario,senha,nivel,status) VALUES(?,?,?,?)");
                 comando.setString(1, obj.getUsuario());
                 comando.setString(2, obj.getSenha());
                 comando.setInt(3, obj.getNivel());
-                comando.setInt(4,1);
+                comando.setInt(4, 1);
                 comando.execute();
-            }else{
+
+            } else {
                 PreparedStatement comando1 = conexao.getConexao().prepareCall("UPDATE Usuario SET usuario = ?,senha = ?,"
                         + "nivel = ? WHERE idUsuario = ?");
                 comando1.setString(1, obj.getUsuario());
@@ -46,11 +54,18 @@ public class UsuarioDAO {
                 comando1.setInt(3, obj.getNivel());
                 comando1.setInt(4, obj.getIdUsuario());
                 comando1.executeUpdate();
-           }
-            return true;
+
+            }
+
+
+        
+
+
+            
+            return 1;
         }catch(SQLException ex){
             ex.printStackTrace();
-            return false;
+            return 3;
         }finally{
             conexao.getConexao().close();
         }
