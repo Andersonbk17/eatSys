@@ -107,10 +107,15 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
 
             }
         ));
+        jtbListarCursoArea.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbListarCursoAreaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtbListarCursoArea);
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Cadastrar Curso/Area");
+        jLabel2.setText("Curso/Area");
 
         jLabel4.setText("Clique sobre um item para Editar ou Excluir");
 
@@ -128,9 +133,6 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(152, 152, 152)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblCursoArea)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtCursoAreaCadNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,7 +145,10 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
                                 .addGap(8, 8, 8))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jLabel2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -204,6 +209,24 @@ public class ifrmCursoAreaCad extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro ao salvar os dados, consulte o administrador do sistema.");
         }
     }//GEN-LAST:event_btnCursoAreaCadSalvarActionPerformed
+
+    private void jtbListarCursoAreaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbListarCursoAreaMouseClicked
+        try {
+            // TODO add your handling code here:
+            Object valor = jtbListarCursoArea.getValueAt( jtbListarCursoArea.getSelectedRow(), 0);
+            CursoArea ca = null;
+            
+            ca = cursoDao.Abrir((int)valor);
+            ifrmCursoAreaEdit janela = new ifrmCursoAreaEdit(ca, cursoDao);
+            this.getParent().add(janela);
+            janela.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(ifrmCursoAreaCad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_jtbListarCursoAreaMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCursoAreaCadSalvar;

@@ -36,7 +36,7 @@ public class testeA {
         parameterMap.put("campusOndeTrabalha",a.getIdNacionalidade());
         String caminho = "../reports/Orientador.jasper";
         
-        JasperReport jasperReport = (JasperReport) JRLoader.loadObject(caminho);
+       // JasperReport jasperReport = (JasperReport) JRLoader.loadObject(caminho);
         
         
         

@@ -130,7 +130,7 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTituloProdutoListarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTituloOrientadorListar)
-                .addGap(337, 337, 337))
+                .addGap(417, 417, 417))
         );
         jpTituloProdutoListarLayout.setVerticalGroup(
             jpTituloProdutoListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,16 +150,16 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
         jpRemoverItemtbEnderecoLayout.setHorizontalGroup(
             jpRemoverItemtbEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpRemoverItemtbEnderecoLayout.createSequentialGroup()
-                .addGap(272, 272, 272)
+                .addGap(305, 305, 305)
                 .addComponent(jLabel3)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(357, Short.MAX_VALUE))
         );
         jpRemoverItemtbEnderecoLayout.setVerticalGroup(
             jpRemoverItemtbEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpRemoverItemtbEnderecoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jpRemoverItemtbEnderecoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,7 +196,7 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
                 .addComponent(jpRemoverItemtbEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
