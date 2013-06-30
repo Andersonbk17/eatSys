@@ -5,11 +5,9 @@
 package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AlunoDAO;
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AreaConhecimentoDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CampusDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Aluno;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.AreaConhecimento;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
@@ -27,7 +25,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
     List<Aluno> aluno;
     List<Campus> campus;
     List<Campus> campusParticioante;
-    List<AreaConhecimento> area;
+    //List<AreaConhecimento> area;
     List<Orientador> orientador;
     /**
      * Creates new form ifrmCampusCad
@@ -39,7 +37,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
         ocultarConv(0);
         ocultarBolsa(0);
       
-        AreaConhecimentoDAO areaDao = new AreaConhecimentoDAO(); 
+       /* AreaConhecimentoDAO areaDao = new AreaConhecimentoDAO(); 
         OrientadorDAO orientadorDao = new OrientadorDAO();
         AlunoDAO alunoDao = new AlunoDAO();
         CampusDAO campusDao = new CampusDAO();
@@ -81,7 +79,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
             jcbProjetoPesquisaCampusPartici.addItem(cap);
         }
        */
-        
+      
     }
     
     private void ocultarFinan(int confirmacao){
@@ -288,7 +286,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                                 .addComponent(txtProjetoPesquisaNCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(78, 78, 78))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -352,7 +350,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                     .addComponent(jcbProjetoPesquisaCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25)
                     .addComponent(jcbProjetoPesquisaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         jbtProjetoPesquisa.addTab("Geral", jPanel2);
@@ -382,7 +380,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel34)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         jbtProjetoPesquisa.addTab("Resumo", jPanel3);
@@ -417,9 +415,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jrbConvenioSim)
-                                .addGap(3, 3, 3))
+                            .addComponent(jrbConvenioSim)
                             .addComponent(jrbConvenioNao)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -429,7 +425,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtProjetoPesquisaConvenioQual, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel9))))
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,7 +440,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtProjetoPesquisaConvenioQual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblConvenioQual))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         jbtProjetoPesquisa.addTab("Convenio", jPanel4);
@@ -520,7 +516,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                                 .addComponent(lblValorFinan)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtProjetoPesquisaValorFinan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -535,7 +531,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jrFinanNao)
                     .addComponent(jrFinanCon))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtProjetoPesquisaAgenciaFinan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAgenciaFinan)
@@ -545,7 +541,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDataFinan)
                     .addComponent(txtProjetoPesquisaDataFinan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jbtProjetoPesquisa.addTab("Financiamento", jPanel5);
@@ -588,7 +584,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jrbBolsaNao)
                             .addComponent(jrbBolsaSim))))
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -603,7 +599,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumbolsas)
                     .addComponent(txtProjetoPesquisaNBolsas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         jbtProjetoPesquisa.addTab("Bolsa", jPanel6);
@@ -660,7 +656,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -701,7 +697,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(193, 193, 193)
+                        .addGap(222, 222, 222)
                         .addComponent(jLabel2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -738,34 +734,34 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
 
     private void jrFinanConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanConActionPerformed
         // TODO add your handling code here:
-        ps.setFinanciamento(4);
+       // ps.setFinanciamento(4);
         ocultarFinan(1);
         
     }//GEN-LAST:event_jrFinanConActionPerformed
 
     private void jrFinanNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanNaoActionPerformed
         // TODO add your handling code here:
-         ps.setFinanciamento(2);
+        // ps.setFinanciamento(2);
          ocultarFinan(0);
          
     }//GEN-LAST:event_jrFinanNaoActionPerformed
 
     private void jrFinanSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanSimActionPerformed
         // TODO add your handling code here:
-         ps.setFinanciamento(1);
+        // ps.setFinanciamento(1);
          ocultarFinan(1);
         
     }//GEN-LAST:event_jrFinanSimActionPerformed
 
     private void jrFinanSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanSubActionPerformed
         // TODO add your handling code here:
-         ps.setFinanciamento(3);
+     //   ps.setFinanciamento(3);
          ocultarFinan(1);
     }//GEN-LAST:event_jrFinanSubActionPerformed
 
     private void jrbConvenioSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbConvenioSimActionPerformed
         // TODO add your handling code here:
-        ps.setConvenio(1);
+     //   ps.setConvenio(1);
         ocultarConv(1);
         
     }//GEN-LAST:event_jrbConvenioSimActionPerformed
@@ -779,13 +775,13 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
 
     private void jrbBolsaSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBolsaSimActionPerformed
         // TODO add your handling code here:
-        ps.setBolsa(1);
+    //    ps.setBolsa(1);
         ocultarBolsa(1);
     }//GEN-LAST:event_jrbBolsaSimActionPerformed
 
     private void jrbBolsaNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBolsaNaoActionPerformed
         // TODO add your handling code here:
-        ps.setBolsa(2);
+     //   ps.setBolsa(2);
         ocultarBolsa(0);
     }//GEN-LAST:event_jrbBolsaNaoActionPerformed
 

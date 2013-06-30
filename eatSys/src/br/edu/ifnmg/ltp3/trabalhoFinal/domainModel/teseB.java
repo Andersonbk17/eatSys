@@ -15,6 +15,7 @@ import java.util.logging.Logger;
  *
  * @author emerson
  */
+/*
 public class teseB {
     public static void main(String args[]) throws SQLException{
         Aluno al = new Aluno();
@@ -62,5 +63,6 @@ public class teseB {
     
     
     }
-    
+   
 }
+*/

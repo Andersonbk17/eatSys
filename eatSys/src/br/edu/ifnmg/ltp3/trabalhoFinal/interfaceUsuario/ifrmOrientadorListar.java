@@ -4,15 +4,9 @@
  */
 package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.EmailDAO;
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.EnderecoDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.TelefoneDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Cidade;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Email;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Endereco;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Telefone;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -27,9 +21,6 @@ import javax.swing.table.DefaultTableModel;
 public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
     
     OrientadorDAO odao;
-    TelefoneDAO tdao;
-    EmailDAO edao;
-    EnderecoDAO endao;
     
     
    
@@ -40,24 +31,12 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
         initComponents();
         
         odao = new OrientadorDAO();
-        tdao = new TelefoneDAO();
-        edao = new EmailDAO();
-        endao = new EnderecoDAO();
         
         List<Orientador> orientador = odao.ListarTodos();
-        List<Telefone> telefones = tdao.ListarTodos(1);
-        List<Email> emails = edao.ListarTodos(1);
-        List<Endereco> enderecos = endao.ListarTodos(1);
-        
+
         preencheTabela(orientador);
         
-        /*
-        
-        preencheTabelaTele(telefones);
-        preencheTabelaEmail(emails);
-        preencheTabelaEndereco(enderecos);
-        */
-        
+
     }
     
     //Metodo para listar Produtos na Tabela tblListagemProd
@@ -70,7 +49,6 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
         model.addColumn("RG");
         model.addColumn("CFP");
         model.addColumn("NASCIMENTO");
-        model.addColumn("NACIONALIDADE");
         model.addColumn("TITULAÇÃO");
         model.addColumn("FORMAÇÃO");
 
@@ -82,72 +60,15 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
             valores.add(3,o.getRg());
             valores.add(4,o.getCpf());
             valores.add(5,o.getDataNascimento());
-            valores.add(6,o.getNacionalidade().getNome());
-            valores.add(7,o.getTituloAcademico());
-            valores.add(8,o.getFormacaoAcademica());
+            valores.add(6,o.getTituloAcademico());
+            valores.add(7,o.getFormacaoUniversitaria());
             model.addRow(valores);
         }
         tblListagemOrientador.setModel(model);
         tblListagemOrientador.repaint();
         
     }
-    /*
-     private void preencheTabelaTele(List<Telefone> lista) {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Id");
-        model.addColumn("Telefone");
     
-        for (Telefone telefones : lista) {
-            Vector valores = new Vector();
-            valores.add(0,telefones.getId());
-            valores.add(1,telefones.getNum());
-           
-            model.addRow(valores);
-        }
-        jtbTelefone.setModel(model);
-        jtbTelefone.repaint();
-        
-    }
-     
-    private void preencheTabelaEmail(List<Email> lista) {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Id");
-        model.addColumn("Email");
-     
-        for (Email emails : lista) {
-            Vector valores = new Vector();
-            valores.add(0,emails.getId());
-            valores.add(1,emails.getEmail_nome());
-           
-            model.addRow(valores);
-        }
-        jtbEmails.setModel(model);
-        jtbEmails.repaint();
-        
-    }
-    
-    private void preencheTabelaEndereco(List<Endereco> lista) {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Id");
-        model.addColumn("Rua");
-        model.addColumn("Num");
-        model.addColumn("Bairro");
-        
-     
-        for (Endereco ends : lista) {
-            Vector valores = new Vector();
-            valores.add(0,ends.getId());
-            valores.add(1,ends.getRua());
-            valores.add(2,ends.getNum());
-            valores.add(3,ends.getBairro());
-      
-            model.addRow(valores);
-        }
-        jtbEndereco.setModel(model);
-        jtbEndereco.repaint();
-        
-    }
-   */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

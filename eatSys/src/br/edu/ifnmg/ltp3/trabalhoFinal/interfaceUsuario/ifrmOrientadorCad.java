@@ -14,13 +14,9 @@ import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Cidade;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.CursoArea;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Email;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Endereco;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Estado;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Nacionalidade;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Responsavel;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Telefone;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -59,55 +55,6 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
         return dataFormatada; 
     }
     
-    private void addTelefone(){
-        DefaultTableModel model= new DefaultTableModel();
-        model.addColumn("DDD");
-        model.addColumn("Telefone");
-        
-        for(Telefone te : orientador.getTelefone()){
-            Vector v = new Vector();
-            v.add(0, te.getDdd());
-            v.add(1, te.getNumero());
-            model.addRow(v);
-        }
-        jtbListaTeleOrientador.setModel(model);
-    }
-    
-     private void addEmail(){
-        DefaultTableModel model= new DefaultTableModel();
-        model.addColumn("Endereço de E-mail");
- 
-        for(Email em : orientador.getEmail()){
-            Vector v = new Vector();
-            v.add(em.getEnderecoEmail());
-            model.addRow(v);
-        }
-        jtbListaEmailOrientador.setModel(model);
-    }
-     
-     private void addEndereco(){
-        DefaultTableModel model= new DefaultTableModel();
-        model.addColumn("Rua");
-        model.addColumn("Num");
-        model.addColumn("Bairro");
-        model.addColumn("Cep");
-        model.addColumn("Complemento");
-        model.addColumn("Cidade");
-        model.addColumn("Estado");
- 
-        for(Endereco en : orientador.getEndereco()){
-            Vector v = new Vector();
-            v.add(0,en.getRua());
-            v.add(1,en.getNumero());
-            v.add(2,en.getBairro());
-            v.add(3,en.getCep());
-            v.add(4,en.getComplemento());
-            v.add(5,en.getCidade().getNome());
-            v.add(6,en.getCidade().getEstado().getNome());
-            model.addRow(v);
-        }
-        jtbListaEndOrientador.setModel(model);
-    }
     public ifrmOrientadorCad() throws SQLException {
         initComponents();
         CidadeDAO cidadeDao = new CidadeDAO();
@@ -117,7 +64,7 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
         NacionalidadeDAO nacionalidadeDao = new NacionalidadeDAO();
       
         //Cidade
-        cidades = cidadeDao.ListarTodas();
+        cidades = cidadeDao.ListarTodos();
         jcbCidadeOrientador.removeAllItems();
         for(Cidade ci: cidades){
             jcbCidadeOrientador.addItem(ci);
@@ -163,7 +110,6 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -208,16 +154,11 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
         jLabel34 = new javax.swing.JLabel();
         txtOrientadorSiape = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jtbListaTeleOrientador = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
         txtOrientadorddd = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         txtOrientadorTelefone = new javax.swing.JTextField();
-        btnaddTelefoneOrientador = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jtbListaEndOrientador = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         txtOrientadorRua = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -230,13 +171,9 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
         txtOrientadorComplemento = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jcbCidadeOrientador = new javax.swing.JComboBox();
-        btnaddEnderecoOrientador = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtbListaEmailOrientador = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
         txtOrientadorEmail = new javax.swing.JTextField();
-        btnAddEmailAluno = new javax.swing.JButton();
         btnSalvarOrientador = new javax.swing.JButton();
         btnCancelarOrientador = new javax.swing.JButton();
 
@@ -257,9 +194,7 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
         );
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Cadastrar Area Conhecimento");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ifl.png"))); // NOI18N
+        jLabel2.setText("Orientador");
 
         jLabel1.setText("Nome");
 
@@ -456,26 +391,9 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
 
         jTabbedPane1.addTab("Orientador", jPanel3);
 
-        jtbListaTeleOrientador.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane3.setViewportView(jtbListaTeleOrientador);
-
         jLabel19.setText("DDD");
 
         jLabel20.setText("Telefone");
-
-        btnaddTelefoneOrientador.setText("Adicionar");
-        btnaddTelefoneOrientador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnaddTelefoneOrientadorActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -483,22 +401,14 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtOrientadorddd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtOrientadorTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnaddTelefoneOrientador)
-                .addGap(50, 50, 50))
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtOrientadorddd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtOrientadorTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,24 +419,10 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
                     .addComponent(txtOrientadorddd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
                     .addComponent(txtOrientadorTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(btnaddTelefoneOrientador)
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Telefone", jPanel4);
-
-        jtbListaEndOrientador.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane2.setViewportView(jtbListaEndOrientador);
 
         jLabel13.setText("Rua");
 
@@ -548,13 +444,6 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
 
         jcbCidadeOrientador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnaddEnderecoOrientador.setText("Adicionar");
-        btnaddEnderecoOrientador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnaddEnderecoOrientadorActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -563,43 +452,34 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel13)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtOrientadorRua, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel15)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtOrientadorCep)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel14)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtOrientadorBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addComponent(jLabel16)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtOrientadorNumero))))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtOrientadorComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtOrientadorRua, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtOrientadorCep)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtOrientadorBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtOrientadorNumero))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtOrientadorComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbCidadeOrientador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnaddEnderecoOrientador)
-                        .addGap(50, 50, 50))))
+                        .addComponent(jcbCidadeOrientador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -624,33 +504,13 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jcbCidadeOrientador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnaddEnderecoOrientador))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(jcbCidadeOrientador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Endereço", jPanel5);
 
-        jtbListaEmailOrientador.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jtbListaEmailOrientador);
-
         jLabel12.setText("Email");
-
-        btnAddEmailAluno.setText("Adicionar");
-        btnAddEmailAluno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddEmailAlunoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -658,18 +518,10 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtOrientadorEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAddEmailAluno)
-                .addGap(50, 50, 50))
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtOrientadorEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(339, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -678,11 +530,7 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtOrientadorEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(btnAddEmailAluno)
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Email", jPanel6);
@@ -708,27 +556,23 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(130, 130, 130)
-                        .addComponent(jLabel2)
-                        .addContainerGap(409, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCancelarOrientador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSalvarOrientador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(28, 28, 28))))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCancelarOrientador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSalvarOrientador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(329, 329, 329)
+                .addComponent(jLabel2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                .addComponent(jLabel2)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -740,7 +584,7 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
                         .addComponent(btnSalvarOrientador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCancelarOrientador)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -761,68 +605,6 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
     private void jcbOrientadorEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbOrientadorEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbOrientadorEstadoActionPerformed
-
-    private void btnAddEmailAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmailAlunoActionPerformed
-        // TODO add your handling code here:
-         if(JOptionPane.showConfirmDialog(rootPane,"Deseja realmente adicionar esse email?")==0){
-            Email email = new Email();
-            email.setEnderecoEmail(txtOrientadorEmail.getText());
-
-            orientador.addEmail(email);
-            JOptionPane.showMessageDialog(rootPane, "Email adicionado");
-            addEmail();
-            
-            txtOrientadorEmail.setText(null);
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Ação cancelada");
-        }
-    }//GEN-LAST:event_btnAddEmailAlunoActionPerformed
-
-    private void btnaddTelefoneOrientadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddTelefoneOrientadorActionPerformed
-        // TODO add your handling code here:
-         if(JOptionPane.showConfirmDialog(rootPane,"Deseja realmente adicionar esse telefone?")==0){
-            Telefone telefone = new Telefone();
-            telefone.setDdd(Integer.parseInt(txtOrientadorddd.getText()));
-            telefone.setNumero(Integer.parseInt(txtOrientadorTelefone.getText()));
-
-            orientador.addTelefone(telefone);
-            JOptionPane.showMessageDialog(rootPane, "Telefone adicionado");
-            addTelefone();
-            
-            txtOrientadorddd.setText(null);
-            txtOrientadorTelefone.setText(null);
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Ação cancelada");
-        }
-    }//GEN-LAST:event_btnaddTelefoneOrientadorActionPerformed
-
-    private void btnaddEnderecoOrientadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddEnderecoOrientadorActionPerformed
-        // TODO add your handling code here:
-         if(JOptionPane.showConfirmDialog(rootPane,"Deseja realmente adicionar esse endereco?")==0){
-            Endereco endereco = new Endereco();
-            
-            Cidade c = (Cidade)jcbCidadeOrientador.getSelectedItem();
-   
-            endereco.setRua(txtOrientadorRua.getText());
-            endereco.setNumero(Integer.parseInt(txtOrientadorNumero.getText()));
-            endereco.setBairro(txtOrientadorBairro.getText());
-            endereco.setCep(Integer.parseInt(txtOrientadorCep.getText()));
-            endereco.setComplemento(txtOrientadorComplemento.getText());
-            endereco.setCidade(c);
-            
-            orientador.addEndereco(endereco);
-            JOptionPane.showMessageDialog(rootPane, "Endereco adicionado");
-            addEndereco();
-            
-            txtOrientadorRua.setText(null);
-            txtOrientadorNumero.setText(null);
-            txtOrientadorBairro.setText(null);
-            txtOrientadorCep.setText(null);
-            txtOrientadorComplemento.setText(null);
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Ação cancelada");
-        }
-    }//GEN-LAST:event_btnaddEnderecoOrientadorActionPerformed
 
     private void btnCancelarOrientadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarOrientadorActionPerformed
         // TODO add your handling code here:
@@ -846,7 +628,7 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
             orientador.setNome(txtOrientadorNome.getText());
             orientador.setCpf(Integer.parseInt(txtOrientadorCpf.getText()));
             orientador.setRg(txtOrientadorRg.getText());
-            orientador.setOrgaoExpeditor(txtOrientadorOrgaoEx.getText());
+            orientador.setRgOrgaoExpedidor(txtOrientadorOrgaoEx.getText());
             
             //Data Nascimento
             try {
@@ -858,19 +640,19 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
             //Data Expedição Rg
             try {
                 //.setData(DataF(txtNascimentoClienteEditar.getText()));
-                orientador.setDataExpedicao(formatarData(txtOrientadorDataExp.getText()));
+                orientador.setRgDataExpedicao(formatarData(txtOrientadorDataExp.getText()));
             } catch (ParseException ex) {
                 Logger.getLogger(ifrmAlunoCad.class.getName()).log(Level.SEVERE, null, ex);
             }
             orientador.setMatriculaSiape(Integer.parseInt(txtOrientadorSiape.getText()));
             orientador.setLocalPermanencia(txtOrientadorLocalPermanencia.getText());
-            orientador.setFormacaoAcademica(txtOrientadorFormacao.getText());
+            orientador.setFormacaoUniversitaria(txtOrientadorFormacao.getText());
             orientador.setTituloAcademico(txtOrientadorTituloAcademico.getText());
              
-            orientador.setCampus(ca);
+            orientador.setPessoaCampus(ca);
             orientador.setCursoArea(cu);
-            orientador.setNacionalidade(na);
-            orientador.setEstado(es);
+            orientador.setPessoaNacionalidade(na);
+            orientador.setPessoaEstado(es);
             
             try {
                 if(orientadorDao.Salvar(orientador)){
@@ -898,11 +680,8 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarOrientadorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddEmailAluno;
     private javax.swing.JButton btnCancelarOrientador;
     private javax.swing.JButton btnSalvarOrientador;
-    private javax.swing.JButton btnaddEnderecoOrientador;
-    private javax.swing.JButton btnaddTelefoneOrientador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -917,7 +696,6 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -933,18 +711,12 @@ public class ifrmOrientadorCad extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JComboBox jcbCidadeOrientador;
     private javax.swing.JComboBox jcbOrientadorCampus;
     private javax.swing.JComboBox jcbOrientadorCurso;
     private javax.swing.JComboBox jcbOrientadorEstado;
     private javax.swing.JComboBox jcbOrientadorNascionalidade;
-    private javax.swing.JTable jtbListaEmailOrientador;
-    private javax.swing.JTable jtbListaEndOrientador;
-    private javax.swing.JTable jtbListaTeleOrientador;
     private javax.swing.JLabel lblDataNasc;
     private javax.swing.JTextField txtOrientadorBairro;
     private javax.swing.JTextField txtOrientadorCep;
