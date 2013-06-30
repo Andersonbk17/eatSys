@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,8 +22,12 @@ import java.util.List;
 public class AlunoDAO {
     ConexaoBanco conexao;
     
-    public AlunoDAO() throws SQLException{
-        conexao = new ConexaoBanco();
+    public AlunoDAO() {
+        try {
+            conexao = new ConexaoBanco();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     

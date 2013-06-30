@@ -5,6 +5,7 @@
 package br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess;
 
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Cidade;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Estado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,7 +51,7 @@ public class CidadeDAO {
     
     public List<Cidade> ListarTodos() throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Cidade");
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM vw_Cidade");
             ResultSet consulta = comando.executeQuery();
             
             List<Cidade> lista = new LinkedList<>();
@@ -58,9 +59,14 @@ public class CidadeDAO {
             
             while(consulta.next()){
                 Cidade cidadeNovo = new Cidade();
+                Estado novo = new Estado();
                 cidadeNovo.setIdCidade(consulta.getInt("idCidade"));
-                cidadeNovo.setNomeCidade(consulta.getString("nome"));
-                cidadeNovo.setCidadeEstado(estado.Abrir(consulta.getInt("idEstado")));
+                cidadeNovo.setNomeCidade(consulta.getString("cidade"));
+                //cidadeNovo.setCidadeEstado(estado.Abrir(consulta.getInt("idEstado")));
+                novo.setIdEstado(consulta.getInt("idEstado"));
+                novo.setNomeEstado(consulta.getString("Estado"));
+                novo.setUf(consulta.getString("uf"));
+                cidadeNovo.setCidadeEstado(novo);
                 
                 lista.add(cidadeNovo);
             }

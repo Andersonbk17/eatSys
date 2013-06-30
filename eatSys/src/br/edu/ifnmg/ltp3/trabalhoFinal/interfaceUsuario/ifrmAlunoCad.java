@@ -20,13 +20,10 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -39,8 +36,13 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
      */
     Aluno aluno = new Aluno();
    
-    AlunoDAO alunoDao = new AlunoDAO();
-    
+        
+      
+            AlunoDAO alunoDao = new AlunoDAO();
+      
+       
+ 
+
     public Date formatarData(String data) throws ParseException{
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");  
         
@@ -49,15 +51,16 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
         return dataFormatada; 
     }
     
-    public ifrmAlunoCad() throws SQLException {
+    public ifrmAlunoCad()  {
         initComponents();
+     
         List<Cidade> cidades;
         List<Estado> estados;
         List<CursoArea> cursos;
         List<Campus> campus;
         List<Nacionalidade> nacionalidades;
        
-        
+     try{   
         CidadeDAO cidadeDao = new CidadeDAO();
         EstadoDAO estadoDao = new EstadoDAO();
         CursoAreaDAO cursoAreaDao = new CursoAreaDAO(); 
@@ -100,7 +103,9 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
         for(CursoArea cu: cursos){
             jcbAlunoCurso.addItem(cu);
         }
-       
+     }catch(SQLException ex){
+         ex.printStackTrace();
+     }
         //Bloquear os campos local de tabalho
         txtAlunoLocalTrabalho.setVisible(false);
         txtAlunoTelefoneTrabalho.setVisible(false);
@@ -109,7 +114,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
          //limpar os  campos
         txtAlunoLocalTrabalho.setText(null);
         txtAlunoTelefoneTrabalho.setText(null);
-       
+     
 
     }
 
@@ -902,31 +907,31 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
                 Logger.getLogger(ifrmAlunoCad.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            txtAlunoNome.setText(null);
+            txtAlunoNome.setText("");
             txtAlunoRg.setText(null);
-            txtAlunoOrgaoEx.setText(null);
-            txtAlunoDataExp.setText(null);
-            txtAlunoDataNasc.setText(null);
-            txtAlunoCpf.setText(null);
-            txtAlunoMatricula.setText(null);
-            txtAlunoCertidaoMilitar.setText(null);
-            txtAlunoSituaçãoMilitar.setText(null);
-            txtAlunoTitulo.setText(null);
-            txtAlunoSessao.setText(null);
-            txtAlunoZona.setText(null);
-            txtResponsavelNomePai.setText(null);
-            txtResponsavelNomeMae.setText(null);
-            txtResponsavelCpfMae.setText(null);
-            txtResponsavelCpfPai.setText(null);
-            txtResponsavelRgMae.setText(null);
-            txtResponsavelOrgaoExpMae.setText(null);
-            txtResponsavelRgPai.setText(null);
-            txtResponsavelOrgaoExpPai.setText(null);
-            txtAlunoRua.setText(null);
-            txtAlunoNumero.setText(null);
-            txtAlunoBairro.setText(null);
-            txtAlunoComplemento.setText(null);
-            txtAlunoCep.setText(null);
+            txtAlunoOrgaoEx.setText("");
+            txtAlunoDataExp.setText("");
+            txtAlunoDataNasc.setText("");
+            txtAlunoCpf.setText("");
+            txtAlunoMatricula.setText("");
+            txtAlunoCertidaoMilitar.setText("");
+            txtAlunoSituaçãoMilitar.setText("");
+            txtAlunoTitulo.setText("");
+            txtAlunoSessao.setText("");
+            txtAlunoZona.setText("");
+            txtResponsavelNomePai.setText("");
+            txtResponsavelNomeMae.setText("");
+            txtResponsavelCpfMae.setText("");
+            txtResponsavelCpfPai.setText("");
+            txtResponsavelRgMae.setText("");
+            txtResponsavelOrgaoExpMae.setText("");
+            txtResponsavelRgPai.setText("");
+            txtResponsavelOrgaoExpPai.setText("");
+            txtAlunoRua.setText("");
+            txtAlunoNumero.setText("");
+            txtAlunoBairro.setText("");
+            txtAlunoComplemento.setText("");
+            txtAlunoCep.setText("");
             //----
             aluno.setEmailEndereco(txtEmail.getText());
            

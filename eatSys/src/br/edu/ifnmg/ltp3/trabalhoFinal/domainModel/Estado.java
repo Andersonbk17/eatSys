@@ -82,7 +82,7 @@ public class Estado {
 
     @Override
     public String toString() {
-        return "Estado{" + "idEstado=" + idEstado + ", nomeEstado=" + nomeEstado + '}';
+        return nomeEstado;
     }
     
     

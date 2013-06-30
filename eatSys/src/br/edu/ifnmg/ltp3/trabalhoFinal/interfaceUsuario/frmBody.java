@@ -197,13 +197,11 @@ public class frmBody extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlunoActionPerformed
-        try {
+       
             ifrmAlunoCad janela = new ifrmAlunoCad();
             add(janela);
             janela.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
 
     }//GEN-LAST:event_jmiAlunoActionPerformed
 

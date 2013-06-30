@@ -4,27 +4,15 @@
  */
 package br.edu.ifnmg.ltp3.trabalhoFinal.domainModel;
 
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AreaConhecimento_CnpqDAO;
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CampusDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CidadeDAO;
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CursoAreaDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.EstadoDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.NacionalidadeDAO;
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.UsuarioDAO;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import sun.java2d.loops.CustomComponent;
 
-/**
- *
- * @author lewandowsky
- */
+
 public class testeA {
     public static void main(String args[]) throws SQLException{
        
@@ -38,6 +26,13 @@ public class testeA {
         
        // JasperReport jasperReport = (JasperReport) JRLoader.loadObject(caminho);
         
+        
+        CidadeDAO dao = new CidadeDAO();
+        List<Cidade> lista;
+        
+        lista = dao.ListarTodos();
+        
+        System.out.print(lista);
         
         
         
