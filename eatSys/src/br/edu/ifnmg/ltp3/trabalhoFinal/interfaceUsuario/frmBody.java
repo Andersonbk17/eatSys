@@ -205,6 +205,7 @@ public class frmBody extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_jmiAlunoActionPerformed
 
     private void jmiPPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPPesquisaActionPerformed
