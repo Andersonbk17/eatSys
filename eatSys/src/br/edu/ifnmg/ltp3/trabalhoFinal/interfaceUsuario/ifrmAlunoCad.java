@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -37,12 +38,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
      * Creates new form ifrmCampusCad
      */
     Aluno aluno = new Aluno();
-    List<Cidade> cidades;
-    List<Estado> estados;
-    List<CursoArea> cursos;
-    List<Campus> campus;
-    List<Nacionalidade> nacionalidades;
-  
+   
     AlunoDAO alunoDao = new AlunoDAO();
     
     public Date formatarData(String data) throws ParseException{
@@ -55,12 +51,21 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
     
     public ifrmAlunoCad() throws SQLException {
         initComponents();
+        List<Cidade> cidades;
+        List<Estado> estados;
+        List<CursoArea> cursos;
+        List<Campus> campus;
+        List<Nacionalidade> nacionalidades;
+       
+        
         CidadeDAO cidadeDao = new CidadeDAO();
         EstadoDAO estadoDao = new EstadoDAO();
         CursoAreaDAO cursoAreaDao = new CursoAreaDAO(); 
         CampusDAO campusDao = new CampusDAO();
         NacionalidadeDAO nacionalidadeDao = new NacionalidadeDAO();
       
+      
+        
         //Cidade
         cidades = cidadeDao.ListarTodos();
         jcbCidadeAluno.removeAllItems();
@@ -95,7 +100,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
         for(CursoArea cu: cursos){
             jcbAlunoCurso.addItem(cu);
         }
-        
+       
         //Bloquear os campos local de tabalho
         txtAlunoLocalTrabalho.setVisible(false);
         txtAlunoTelefoneTrabalho.setVisible(false);
@@ -104,7 +109,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
          //limpar os  campos
         txtAlunoLocalTrabalho.setText(null);
         txtAlunoTelefoneTrabalho.setText(null);
-        
+       
 
     }
 
@@ -197,7 +202,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
         jLabel18 = new javax.swing.JLabel();
         jcbCidadeAluno = new javax.swing.JComboBox();
         lblEstado = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jcbEstadoAluno = new javax.swing.JComboBox();
         jPanel7 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         txtResponsavelNomePai = new javax.swing.JTextField();
@@ -606,7 +611,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
 
         lblEstado.setText("Estado");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbEstadoAluno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -633,7 +638,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtAlunoComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcbEstadoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -665,7 +670,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblEstado)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcbEstadoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel18))
                     .addComponent(jcbCidadeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(126, Short.MAX_VALUE))
@@ -782,9 +787,9 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
                         .addGap(24, 24, 24)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSalvarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelarAluno)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCancelarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSalvarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(347, 347, 347)
                         .addComponent(jLabel2))
@@ -802,9 +807,9 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
+                        .addGap(51, 51, 51)
                         .addComponent(btnSalvarAluno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelarAluno))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
@@ -973,7 +978,6 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelarAluno;
     private javax.swing.JButton btnSalvarAluno;
     private javax.swing.ButtonGroup gjrtrabalho;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1023,6 +1027,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox jcbAlunoEstado;
     private javax.swing.JComboBox jcbAlunoNascionalidade;
     private javax.swing.JComboBox jcbCidadeAluno;
+    private javax.swing.JComboBox jcbEstadoAluno;
     private javax.swing.JLabel lblAlunoFoneTrab;
     private javax.swing.JLabel lblAlunoLocalTrab;
     private javax.swing.JLabel lblEmail;

@@ -198,7 +198,6 @@ public class frmBody extends javax.swing.JFrame {
 
     private void jmiAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlunoActionPerformed
         try {
-            // TODO add your handling code here:
             ifrmAlunoCad janela = new ifrmAlunoCad();
             add(janela);
             janela.setVisible(true);
@@ -221,14 +220,6 @@ public class frmBody extends javax.swing.JFrame {
 
     private void jmiOrientadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiOrientadorActionPerformed
         // TODO add your handling code here:
-        ifrmOrientadorCad janela = null;
-        try {
-            janela = new ifrmOrientadorCad();
-        } catch (SQLException ex) {
-            Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        add(janela);
-        janela.setVisible(true);
     }//GEN-LAST:event_jmiOrientadorActionPerformed
 
     private void jmiCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCursoActionPerformed
@@ -265,21 +256,11 @@ public class frmBody extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAreaConhecimentoActionPerformed
 
     private void jmiOrientadorListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiOrientadorListarActionPerformed
-        try {
-            // TODO add your handling code here:
-            ifrmOrientadorListar janela = new ifrmOrientadorListar();
-            add(janela);
-            janela.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
     }//GEN-LAST:event_jmiOrientadorListarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        ifrmlistarOrientadorFull janela = new ifrmlistarOrientadorFull();
-        add(janela);
-        janela.setVisible(true);
+     
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuitemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuitemSairActionPerformed
