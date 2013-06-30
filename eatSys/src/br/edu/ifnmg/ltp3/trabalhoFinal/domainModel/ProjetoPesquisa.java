@@ -31,7 +31,7 @@ public class ProjetoPesquisa {
      private int status;
      private int funcadao;
      private String fundacaoNome;
-     private boolean projetoMulticampi;
+     private int projetoMulticampi;
      
      
      private Campus campus;
@@ -44,7 +44,7 @@ public class ProjetoPesquisa {
             Date dataTermino, String grupoPesquisa, String resumo, int financiamentoAprovado, 
             float valorFinanciamento, Date dataFinanciamento, int bolsasIniciacao, 
             int numeroBolsas, String agenciaFinanciadora, int convenio, String nomeConvenio, 
-            int status, int funcadao, String fundacaoNome, boolean projetoMulticampi, 
+            int status, int funcadao, String fundacaoNome, int projetoMulticampi, 
             Campus campus, Orientador orientador, AreaConhecimento_CnpqSubAreas areaConhecimento, Aluno aluno,List<ParticipanteProjeto> listaParticipantes) {
         this.idProjetoPesquisa = idProjetoPesquisa;
         this.titulo = titulo;
@@ -89,7 +89,7 @@ public class ProjetoPesquisa {
         this.status = 0;
         this.funcadao = 0;
         this.fundacaoNome = "";
-        this.projetoMulticampi = false;
+        this.projetoMulticampi = 0;
         this.campus = new Campus();
         this.orientador = new Orientador();
         this.areaConhecimento = new AreaConhecimento_CnpqSubAreas();
@@ -233,13 +233,15 @@ public class ProjetoPesquisa {
         this.fundacaoNome = fundacaoNome;
     }
 
-    public boolean isProjetoMulticampi() {
+    public int getProjetoMulticampi() {
         return projetoMulticampi;
     }
 
-    public void setProjetoMulticampi(boolean projetoMulticampi) {
+    public void setProjetoMulticampi(int projetoMulticampi) {
         this.projetoMulticampi = projetoMulticampi;
     }
+
+   
 
     public Campus getCampus() {
         return campus;
@@ -313,7 +315,6 @@ public class ProjetoPesquisa {
         hash = 17 * hash + this.status;
         hash = 17 * hash + this.funcadao;
         hash = 17 * hash + Objects.hashCode(this.fundacaoNome);
-        hash = 17 * hash + (this.projetoMulticampi ? 1 : 0);
         hash = 17 * hash + Objects.hashCode(this.campus);
         hash = 17 * hash + Objects.hashCode(this.orientador);
         hash = 17 * hash + Objects.hashCode(this.areaConhecimento);

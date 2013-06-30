@@ -4,7 +4,6 @@
  */
 package br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess;
 
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ParticipanteProjeto;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,7 +54,7 @@ public class ProjetoPesquisaDAO {
                 comando.setInt(16, 1);
                 comando.setInt(17, obj.getFuncadao());
                 comando.setString(18, obj.getFundacaoNome());
-                comando.setBoolean(19, obj.isProjetoMulticampi());
+                comando.setInt(19, obj.getProjetoMulticampi());
                 comando.setInt(20, obj.getAluno().getIdAluno());
                 comando.setInt(21, obj.getAreaConhecimento().getIdAreaConhecimento_CnpqSubAreas());
                 
@@ -84,7 +83,7 @@ public class ProjetoPesquisaDAO {
                 comando1.setInt(16, 1);
                 comando1.setInt(17, obj.getFuncadao());
                 comando1.setString(18, obj.getFundacaoNome());
-                comando1.setBoolean(19, obj.isProjetoMulticampi());
+                comando1.setInt(19, obj.getProjetoMulticampi());
                 comando1.setInt(20, obj.getAluno().getIdAluno());
                 comando1.setInt(21, obj.getAreaConhecimento().getIdAreaConhecimento_CnpqSubAreas());
                 comando1.setInt(22, obj.getIdProjetoPesquisa());
@@ -106,15 +105,37 @@ public class ProjetoPesquisaDAO {
                     + "idProjetoPesquisa = ? ");
             comando.setInt(1, idProjetoPesquisa);
             ResultSet consulta = comando.executeQuery();
-             ParticipanteProjeto novo = null;
+             ProjetoPesquisa novo = null;
             if(consulta.first()){
-                novo = new ParticipanteProjeto();
+                novo = new ProjetoPesquisa();
                 CampusDAO campusdao = new CampusDAO();
-                novo.setIdParticipante(idParticipante);
+                AlunoDAO aluno = new AlunoDAO();
+                ParticipanteProjetoDAO participantes = new ParticipanteProjetoDAO();
+                OrientadorDAO orientador = new OrientadorDAO();
+                AreaConhecimento_CnpqSubAreasDAO areaConhecimento = new AreaConhecimento_CnpqSubAreasDAO();
+                novo.setAgenciaFinanciadora(consulta.getString("agenciaFinanciadora"));
+                novo.setAluno(aluno.Abrir(consulta.getInt("idAluno")));
+                novo.setAreaConhecimento(areaConhecimento.Abrir(consulta.getInt("idAreaConhecimento_CnpqSubAreas")));
+                novo.setBolsasIniciacao(consulta.getInt("bolsaIniciacao"));
                 novo.setCampus(campusdao.Abrir(consulta.getInt("idCampus")));
-                novo.setNome(consulta.getString("nome"));
-                novo.setObservacao(consulta.getString("observacao"));
-                novo.setTitulacao(consulta.getString("titulacao"));
+                novo.setConvenio(consulta.getInt("convenio"));
+                //novo.setDataFinanciamento(null);
+                //novo.setDataInicio(null);
+                //novo.setDataTermino(null);
+                novo.setFinanciamentoAprovado(consulta.getInt("financiamentoAprovado"));
+                novo.setFuncadao(consulta.getInt("fundacao"));
+                novo.setFundacaoNome(consulta.getString("fundacaoNome"));
+                novo.setGrupoPesquisa(consulta.getString("grupoPesquisa"));
+                novo.setIdProjetoPesquisa(consulta.getInt("idProjetoPesquisa"));
+                novo.setListaParticipantes(participantes.ListarTodos(consulta.getInt("idProjetoPesquisa")));
+                novo.setNomeConvenio(consulta.getString("nomeConvenio"));
+                novo.setNumeroBolsas(consulta.getInt("numeroBolsas"));
+                novo.setOrientador(orientador.Abrir(consulta.getInt("idOrientador")));
+                novo.setProjetoMulticampi(consulta.getInt("projetoMulticampi"));
+                novo.setResumo(consulta.getString("resumo"));
+                novo.setTitulo(consulta.getString("titulo"));
+                novo.setValorFinanciamento(consulta.getFloat("valorFinanciamento"));
+                
                 
                 return novo;
            
@@ -133,19 +154,41 @@ public class ProjetoPesquisaDAO {
     }
     
     
-    public List<ParticipanteProjeto> ListarTodos() throws SQLException{
+    public List<ProjetoPesquisa> ListarTodos() throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM ParticipanteProjeto WHERE status = 1");
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM ProjetoPesquisa WHERE status = 1");
             ResultSet consulta = comando.executeQuery();
-            List<ParticipanteProjeto> lista = new LinkedList<>();
+            List<ProjetoPesquisa> lista = new LinkedList<>();
             while(consulta.next()){
-                ParticipanteProjeto novo = new ParticipanteProjeto();
+                ProjetoPesquisa novo = new ProjetoPesquisa();
                 CampusDAO campusdao = new CampusDAO();
-                novo.setIdParticipante(consulta.getInt("idParticipanteProjeto"));
+                AlunoDAO aluno = new AlunoDAO();
+                ParticipanteProjetoDAO participantes = new ParticipanteProjetoDAO();
+                OrientadorDAO orientador = new OrientadorDAO();
+                AreaConhecimento_CnpqSubAreasDAO areaConhecimento = new AreaConhecimento_CnpqSubAreasDAO();
+                novo.setAgenciaFinanciadora(consulta.getString("agenciaFinanciadora"));
+                novo.setAluno(aluno.Abrir(consulta.getInt("idAluno")));
+                novo.setAreaConhecimento(areaConhecimento.Abrir(consulta.getInt("idAreaConhecimento_CnpqSubAreas")));
+                novo.setBolsasIniciacao(consulta.getInt("bolsaIniciacao"));
                 novo.setCampus(campusdao.Abrir(consulta.getInt("idCampus")));
-                novo.setNome(consulta.getString("nome"));
-                novo.setObservacao(consulta.getString("observacao"));
-                novo.setTitulacao(consulta.getString("titulacao"));
+                novo.setConvenio(consulta.getInt("convenio"));
+                //novo.setDataFinanciamento(null);
+                //novo.setDataInicio(null);
+                //novo.setDataTermino(null);
+                novo.setFinanciamentoAprovado(consulta.getInt("financiamentoAprovado"));
+                novo.setFuncadao(consulta.getInt("fundacao"));
+                novo.setFundacaoNome(consulta.getString("fundacaoNome"));
+                novo.setGrupoPesquisa(consulta.getString("grupoPesquisa"));
+                novo.setIdProjetoPesquisa(consulta.getInt("idProjetoPesquisa"));
+                novo.setListaParticipantes(participantes.ListarTodos(consulta.getInt("idProjetoPesquisa")));
+                novo.setNomeConvenio(consulta.getString("nomeConvenio"));
+                novo.setNumeroBolsas(consulta.getInt("numeroBolsas"));
+                novo.setOrientador(orientador.Abrir(consulta.getInt("idOrientador")));
+                novo.setProjetoMulticampi(consulta.getInt("projetoMulticampi"));
+                novo.setResumo(consulta.getString("resumo"));
+                novo.setTitulo(consulta.getString("titulo"));
+                novo.setValorFinanciamento(consulta.getFloat("valorFinanciamento"));
+              
                 lista.add(novo);
             }
             return lista;
@@ -157,11 +200,11 @@ public class ProjetoPesquisaDAO {
         }
      }
     
-    public boolean Apagar(int idParticipante ) throws SQLException{
+    public boolean Apagar(int idProjetoPesquisa ) throws SQLException{
         try{
             PreparedStatement comando = conexao.getConexao().prepareStatement(""
-                    + "UPDATE ParticipanteProjeto SET status = 0 WHERE idParticipanteProjeto = ?");
-            comando.setInt(1, idParticipante);
+                    + "UPDATE ProjetoPesquisa SET status = 0 WHERE idProjetoPesquisa = ?");
+            comando.setInt(1, idProjetoPesquisa);
             comando.executeUpdate();
             return true;
         }catch(SQLException ex){
