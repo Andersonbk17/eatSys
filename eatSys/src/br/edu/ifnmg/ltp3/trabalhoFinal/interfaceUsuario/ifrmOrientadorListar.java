@@ -49,7 +49,6 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
         model.addColumn("RG");
         model.addColumn("CFP");
         model.addColumn("NASCIMENTO");
-        model.addColumn("NACIONALIDADE");
         model.addColumn("TITULAÇÃO");
         model.addColumn("FORMAÇÃO");
 
@@ -61,9 +60,8 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
             valores.add(3,o.getRg());
             valores.add(4,o.getCpf());
             valores.add(5,o.getDataNascimento());
-            valores.add(6,o.getPessoaNacionalidade().getNome());
-            valores.add(7,o.getTituloAcademico());
-            valores.add(8,o.getFormacaoUniversitaria());
+            valores.add(6,o.getTituloAcademico());
+            valores.add(7,o.getFormacaoUniversitaria());
             model.addRow(valores);
         }
         tblListagemOrientador.setModel(model);
