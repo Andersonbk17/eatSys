@@ -21,6 +21,10 @@ public class frmBody extends javax.swing.JFrame {
     public frmBody(Usuario usuarioLogado) {
         this.UsuarioLogado = usuarioLogado;
         initComponents();
+        if(usuarioLogado.getNivel() > 1){
+            jMenuItemUsuarios.setVisible(false);
+            jSeparator1.setVisible(false);
+        }
     }
 
     /**
@@ -33,6 +37,11 @@ public class frmBody extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
+        jmSistema = new javax.swing.JMenu();
+        jMenuItemUsuarios = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuitemSair = new javax.swing.JMenuItem();
+        jMenuItemFechar = new javax.swing.JMenuItem();
         jmBodyCadastrar = new javax.swing.JMenu();
         jmiAluno = new javax.swing.JMenuItem();
         jmiOrientador = new javax.swing.JMenuItem();
@@ -55,6 +64,35 @@ public class frmBody extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(102, 204, 0));
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jmSistema.setText("Sistema");
+
+        jMenuItemUsuarios.setText("Usuários");
+        jMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUsuariosActionPerformed(evt);
+            }
+        });
+        jmSistema.add(jMenuItemUsuarios);
+        jmSistema.add(jSeparator1);
+
+        jMenuitemSair.setText("Sair");
+        jMenuitemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuitemSairActionPerformed(evt);
+            }
+        });
+        jmSistema.add(jMenuitemSair);
+
+        jMenuItemFechar.setText("Fechar");
+        jMenuItemFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFecharActionPerformed(evt);
+            }
+        });
+        jmSistema.add(jMenuItemFechar);
+
+        jMenuBar1.add(jmSistema);
 
         jmBodyCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         jmBodyCadastrar.setText("Cadastrar");
@@ -152,7 +190,7 @@ public class frmBody extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 435, Short.MAX_VALUE)
+            .addGap(0, 437, Short.MAX_VALUE)
         );
 
         pack();
@@ -242,15 +280,36 @@ public class frmBody extends javax.swing.JFrame {
         add(janela);
         janela.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuitemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuitemSairActionPerformed
+        this.dispose();
+        frmLogin janela = new frmLogin();
+        janela.setVisible(true);
+    }//GEN-LAST:event_jMenuitemSairActionPerformed
+
+    private void jMenuItemFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFecharActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemFecharActionPerformed
+
+    private void jMenuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuariosActionPerformed
+        frmCadastroUsuario janela = new frmCadastroUsuario();
+        janela.setVisible(true);
+        add(janela);
+    }//GEN-LAST:event_jMenuItemUsuariosActionPerformed
     private Usuario UsuarioLogado; 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemFechar;
+    private javax.swing.JMenuItem jMenuItemUsuarios;
+    private javax.swing.JMenuItem jMenuitemSair;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenu jmBodyCadastrar;
     private javax.swing.JMenu jmBodyListar;
     private javax.swing.JMenu jmBodyProjetos;
     private javax.swing.JMenu jmBodyRelarotio;
     private javax.swing.JMenu jmBodySobre;
+    private javax.swing.JMenu jmSistema;
     private javax.swing.JMenuItem jmiAluno;
     private javax.swing.JMenuItem jmiAreaConhecimento;
     private javax.swing.JMenuItem jmiCampus;
