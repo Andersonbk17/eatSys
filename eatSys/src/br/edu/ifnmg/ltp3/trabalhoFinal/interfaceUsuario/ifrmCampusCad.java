@@ -6,7 +6,6 @@ package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CampusDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Telefone;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
@@ -108,7 +107,7 @@ public class ifrmCampusCad extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtbListarCampus);
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Cadastrar Campus");
+        jLabel2.setText("Campus");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ifl.png"))); // NOI18N
 
@@ -131,7 +130,7 @@ public class ifrmCampusCad extends javax.swing.JInternalFrame {
                         .addComponent(btnCampusCadSalvar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(176, 176, 176)
+                        .addGap(217, 217, 217)
                         .addComponent(jLabel2)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()

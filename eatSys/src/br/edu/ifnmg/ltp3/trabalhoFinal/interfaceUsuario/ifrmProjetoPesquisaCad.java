@@ -5,11 +5,9 @@
 package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AlunoDAO;
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AreaConhecimentoDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CampusDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Aluno;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.AreaConhecimento;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
@@ -27,7 +25,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
     List<Aluno> aluno;
     List<Campus> campus;
     List<Campus> campusParticioante;
-    List<AreaConhecimento> area;
+    //List<AreaConhecimento> area;
     List<Orientador> orientador;
     /**
      * Creates new form ifrmCampusCad
@@ -39,7 +37,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
         ocultarConv(0);
         ocultarBolsa(0);
       
-        AreaConhecimentoDAO areaDao = new AreaConhecimentoDAO(); 
+       /* AreaConhecimentoDAO areaDao = new AreaConhecimentoDAO(); 
         OrientadorDAO orientadorDao = new OrientadorDAO();
         AlunoDAO alunoDao = new AlunoDAO();
         CampusDAO campusDao = new CampusDAO();
@@ -81,7 +79,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
             jcbProjetoPesquisaCampusPartici.addItem(cap);
         }
        */
-        
+      
     }
     
     private void ocultarFinan(int confirmacao){
@@ -738,34 +736,34 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
 
     private void jrFinanConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanConActionPerformed
         // TODO add your handling code here:
-        ps.setFinanciamento(4);
+       // ps.setFinanciamento(4);
         ocultarFinan(1);
         
     }//GEN-LAST:event_jrFinanConActionPerformed
 
     private void jrFinanNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanNaoActionPerformed
         // TODO add your handling code here:
-         ps.setFinanciamento(2);
+        // ps.setFinanciamento(2);
          ocultarFinan(0);
          
     }//GEN-LAST:event_jrFinanNaoActionPerformed
 
     private void jrFinanSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanSimActionPerformed
         // TODO add your handling code here:
-         ps.setFinanciamento(1);
+        // ps.setFinanciamento(1);
          ocultarFinan(1);
         
     }//GEN-LAST:event_jrFinanSimActionPerformed
 
     private void jrFinanSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrFinanSubActionPerformed
         // TODO add your handling code here:
-         ps.setFinanciamento(3);
+     //   ps.setFinanciamento(3);
          ocultarFinan(1);
     }//GEN-LAST:event_jrFinanSubActionPerformed
 
     private void jrbConvenioSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbConvenioSimActionPerformed
         // TODO add your handling code here:
-        ps.setConvenio(1);
+     //   ps.setConvenio(1);
         ocultarConv(1);
         
     }//GEN-LAST:event_jrbConvenioSimActionPerformed
@@ -779,13 +777,13 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
 
     private void jrbBolsaSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBolsaSimActionPerformed
         // TODO add your handling code here:
-        ps.setBolsa(1);
+    //    ps.setBolsa(1);
         ocultarBolsa(1);
     }//GEN-LAST:event_jrbBolsaSimActionPerformed
 
     private void jrbBolsaNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBolsaNaoActionPerformed
         // TODO add your handling code here:
-        ps.setBolsa(2);
+     //   ps.setBolsa(2);
         ocultarBolsa(0);
     }//GEN-LAST:event_jrbBolsaNaoActionPerformed
 

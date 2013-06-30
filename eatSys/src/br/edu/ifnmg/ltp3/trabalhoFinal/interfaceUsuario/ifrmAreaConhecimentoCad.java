@@ -68,7 +68,7 @@ public class ifrmAreaConhecimentoCad extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtbListarAreaConhecimento);
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Cadastrar Area Conhecimento");
+        jLabel2.setText("Area Conhecimento");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ifl.png"))); // NOI18N
 
@@ -91,7 +91,7 @@ public class ifrmAreaConhecimentoCad extends javax.swing.JInternalFrame {
                         .addComponent(btnAreaConhecimentoCadSalvar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(130, 130, 130)
+                        .addGap(181, 181, 181)
                         .addComponent(jLabel2)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
