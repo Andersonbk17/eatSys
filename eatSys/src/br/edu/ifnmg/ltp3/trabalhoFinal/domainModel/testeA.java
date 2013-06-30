@@ -12,8 +12,11 @@ import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.EstadoDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.NacionalidadeDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.UsuarioDAO;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sun.java2d.loops.CustomComponent;
@@ -24,7 +27,32 @@ import sun.java2d.loops.CustomComponent;
  */
 public class testeA {
     public static void main(String args[]) throws SQLException{
-        OrientadorDAO dao= new OrientadorDAO();
+       
+        NacionalidadeDAO nacionalidade = new NacionalidadeDAO();
+        Nacionalidade a = nacionalidade.Abrir(1);
+        
+        Map parameterMap = new HashMap();
+        parameterMap.put("nomeCompleto",a.getNome());
+        parameterMap.put("campusOndeTrabalha",a.getIdNacionalidade());
+        String caminho = "../reports/Orientador.jasper";
+        
+        JasperReport jasperReport = (JasperReport) JRLoader.loadObject(caminho);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /* OrientadorDAO dao= new OrientadorDAO();
         Orientador a = new Orientador();
         List<Orientador> lista;
         CursoAreaDAO curso = new CursoAreaDAO();
@@ -32,6 +60,7 @@ public class testeA {
         CidadeDAO cidade = new CidadeDAO();
         NacionalidadeDAO nacionalidade = new NacionalidadeDAO();
         EstadoDAO estado = new EstadoDAO();
+       // Pr
         //CursoAreaDAO curso = new CursoAreaDAO();
         
         
@@ -71,5 +100,7 @@ public class testeA {
     
     
     
-    }
+    
+    * */
+    }    
 }

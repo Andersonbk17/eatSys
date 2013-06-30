@@ -135,6 +135,11 @@ public class Orientador extends Pessoa{
         return true;
     }
 
+    @Override
+    public String toString() {
+        return super.getNome() +" - "+  matriculaSiape ;
+    }
+
    
     
     
