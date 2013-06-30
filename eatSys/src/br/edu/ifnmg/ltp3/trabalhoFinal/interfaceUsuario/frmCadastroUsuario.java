@@ -90,6 +90,7 @@ public class frmCadastroUsuario extends javax.swing.JInternalFrame {
         tblUsuarios = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        btnExcluir = new javax.swing.JButton();
 
         setTitle("Cadastro de Usuário");
         setMinimumSize(new java.awt.Dimension(750, 565));
@@ -195,6 +196,8 @@ public class frmCadastroUsuario extends javax.swing.JInternalFrame {
             .addGap(0, 15, Short.MAX_VALUE)
         );
 
+        btnExcluir.setText("Excluir");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,10 +216,11 @@ public class frmCadastroUsuario extends javax.swing.JInternalFrame {
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSalvar))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(btnSalvar)
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,10 +237,12 @@ public class frmCadastroUsuario extends javax.swing.JInternalFrame {
                         .addGap(33, 33, 33)
                         .addComponent(btnSalvar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSair)))
+                        .addComponent(btnSair)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluir)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -282,6 +288,7 @@ public class frmCadastroUsuario extends javax.swing.JInternalFrame {
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox cbxNivel;
