@@ -53,6 +53,7 @@ public class ifrmCursoCad extends javax.swing.JInternalFrame {
         jtbListarCurso.repaint();
         
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,12 +71,15 @@ public class ifrmCursoCad extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbListarCurso = new javax.swing.JTable();
         lblTitulo = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         lblSigla = new javax.swing.JLabel();
         txtCursoCadSigla = new javax.swing.JTextField();
+        btnEditarCurso = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
+        setMinimumSize(new java.awt.Dimension(1024, 700));
+        setPreferredSize(new java.awt.Dimension(1024, 700));
 
         lblCurso.setText("Nome");
 
@@ -108,19 +112,25 @@ public class ifrmCursoCad extends javax.swing.JInternalFrame {
 
             }
         ));
-        jtbListarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtbListarCursoMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(jtbListarCurso);
 
-        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Curso");
 
-        jLabel4.setText("Clique sobre um item para Editar ou Excluir");
-
         lblSigla.setText("Sigla");
+
+        btnEditarCurso.setText("Editar");
+        btnEditarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarCursoActionPerformed(evt);
+            }
+        });
+
+        btnDeletar.setText("Deletar");
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,26 +141,27 @@ public class ifrmCursoCad extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(lblCurso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCurso)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCursoCadNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCursoCadNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblSigla)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCursoCadSigla)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCursoCadSalvar)
-                                .addGap(8, 8, 8))))
+                                .addComponent(txtCursoCadSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCursoCadSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(jLabel4))
+                        .addGap(334, 334, 334)
+                        .addComponent(btnEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(239, 239, 239)
+                        .addGap(450, 450, 450)
                         .addComponent(lblTitulo)))
-                .addContainerGap())
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,18 +170,20 @@ public class ifrmCursoCad extends javax.swing.JInternalFrame {
                 .addComponent(lblTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCurso)
-                    .addComponent(txtCursoCadNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCursoCadSalvar)
+                    .addComponent(txtCursoCadNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSigla)
-                    .addComponent(txtCursoCadSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(txtCursoCadSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCursoCadSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(285, 285, 285))
         );
 
         pack();
@@ -211,27 +224,52 @@ public class ifrmCursoCad extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnCursoCadSalvarActionPerformed
 
-    private void jtbListarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbListarCursoMouseClicked
+    private void btnEditarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCursoActionPerformed
         try {
             // TODO add your handling code here:
             Object valor = jtbListarCurso.getValueAt( jtbListarCurso.getSelectedRow(), 0);
-            CursoArea ca = null;
             
-            ca = cursoDao.Abrir((int)valor);
-            ifrmCursoEdit janela = new ifrmCursoEdit(ca, cursoDao);
-            this.getParent().add(janela);
-            janela.setVisible(true);
-            this.setVisible(false);
+             CursoArea ca = null;
+                
+                ca = cursoDao.Abrir((int)valor);
+                ifrmCursoEdit janela = new ifrmCursoEdit(ca, cursoDao);
+                this.getParent().add(janela);
+                janela.setVisible(true);
+                this.setVisible(false);
         } catch (SQLException ex) {
-            Logger.getLogger(ifrmCursoAreaCad.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ifrmCursoCad.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-    }//GEN-LAST:event_jtbListarCursoMouseClicked
+    }//GEN-LAST:event_btnEditarCursoActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        // TODO add your handling code here:
+        Object valor = jtbListarCurso.getValueAt( jtbListarCurso.getSelectedRow(), 0);
+      
+       
+        if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente apagar este curso?") == 0) {
+            try {                
+                if (cursoDao.Apagar((int)valor)) {
+                    JOptionPane.showMessageDialog(rootPane, "Curso deletado com sucesso!");  
+                    preencheTabela(cursoDao.ListarTodos());
+                    
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Falha ao apagar! Consulte o administrador do sistema!");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ifrmCursoCad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            } else {                
+                JOptionPane.showMessageDialog(rootPane, "Operação cancelada!");
+            }
+       
+    }//GEN-LAST:event_btnDeletarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCursoCadSalvar;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnEditarCurso;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbListarCurso;
