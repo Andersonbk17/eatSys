@@ -4,6 +4,7 @@
  */
 package br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess;
 
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ParticipanteProjeto;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,6 +60,14 @@ public class ProjetoPesquisaDAO {
                 comando.setInt(21, obj.getAreaConhecimento().getIdAreaConhecimento_CnpqSubAreas());
                 
                 comando.execute();
+                
+                PreparedStatement comando1 = conexao.getConexao().prepareStatement("SELECT max(idProjetoPesquisa) FROM "
+                        + " ProjetoPesquisa WHERE status =1");
+                ResultSet consulta = comando1.executeQuery();
+                for(ParticipanteProjeto p : obj.getListaParticipantes()){
+                    ParticipanteProjetoDAO dao = new ParticipanteProjetoDAO();
+                    dao.Salvar(p, consulta.getInt("max(idProjetoPesquisa)"));
+                }
             }else{
                 PreparedStatement comando1 = conexao.getConexao().prepareCall("UPDATE  ProjetoPesquisa SET titulo = ?,dataInicio = ?,"
                         + "dataTermino = ?,grupoPesquisa = ?,idCampus = ?,resumo = ?,idOrientador = ?,financiamentoAprovado = ?,valorFinanciamento = ?,"
@@ -87,6 +96,11 @@ public class ProjetoPesquisaDAO {
                 comando1.setInt(20, obj.getAluno().getIdAluno());
                 comando1.setInt(21, obj.getAreaConhecimento().getIdAreaConhecimento_CnpqSubAreas());
                 comando1.setInt(22, obj.getIdProjetoPesquisa());
+                comando1.executeUpdate();
+                for(ParticipanteProjeto p : obj.getListaParticipantes()){
+                    ParticipanteProjetoDAO dao = new ParticipanteProjetoDAO();
+                    dao.Salvar(p, obj.getIdProjetoPesquisa());
+                }
            }
             return true;
         }catch(SQLException ex){
