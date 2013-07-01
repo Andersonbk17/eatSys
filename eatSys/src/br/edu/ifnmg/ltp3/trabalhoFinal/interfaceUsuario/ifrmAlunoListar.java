@@ -5,12 +5,8 @@
 package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AlunoDAO;
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Aluno;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Cidade;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -118,7 +114,6 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
 
             }
         ));
-        tblListagemAluno.setEnabled(false);
         tblListagemAluno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblListagemAlunoMouseClicked(evt);
@@ -230,12 +225,18 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFiltrarAlunoActionPerformed
 
     private void tblListagemAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListagemAlunoMouseClicked
-
-        ifrmlistarOrientadorFull janela = new ifrmlistarOrientadorFull();
-        add(janela);
-        janela.setVisible(true);
-        
-        this.dispose();
+        try {
+            Object valor = tblListagemAluno.getValueAt( tblListagemAluno.getSelectedRow(), 0);
+            Aluno al = null;
+            
+            al = dao.Abrir((int)valor);
+            ifrmlistarAlunoFull janela = new ifrmlistarAlunoFull(al, dao);
+            this.getParent().add(janela);
+            janela.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(ifrmAlunoListar.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }//GEN-LAST:event_tblListagemAlunoMouseClicked
