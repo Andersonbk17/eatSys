@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
@@ -33,6 +34,7 @@ public class AlunoDAO {
             Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+ 
     
     public boolean Salvar(Aluno obj) throws SQLException{
         PessoaDAO pessoaDAO = new PessoaDAO();
@@ -165,7 +167,9 @@ public class AlunoDAO {
                 aluno.setEmailEndereco(resultado.getString("pe.email"));
                 aluno.setTelefoneFixo(resultado.getString("pe.telefoneResidencial"));
                 aluno.setTelefoneCelular(resultado.getString("pe.celular"));
+               
                 aluno.setDataNascimento(resultado.getDate("pe.dataNascimento"));
+              
                 aluno.setRgOrgaoExpedidor(resultado.getString("pe.orgaoExpedidor"));
                 aluno.setRgDataExpedicao(resultado.getDate("pe.dataExpedicao"));
                 aluno.setPessoaCampus(campus.Abrir(resultado.getInt("pe.idCampus")));
@@ -237,6 +241,7 @@ public class AlunoDAO {
                 aluno.setNome(resultado.getString("pe.nome"));
                 aluno.setCpf(resultado.getInt("pe.cpf"));
                 aluno.setRg(resultado.getString("pe.rg"));
+                
                 aluno.setDataNascimento(resultado.getDate("pe.dataNascimento"));
                 aluno.setRgOrgaoExpedidor(resultado.getString("pe.orgaoExpedidor"));
                 aluno.setRgDataExpedicao(resultado.getDate("pe.dataExpedicao"));
