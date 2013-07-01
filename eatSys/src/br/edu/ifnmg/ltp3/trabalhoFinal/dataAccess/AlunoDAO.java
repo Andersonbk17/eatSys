@@ -7,10 +7,14 @@ package br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Aluno;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Nacionalidade;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Pessoa;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,7 +34,7 @@ public class AlunoDAO {
             Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+ 
     
     public boolean Salvar(Aluno obj) throws SQLException{
         PessoaDAO pessoaDAO = new PessoaDAO();
@@ -134,7 +138,8 @@ public class AlunoDAO {
     public Aluno Abrir(int idAluno) throws SQLException{
         try{
             PreparedStatement comando = conexao.getConexao().prepareStatement(""
-                     + "SELECT pe.idPessoa,pe.nome,pe.cpf,pe.rg,pe.dataNascimento,pe.orgaoExpedidor,pe.dataExpedicao,pe.status, "
+                     + "SELECT pe.idPessoa,pe.nome,pe.cpf,pe.rg,pe.dataNascimento,"
+                     + "pe.orgaoExpedidor,pe.dataExpedicao,pe.status, "
                      + "pe.idCampus,pe.idNacionalidade,pe.idEstado,pe.rua,pe.numero,pe.complemento,pe.bairro,pe.cep, "
                      + "pe.telefoneResidencial,pe.celular,pe.email,pe.idCidade, "
                      + "al.idAluno,al.tituloEleitor,al.secaoEleitoral,al.zonaEleitoral,al.situacaoMilitar,al.certidaoMilitar, "
@@ -159,7 +164,12 @@ public class AlunoDAO {
                 aluno.setNome(resultado.getString("pe.nome"));
                 aluno.setCpf(resultado.getInt("pe.cpf"));
                 aluno.setRg(resultado.getString("pe.rg"));
+                aluno.setEmailEndereco(resultado.getString("pe.email"));
+                aluno.setTelefoneFixo(resultado.getString("pe.telefoneResidencial"));
+                aluno.setTelefoneCelular(resultado.getString("pe.celular"));
+               
                 aluno.setDataNascimento(resultado.getDate("pe.dataNascimento"));
+              
                 aluno.setRgOrgaoExpedidor(resultado.getString("pe.orgaoExpedidor"));
                 aluno.setRgDataExpedicao(resultado.getDate("pe.dataExpedicao"));
                 aluno.setPessoaCampus(campus.Abrir(resultado.getInt("pe.idCampus")));
@@ -170,9 +180,6 @@ public class AlunoDAO {
                 aluno.setEnderecoComplmento(resultado.getString("pe.complemento"));
                 aluno.setEnderecoBairro(resultado.getString("pe.bairro"));
                 aluno.setEnderecoCep(resultado.getInt("pe.cep"));
-                aluno.setEnderecoRua(resultado.getString("pe.telefoneResidencial"));
-                aluno.setEnderecoRua(resultado.getString("pe.celular"));
-                aluno.setEnderecoRua(resultado.getString("pe.email"));
                 aluno.setPessoaCidade(cidade.Abrir(resultado.getInt("pe.idCidade")));
                 aluno.setIdAluno(resultado.getInt("al.idAluno"));
                 aluno.setTituloEleitoral(resultado.getString("al.tituloEleitor"));
@@ -186,10 +193,10 @@ public class AlunoDAO {
                 aluno.setRgPai(resultado.getString("al.rgResponsavel"));
                 aluno.setOrgaoExpedidorPai(resultado.getString("al.orgaoExpedidorResponsavel"));
                 aluno.setCpfPai(resultado.getInt("al.cpfResponsavel"));
-                aluno.setNomePai(resultado.getString("al.nomeMae"));
-                aluno.setRgPai(resultado.getString("al.rgMae"));
-                aluno.setOrgaoExpedidorPai(resultado.getString("al.orgaoExpedidor"));
-                aluno.setCpfPai(resultado.getInt("al.cpfMae"));
+                aluno.setNomeMae(resultado.getString("al.nomeMae"));
+                aluno.setRgMae(resultado.getString("al.rgMae"));
+                aluno.setOrgaoExpedidorMae(resultado.getString("al.orgaoExpedidor"));
+                aluno.setCpfMae(resultado.getInt("al.cpfMae"));
                 aluno.setLocalTrabalho(resultado.getString("al.localTrabalho"));
                 aluno.setTelefoneLocalTrabalho(resultado.getString("al.telefoneLocalTrabalho"));
             }
@@ -204,17 +211,19 @@ public class AlunoDAO {
     
     }
     
-     public List<Aluno> ListarTodos() throws SQLException{
+     public List<Aluno> ListarTodos() throws SQLException {
         try{
             PreparedStatement comando = conexao.getConexao().prepareStatement(""
-                     + "SELECT pe.idPessoa,pe.nome,pe.cpf,pe.rg,pe.dataNascimento,pe.orgaoExpedidor,pe.dataExpedicao,pe.status, "
+                     + "SELECT pe.idPessoa,pe.nome,pe.cpf,pe.rg,pe.dataNascimento,"
+                     + "pe.orgaoExpedidor,pe.dataExpedicao,pe.status, "
                      + "pe.idCampus,pe.idNacionalidade,pe.idEstado,pe.rua,pe.numero,pe.complemento,pe.bairro,pe.cep, "
                      + "pe.telefoneResidencial,pe.celular,pe.email,pe.idCidade, "
                      + "al.idAluno,al.tituloEleitor,al.secaoEleitoral,al.zonaEleitoral,al.situacaoMilitar,al.certidaoMilitar, "
                      + "al.status,al.matricula,al.idCurso,al.nomeResponsavel,al.rgResponsavel,al.orgaoExpedidorResponsavel,al.cpfResponsavel,al.nomeMae, "
                      + "al.orgaoExpedidor,al.rgMae,al.cpfMae,al.localTrabalho,al.telefoneLocalTrabalho "
                      + "FROM Pessoa pe "
-                     + "INNER JOIN Aluno al ON (pe.idPessoa = al.idPessoa)"
+                     + "INNER JOIN Aluno al ON (pe.idPessoa = al.idPessoa) "
+                     + "WHERE pe.status = 1"
                      + "");
 
             ResultSet resultado = comando.executeQuery();
@@ -232,6 +241,7 @@ public class AlunoDAO {
                 aluno.setNome(resultado.getString("pe.nome"));
                 aluno.setCpf(resultado.getInt("pe.cpf"));
                 aluno.setRg(resultado.getString("pe.rg"));
+                
                 aluno.setDataNascimento(resultado.getDate("pe.dataNascimento"));
                 aluno.setRgOrgaoExpedidor(resultado.getString("pe.orgaoExpedidor"));
                 aluno.setRgDataExpedicao(resultado.getDate("pe.dataExpedicao"));
@@ -259,10 +269,10 @@ public class AlunoDAO {
                 aluno.setRgPai(resultado.getString("al.rgResponsavel"));
                 aluno.setOrgaoExpedidorPai(resultado.getString("al.orgaoExpedidorResponsavel"));
                 aluno.setCpfPai(resultado.getInt("al.cpfResponsavel"));
-                aluno.setNomePai(resultado.getString("al.nomeMae"));
-                aluno.setRgPai(resultado.getString("al.rgMae"));
-                aluno.setOrgaoExpedidorPai(resultado.getString("al.orgaoExpedidor"));
-                aluno.setCpfPai(resultado.getInt("al.cpfMae"));
+                aluno.setNomeMae(resultado.getString("al.nomeMae"));
+                aluno.setRgMae(resultado.getString("al.rgMae"));
+                aluno.setOrgaoExpedidorMae(resultado.getString("al.orgaoExpedidor"));
+                aluno.setCpfMae(resultado.getInt("al.cpfMae"));
                 aluno.setLocalTrabalho(resultado.getString("al.localTrabalho"));
                 aluno.setTelefoneLocalTrabalho(resultado.getString("al.telefoneLocalTrabalho"));
                 
@@ -308,7 +318,7 @@ public class AlunoDAO {
                      + "al.status,al.matricula,al.idCurso,al.nomeResponsavel,al.rgResponsavel,al.orgaoExpedidorResponsavel,al.cpfResponsavel,al.nomeMae, "
                      + "al.orgaoExpedidor,al.rgMae,al.cpfMae,al.localTrabalho,al.telefoneLocalTrabalho "
                      + "FROM Pessoa pe "
-                     + "INNER JOIN Aluno al ON (pe.idPessoa = al.idPessoa)"
+                     + "INNER JOIN Aluno al ON (pe.idPessoa = al.idPessoa) "
                      + "";
             String where = "";
             
