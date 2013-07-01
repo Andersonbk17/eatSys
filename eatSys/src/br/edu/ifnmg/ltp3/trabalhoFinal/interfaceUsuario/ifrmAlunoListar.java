@@ -4,11 +4,17 @@
  */
 package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AlunoDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Aluno;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Cidade;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -16,54 +22,57 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author emerson
  */
-public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
+public class ifrmAlunoListar extends javax.swing.JInternalFrame {
     
-    OrientadorDAO odao;
+    AlunoDAO dao;
     
     
    
     /**
      * Creates new form frmListarProduto
      */
-    public ifrmOrientadorListar() throws SQLException {
+    public ifrmAlunoListar() throws SQLException {
         initComponents();
         
-        odao = new OrientadorDAO();
+        List<Aluno> aluno = null;
+        dao = new AlunoDAO();
         
-        List<Orientador> orientador = odao.ListarTodos();
+        aluno = dao.ListarTodos();
 
-        preencheTabela(orientador);
+        preencheTabela(aluno);
         
 
     }
     
     //Metodo para listar Produtos na Tabela tblListagemProd
-    private void preencheTabela(List<Orientador> lista) {
+    private void preencheTabela(List<Aluno> lista) {
        
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
-        model.addColumn("SIAPE");
+        model.addColumn("MATRICULA");
         model.addColumn("NOME");
         model.addColumn("RG");
         model.addColumn("CFP");
+        model.addColumn("TITULO");
+        model.addColumn("CAM");
         model.addColumn("NASCIMENTO");
-        model.addColumn("TITULAÇÃO");
-        model.addColumn("FORMAÇÃO");
+       
 
-        for (Orientador o : lista) {
+        for (Aluno a : lista) {
             Vector valores = new Vector();
-            valores.add(0,o.getIdOrientador());
-            valores.add(1,o.getMatriculaSiape());
-            valores.add(2,o.getNome());
-            valores.add(3,o.getRg());
-            valores.add(4,o.getCpf());
-            valores.add(5,o.getDataNascimento());
-            valores.add(6,o.getTituloAcademico());
-            valores.add(7,o.getFormacaoUniversitaria());
+            valores.add(0,a.getIdAluno());
+            valores.add(1,a.getMatricula());
+            valores.add(2,a.getNome());
+            valores.add(3,a.getRg());
+            valores.add(4,a.getCpf());
+            valores.add(5,a.getTituloEleitoral());
+            valores.add(6,a.getCertidaoMilitar());
+            valores.add(7,a.getDataNascimento());
+           
             model.addRow(valores);
         }
-        tblListagemOrientador.setModel(model);
-        tblListagemOrientador.repaint();
+        tblListagemAluno.setModel(model);
+        tblListagemAluno.repaint();
         
     }
     
@@ -77,10 +86,10 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblNomeOrientador = new javax.swing.JLabel();
-        txtFiltrarC = new javax.swing.JTextField();
-        btnFiltrarOrientador = new javax.swing.JButton();
+        txtFiltrarA = new javax.swing.JTextField();
+        btnFiltrarAluno = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblListagemOrientador = new javax.swing.JTable();
+        tblListagemAluno = new javax.swing.JTable();
         jpTituloProdutoListar = new javax.swing.JPanel();
         lblTituloOrientadorListar = new javax.swing.JLabel();
         jpRemoverItemtbEndereco = new javax.swing.JPanel();
@@ -91,14 +100,14 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
 
         lblNomeOrientador.setText("Nome");
 
-        btnFiltrarOrientador.setText("Filtrar");
-        btnFiltrarOrientador.addActionListener(new java.awt.event.ActionListener() {
+        btnFiltrarAluno.setText("Filtrar");
+        btnFiltrarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFiltrarOrientadorActionPerformed(evt);
+                btnFiltrarAlunoActionPerformed(evt);
             }
         });
 
-        tblListagemOrientador.setModel(new javax.swing.table.DefaultTableModel(
+        tblListagemAluno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -109,26 +118,27 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
 
             }
         ));
-        tblListagemOrientador.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblListagemAluno.setEnabled(false);
+        tblListagemAluno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblListagemOrientadorMouseClicked(evt);
+                tblListagemAlunoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblListagemOrientador);
+        jScrollPane1.setViewportView(tblListagemAluno);
 
         jpTituloProdutoListar.setBackground(new java.awt.Color(102, 204, 0));
 
         lblTituloOrientadorListar.setFont(new java.awt.Font("Dialog", 2, 24)); // NOI18N
-        lblTituloOrientadorListar.setText("Orientadores");
+        lblTituloOrientadorListar.setText("Aluno");
 
         javax.swing.GroupLayout jpTituloProdutoListarLayout = new javax.swing.GroupLayout(jpTituloProdutoListar);
         jpTituloProdutoListar.setLayout(jpTituloProdutoListarLayout);
         jpTituloProdutoListarLayout.setHorizontalGroup(
             jpTituloProdutoListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTituloProdutoListarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jpTituloProdutoListarLayout.createSequentialGroup()
+                .addGap(439, 439, 439)
                 .addComponent(lblTituloOrientadorListar)
-                .addGap(417, 417, 417))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpTituloProdutoListarLayout.setVerticalGroup(
             jpTituloProdutoListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,9 +181,9 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNomeOrientador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFiltrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnFiltrarOrientador)
+                        .addComponent(btnFiltrarAluno)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,9 +197,9 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
                 .addComponent(jpTituloProdutoListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFiltrarC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomeOrientador)
-                    .addComponent(btnFiltrarOrientador))
+                    .addComponent(btnFiltrarAluno))
                 .addGap(18, 18, 18)
                 .addComponent(jpRemoverItemtbEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,11 +210,26 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFiltrarOrientadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarOrientadorActionPerformed
-  
-    }//GEN-LAST:event_btnFiltrarOrientadorActionPerformed
+    private void btnFiltrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarAlunoActionPerformed
+        Aluno al = new Aluno();
+        try {
+            al.setNome(txtFiltrarA.getText());
+        }catch (Exception ex) {
+            System.out.printf("Erro");
+        }
+        
+        List<Aluno> lista = null;
+        try {
+            lista = dao.buscar(al);
+        } catch (Exception ex) {
+            System.out.printf("Erro");
+        }
+        
+        preencheTabela(lista);
+        
+    }//GEN-LAST:event_btnFiltrarAlunoActionPerformed
 
-    private void tblListagemOrientadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListagemOrientadorMouseClicked
+    private void tblListagemAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListagemAlunoMouseClicked
 
         ifrmlistarOrientadorFull janela = new ifrmlistarOrientadorFull();
         add(janela);
@@ -213,17 +238,17 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
         this.dispose();
         
         
-    }//GEN-LAST:event_tblListagemOrientadorMouseClicked
+    }//GEN-LAST:event_tblListagemAlunoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFiltrarOrientador;
+    private javax.swing.JButton btnFiltrarAluno;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpRemoverItemtbEndereco;
     private javax.swing.JPanel jpTituloProdutoListar;
     private javax.swing.JLabel lblNomeOrientador;
     private javax.swing.JLabel lblTituloOrientadorListar;
-    private javax.swing.JTable tblListagemOrientador;
-    private javax.swing.JTextField txtFiltrarC;
+    private javax.swing.JTable tblListagemAluno;
+    private javax.swing.JTextField txtFiltrarA;
     // End of variables declaration//GEN-END:variables
 }

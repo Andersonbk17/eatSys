@@ -51,7 +51,8 @@ public class frmBody extends javax.swing.JFrame {
         jmiCurso = new javax.swing.JMenuItem();
         jmiAreaConhecimento = new javax.swing.JMenuItem();
         jmBodyListar = new javax.swing.JMenu();
-        jmiOrientadorListar = new javax.swing.JMenuItem();
+        jmiListarOrientador = new javax.swing.JMenuItem();
+        jmiListarAluno = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jmBodyProjetos = new javax.swing.JMenu();
         jmBodyRelarotio = new javax.swing.JMenu();
@@ -159,13 +160,21 @@ public class frmBody extends javax.swing.JFrame {
         jmBodyListar.setForeground(new java.awt.Color(0, 0, 0));
         jmBodyListar.setText("Listar");
 
-        jmiOrientadorListar.setText("Orientador");
-        jmiOrientadorListar.addActionListener(new java.awt.event.ActionListener() {
+        jmiListarOrientador.setText("Orientador");
+        jmiListarOrientador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiOrientadorListarActionPerformed(evt);
+                jmiListarOrientadorActionPerformed(evt);
             }
         });
-        jmBodyListar.add(jmiOrientadorListar);
+        jmBodyListar.add(jmiListarOrientador);
+
+        jmiListarAluno.setText("Aluno");
+        jmiListarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiListarAlunoActionPerformed(evt);
+            }
+        });
+        jmBodyListar.add(jmiListarAluno);
 
         jMenuItem1.setText("jMenuItem1");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -262,15 +271,9 @@ public class frmBody extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jmiAreaConhecimentoActionPerformed
 
-    private void jmiOrientadorListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiOrientadorListarActionPerformed
-        try {
-            ifrmOrientadorListar janela = new ifrmOrientadorListar();
-            add(janela);
-            janela.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jmiOrientadorListarActionPerformed
+    private void jmiListarOrientadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListarOrientadorActionPerformed
+     
+    }//GEN-LAST:event_jmiListarOrientadorActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
      
@@ -302,6 +305,17 @@ public class frmBody extends javax.swing.JFrame {
             Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jmiCursoActionPerformed
+
+    private void jmiListarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListarAlunoActionPerformed
+        try {
+            // TODO add your handling code here:
+            ifrmAlunoListar janela = new ifrmAlunoListar();
+            add(janela);
+            janela.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jmiListarAlunoActionPerformed
     private Usuario UsuarioLogado; 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
@@ -321,8 +335,9 @@ public class frmBody extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiCampus;
     private javax.swing.JMenuItem jmiCurso;
     private javax.swing.JMenuItem jmiCursoArea;
+    private javax.swing.JMenuItem jmiListarAluno;
+    private javax.swing.JMenuItem jmiListarOrientador;
     private javax.swing.JMenuItem jmiOrientador;
-    private javax.swing.JMenuItem jmiOrientadorListar;
     private javax.swing.JMenuItem jmiPPesquisa;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,7 @@ import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Pessoa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -71,7 +72,7 @@ public class AlunoDAO {
                 comando.setString(3, obj.getZonaEleitoral());
                 comando.setString(4, obj.getSituacaoMilitar());
                 comando.setString(5, obj.getCertidaoMilitar());
-                comando.setInt(6, 4);
+                comando.setInt(6, daoPessoa.ChaveEstrangeira(obj.getCpf()));
                 comando.setInt(7, 7);
                 comando.setInt(8, obj.getMatricula());
                 comando.setInt(9, obj.getAlunoCurso().getIdCursoArea());
@@ -214,7 +215,7 @@ public class AlunoDAO {
                      + "al.orgaoExpedidor,al.rgMae,al.cpfMae,al.localTrabalho,al.telefoneLocalTrabalho "
                      + "FROM Pessoa pe "
                      + "INNER JOIN Aluno al ON (pe.idPessoa = al.idPessoa)"
-                     + "WHERE al.status = 1");
+                     + "");
 
             ResultSet resultado = comando.executeQuery();
             List<Aluno> lista = new LinkedList<> ();
@@ -245,9 +246,9 @@ public class AlunoDAO {
                 aluno.setEnderecoRua(resultado.getString("pe.telefoneResidencial"));
                 aluno.setEnderecoRua(resultado.getString("pe.celular"));
                 aluno.setEnderecoRua(resultado.getString("pe.email"));
-                aluno.setPessoaCidade(cidade.Abrir(resultado.getInt("pe.cidade")));
+                aluno.setPessoaCidade(cidade.Abrir(resultado.getInt("pe.idCidade")));
                 aluno.setIdAluno(resultado.getInt("al.idAluno"));
-                aluno.setTituloEleitoral(resultado.getString("al.tituloEleitoral"));
+                aluno.setTituloEleitoral(resultado.getString("al.tituloEleitor"));
                 aluno.setSecaoEleitoral(resultado.getString("al.secaoEleitoral"));
                 aluno.setZonaEleitoral(resultado.getString("al.zonaEleitoral"));
                 aluno.setSituacaoMilitar(resultado.getString("al.situacaoMilitar"));
@@ -295,5 +296,96 @@ public class AlunoDAO {
         }
     
     }
+     
+     public List<Aluno> buscar(Aluno filtro) throws ErroValidacaoException {
+        try {
+            
+            String sql = ""
+                     + "SELECT pe.idPessoa,pe.nome,pe.cpf,pe.rg,pe.dataNascimento,pe.orgaoExpedidor,pe.dataExpedicao,pe.status, "
+                     + "pe.idCampus,pe.idNacionalidade,pe.idEstado,pe.rua,pe.numero,pe.complemento,pe.bairro,pe.cep, "
+                     + "pe.telefoneResidencial,pe.celular,pe.email,pe.idCidade, "
+                     + "al.idAluno,al.tituloEleitor,al.secaoEleitoral,al.zonaEleitoral,al.situacaoMilitar,al.certidaoMilitar, "
+                     + "al.status,al.matricula,al.idCurso,al.nomeResponsavel,al.rgResponsavel,al.orgaoExpedidorResponsavel,al.cpfResponsavel,al.nomeMae, "
+                     + "al.orgaoExpedidor,al.rgMae,al.cpfMae,al.localTrabalho,al.telefoneLocalTrabalho "
+                     + "FROM Pessoa pe "
+                     + "INNER JOIN Aluno al ON (pe.idPessoa = al.idPessoa)"
+                     + "";
+            String where = "";
+            
+            if(filtro.getNome().length() > 0){
+                where = "pe.nome like '%"+filtro.getNome()+"%' ";
+                where = where + " and pe.status=1 order by al.idAluno ";
+            }   
+
+            if(where.length() > 0){
+                sql = sql + " where " + where;
+            }
+            
+            if(where.length() == 0){
+                where = where + " pe.status=1 order by al.idAluno ";
+                sql = sql + " where " + where;
+            }
+            
+            Statement comando = conexao.getConexao().createStatement();
+            
+            ResultSet resultado = comando.executeQuery(sql);
+            // Cria uma lista de pessoas vazia
+            List<Aluno> lista = new LinkedList<>();
+            while (resultado.next()) {
+            
+                Aluno aluno = new Aluno();
+                CampusDAO campus = new CampusDAO();
+                NacionalidadeDAO nacionalidade = new NacionalidadeDAO();
+                EstadoDAO estado = new EstadoDAO();
+                CidadeDAO cidade = new CidadeDAO();
+                CursoDAO curso = new CursoDAO();
+
+                aluno.setIdPessoa(resultado.getInt("pe.idPessoa"));
+                aluno.setNome(resultado.getString("pe.nome"));
+                aluno.setCpf(resultado.getInt("pe.cpf"));
+                aluno.setRg(resultado.getString("pe.rg"));
+                aluno.setDataNascimento(resultado.getDate("pe.dataNascimento"));
+                aluno.setRgOrgaoExpedidor(resultado.getString("pe.orgaoExpedidor"));
+                aluno.setRgDataExpedicao(resultado.getDate("pe.dataExpedicao"));
+                aluno.setPessoaCampus(campus.Abrir(resultado.getInt("pe.idCampus")));
+                aluno.setPessoaNacionalidade(nacionalidade.Abrir(resultado.getInt("pe.idNacionalidade")));
+                aluno.setPessoaEstado(estado.Abrir(resultado.getInt("pe.idEstado")));
+                aluno.setEnderecoRua(resultado.getString("pe.rua"));
+                aluno.setEnderecoNumero(resultado.getString("pe.numero"));
+                aluno.setEnderecoComplmento(resultado.getString("pe.complemento"));
+                aluno.setEnderecoBairro(resultado.getString("pe.bairro"));
+                aluno.setEnderecoCep(resultado.getInt("pe.cep"));
+                aluno.setEnderecoRua(resultado.getString("pe.telefoneResidencial"));
+                aluno.setEnderecoRua(resultado.getString("pe.celular"));
+                aluno.setEnderecoRua(resultado.getString("pe.email"));
+                aluno.setPessoaCidade(cidade.Abrir(resultado.getInt("pe.idCidade")));
+                aluno.setIdAluno(resultado.getInt("al.idAluno"));
+                aluno.setTituloEleitoral(resultado.getString("al.tituloEleitor"));
+                aluno.setSecaoEleitoral(resultado.getString("al.secaoEleitoral"));
+                aluno.setZonaEleitoral(resultado.getString("al.zonaEleitoral"));
+                aluno.setSituacaoMilitar(resultado.getString("al.situacaoMilitar"));
+                aluno.setCertidaoMilitar(resultado.getString("al.certidaoMilitar"));
+                aluno.setMatricula(resultado.getInt("al.matricula"));
+                aluno.setAlunoCurso(curso.Abrir(resultado.getInt("al.idCurso")));
+                aluno.setNomePai(resultado.getString("al.nomeResponsavel"));
+                aluno.setRgPai(resultado.getString("al.rgResponsavel"));
+                aluno.setOrgaoExpedidorPai(resultado.getString("al.orgaoExpedidorResponsavel"));
+                aluno.setCpfPai(resultado.getInt("al.cpfResponsavel"));
+                aluno.setNomePai(resultado.getString("al.nomeMae"));
+                aluno.setRgPai(resultado.getString("al.rgMae"));
+                aluno.setOrgaoExpedidorPai(resultado.getString("al.orgaoExpedidor"));
+                aluno.setCpfPai(resultado.getInt("al.cpfMae"));
+                aluno.setLocalTrabalho(resultado.getString("al.localTrabalho"));
+                aluno.setTelefoneLocalTrabalho(resultado.getString("al.telefoneLocalTrabalho"));
+                
+                lista.add(aluno);     
+            }
+            return lista;
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+     }
     
 }

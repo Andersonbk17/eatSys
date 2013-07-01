@@ -25,16 +25,15 @@ public class PessoaDAO {
          
          //Aqui estou fazendo uma consulta de Pessoa(idPessoa) atravez do cpf, se e somente se cpf for igual a obj.getCpf
          PreparedStatement comandoConsulta = conexao.getConexao().prepareStatement(""
-                 + "SELECT pe.idPessoa FROM Pessoa pe "
-                 + "INNER JOIN Aluno al ON (pe.idPessoa = al.idPessoa) "
-                 + "WHERE pe.cpf = ? ");
+                 + "SELECT MAX(idPessoa) FROM Pessoa "
+                 + "WHERE cpf = ? AND status = 1");
          comandoConsulta.setInt(1,Cpf); 
          ResultSet resultado = comandoConsulta.executeQuery();
          resultado.first();
                 
          //Aqui criei uma variavel do tipo inteiro para armazenar o valor da consulta Pessoa(idPessoa)
          int aux;
-         aux = resultado.getInt("pe.idPessoa");
+         aux = resultado.getInt("MAX(idPessoa)");
                   
          return aux;
     }
