@@ -67,8 +67,8 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
            
             model.addRow(valores);
         }
-        tblListagemAluno.setModel(model);
-        tblListagemAluno.repaint();
+        tblListarAluno.setModel(model);
+        tblListarAluno.repaint();
         
     }
     
@@ -85,14 +85,17 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
         txtFiltrarA = new javax.swing.JTextField();
         btnFiltrarAluno = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblListagemAluno = new javax.swing.JTable();
+        tblListarAluno = new javax.swing.JTable();
         jpTituloProdutoListar = new javax.swing.JPanel();
         lblTituloOrientadorListar = new javax.swing.JLabel();
-        jpRemoverItemtbEndereco = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(1000, 420));
+        setMinimumSize(new java.awt.Dimension(1024, 700));
+        setPreferredSize(new java.awt.Dimension(1024, 700));
 
         lblNomeOrientador.setText("Nome");
 
@@ -103,7 +106,7 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
             }
         });
 
-        tblListagemAluno.setModel(new javax.swing.table.DefaultTableModel(
+        tblListarAluno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -114,12 +117,7 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
 
             }
         ));
-        tblListagemAluno.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblListagemAlunoMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblListagemAluno);
+        jScrollPane1.setViewportView(tblListarAluno);
 
         jpTituloProdutoListar.setBackground(new java.awt.Color(102, 204, 0));
 
@@ -133,7 +131,7 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
             .addGroup(jpTituloProdutoListarLayout.createSequentialGroup()
                 .addGap(439, 439, 439)
                 .addComponent(lblTituloOrientadorListar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(511, Short.MAX_VALUE))
         );
         jpTituloProdutoListarLayout.setVerticalGroup(
             jpTituloProdutoListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,27 +141,18 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19))
         );
 
-        jpRemoverItemtbEndereco.setBackground(new java.awt.Color(102, 204, 0));
+        jButton1.setText("Visualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
-        jLabel3.setText("Clique sobre algum campo para ver versão FULL ");
+        jButton2.setText("Editar");
 
-        javax.swing.GroupLayout jpRemoverItemtbEnderecoLayout = new javax.swing.GroupLayout(jpRemoverItemtbEndereco);
-        jpRemoverItemtbEndereco.setLayout(jpRemoverItemtbEnderecoLayout);
-        jpRemoverItemtbEnderecoLayout.setHorizontalGroup(
-            jpRemoverItemtbEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpRemoverItemtbEnderecoLayout.createSequentialGroup()
-                .addGap(305, 305, 305)
-                .addComponent(jLabel3)
-                .addContainerGap(357, Short.MAX_VALUE))
-        );
-        jpRemoverItemtbEnderecoLayout.setVerticalGroup(
-            jpRemoverItemtbEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpRemoverItemtbEnderecoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jButton3.setText("Deletar");
+
+        jButton4.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,13 +167,21 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnFiltrarAluno)
+                        .addComponent(btnFiltrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jpRemoverItemtbEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1)
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,14 +189,18 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
                 .addComponent(jpTituloProdutoListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomeOrientador)
-                    .addComponent(btnFiltrarAluno))
+                    .addComponent(btnFiltrarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jpRemoverItemtbEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83))
         );
 
         pack();
@@ -224,32 +225,34 @@ public class ifrmAlunoListar extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnFiltrarAlunoActionPerformed
 
-    private void tblListagemAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListagemAlunoMouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            Object valor = tblListagemAluno.getValueAt( tblListagemAluno.getSelectedRow(), 0);
-            Aluno al = null;
-            
-            al = dao.Abrir((int)valor);
-            ifrmlistarAlunoFull janela = new ifrmlistarAlunoFull(al, dao);
-            this.getParent().add(janela);
-            janela.setVisible(true);
-            this.setVisible(false);
+            // TODO add your handling code here:
+             Object valor = tblListarAluno.getValueAt( tblListarAluno.getSelectedRow(), 0);
+                
+             Aluno a = null;
+                    
+             a = dao.Abrir((int)valor);
+             ifrmlistarAlunoFull janela = new ifrmlistarAlunoFull(a, dao);
+             this.getParent().add(janela);
+             janela.setVisible(true);
+             this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(ifrmAlunoListar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-    }//GEN-LAST:event_tblListagemAlunoMouseClicked
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFiltrarAluno;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel jpRemoverItemtbEndereco;
     private javax.swing.JPanel jpTituloProdutoListar;
     private javax.swing.JLabel lblNomeOrientador;
     private javax.swing.JLabel lblTituloOrientadorListar;
-    private javax.swing.JTable tblListagemAluno;
+    private javax.swing.JTable tblListarAluno;
     private javax.swing.JTextField txtFiltrarA;
     // End of variables declaration//GEN-END:variables
 }

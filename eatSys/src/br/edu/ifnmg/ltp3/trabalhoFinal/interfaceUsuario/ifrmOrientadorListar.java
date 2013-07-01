@@ -87,7 +87,8 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(1000, 420));
+        setMinimumSize(new java.awt.Dimension(1024, 700));
+        setPreferredSize(new java.awt.Dimension(1024, 700));
 
         lblNomeOrientador.setText("Nome");
 
@@ -150,7 +151,7 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
             .addGroup(jpRemoverItemtbEnderecoLayout.createSequentialGroup()
                 .addGap(305, 305, 305)
                 .addComponent(jLabel3)
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
         jpRemoverItemtbEnderecoLayout.setVerticalGroup(
             jpRemoverItemtbEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
