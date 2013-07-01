@@ -72,11 +72,12 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
        AlunoDAO daoAluno = new AlunoDAO();
         try {
             for(Aluno a : daoAluno.ListarTodos()){
-                jcbProjetoPesquisaAluno.addItem(a);
+               jcbProjetoPesquisaAluno.addItem(a);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ifrmProjetoPesquisaCad.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     private void carregaCbxAreasConhecimento(){

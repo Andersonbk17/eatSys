@@ -5,16 +5,11 @@
 package br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess;
 
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Aluno;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Nacionalidade;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Pessoa;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
