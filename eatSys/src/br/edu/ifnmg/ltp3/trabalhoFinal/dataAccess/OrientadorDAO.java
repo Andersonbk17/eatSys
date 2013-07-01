@@ -132,7 +132,8 @@ public class OrientadorDAO {
     
     public Orientador Abrir(int idOrientador) throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Orientador WHERE idOrientador = ? AND status = 1");
+            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Pessoa p "
+                    + "INNER JOIN Orientador o ON p.idPessoa = o.idPessoa WHERE p.status = 1 AND o.status = 1 AND idOrientador = ?");
             comando.setInt(1, idOrientador);
             ResultSet consulta = comando.executeQuery();
             Orientador novo = null;
@@ -164,7 +165,7 @@ public class OrientadorDAO {
                 novo.setPessoaNacionalidade(novoNacionaldiade.Abrir(consulta.getInt("idNacionalidade")));
                 novo.setRg(consulta.getString("rg"));
                 //novo.setRgDataExpedicao(novoEstado);
-                novo.setRgOrgaoExpedidor(consulta.getString("orgaoExpeditor"));
+                novo.setRgOrgaoExpedidor(consulta.getString("orgaoExpedidor"));
                 novo.setTelefoneCelular(consulta.getString("celular"));
                 novo.setTelefoneFixo(consulta.getString("telefoneResidencial"));
                 novo.setTelefoneRamal(consulta.getString("telefoneRamal"));

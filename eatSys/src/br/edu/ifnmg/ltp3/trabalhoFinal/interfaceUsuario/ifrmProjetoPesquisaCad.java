@@ -9,17 +9,14 @@ import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AreaConhecimento_CnpqDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AreaConhecimento_CnpqSubAreasDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CampusDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
-import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.ParticipanteProjetoDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.ProjetoPesquisaDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Aluno;
-import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.AreaConhecimento_Cnpq;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.AreaConhecimento_CnpqSubAreas;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ParticipanteProjeto;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -1055,6 +1052,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
         projetoPesquisa.setListaParticipantes(listaParticipantes);
         projetoPesquisa.setOrientador((Orientador)jcbProjetoPesquisaOrientador.getSelectedItem());
         projetoPesquisa.setResumo(txtProjetoPesquisaResumo.getText());
+        projetoPesquisa.setTitulo(txtProjetoPesquisaTitulo.getText());
         
         ProjetoPesquisaDAO dao = new ProjetoPesquisaDAO();
         try {

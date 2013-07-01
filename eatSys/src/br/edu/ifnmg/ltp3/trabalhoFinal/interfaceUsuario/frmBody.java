@@ -54,6 +54,7 @@ public class frmBody extends javax.swing.JFrame {
         jmiListarOrientador = new javax.swing.JMenuItem();
         jmiListarAluno = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemListarProjetoPesquisa = new javax.swing.JMenuItem();
         jmBodyProjetos = new javax.swing.JMenu();
         jmBodyRelarotio = new javax.swing.JMenu();
         jmBodySobre = new javax.swing.JMenu();
@@ -183,6 +184,14 @@ public class frmBody extends javax.swing.JFrame {
             }
         });
         jmBodyListar.add(jMenuItem1);
+
+        jMenuItemListarProjetoPesquisa.setText("ProjetoPesquisa");
+        jMenuItemListarProjetoPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListarProjetoPesquisaActionPerformed(evt);
+            }
+        });
+        jmBodyListar.add(jMenuItemListarProjetoPesquisa);
 
         jMenuBar1.add(jmBodyListar);
 
@@ -316,11 +325,18 @@ public class frmBody extends javax.swing.JFrame {
             Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jmiListarAlunoActionPerformed
+
+    private void jMenuItemListarProjetoPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarProjetoPesquisaActionPerformed
+       ifrmProjetoPesquisaListar janela = new ifrmProjetoPesquisaListar();
+       janela.setVisible(true);
+       add(janela);
+    }//GEN-LAST:event_jMenuItemListarProjetoPesquisaActionPerformed
     private Usuario UsuarioLogado; 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemFechar;
+    private javax.swing.JMenuItem jMenuItemListarProjetoPesquisa;
     private javax.swing.JMenuItem jMenuItemUsuarios;
     private javax.swing.JMenuItem jMenuitemSair;
     private javax.swing.JPopupMenu.Separator jSeparator1;

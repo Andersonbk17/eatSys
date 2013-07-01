@@ -4,19 +4,77 @@
  */
 package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.ProjetoPesquisaDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
- * @author lewandowsky
+ * @author emerson
  */
 public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
-
+    
+    ProjetoPesquisaDAO dao;
+    
+    
+   
     /**
-     * Creates new form ifrmProjetoPesquisaListar
+     * Creates new form frmListarProduto
      */
-    public ifrmProjetoPesquisaListar() {
+    public ifrmProjetoPesquisaListar()  {
         initComponents();
-    }
+        
+        List<ProjetoPesquisa> projetoPesquisa =  null;
+        dao = new ProjetoPesquisaDAO();
+        try {
+            projetoPesquisa = dao.ListarTodos();
+        } catch (SQLException ex) {
+            Logger.getLogger(ifrmProjetoPesquisaListar.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+        preencheTabela(projetoPesquisa);
+        
+
+    }
+    
+    //Metodo para listar Produtos na Tabela tblListagemProd
+    private void preencheTabela(List<ProjetoPesquisa> lista) {
+       
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("TÍTULO");
+        model.addColumn("DATA INICIO");
+        model.addColumn("DATA TÉRMINO");
+        model.addColumn("COORDENADOR");
+        model.addColumn("ALUNO");
+        model.addColumn("STATUS");
+        
+       
+
+        for (ProjetoPesquisa a : lista) {
+            Vector valores = new Vector();
+            valores.add(0,a.getIdProjetoPesquisa());
+            valores.add(1,a.getTitulo());
+            valores.add(2,a.getDataInicio());
+            valores.add(3,a.getDataTermino());
+            valores.add(4,a.getOrientador().getNome());
+            valores.add(5,a.getAluno().getNome());
+            valores.add(6,a.getStatus());
+            
+           
+            model.addRow(valores);
+        }
+        tblListarAluno.setModel(model);
+        tblListarAluno.repaint();
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +84,199 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblNomeOrientador = new javax.swing.JLabel();
+        txtFiltrarA = new javax.swing.JTextField();
+        btnFiltrarAluno = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblListarAluno = new javax.swing.JTable();
+        jpTituloProdutoListar = new javax.swing.JPanel();
+        lblTituloOrientadorListar = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+
+        setClosable(true);
+        setMinimumSize(new java.awt.Dimension(1024, 700));
+        setPreferredSize(new java.awt.Dimension(1024, 700));
+
+        lblNomeOrientador.setText("Nome");
+
+        btnFiltrarAluno.setText("Filtrar");
+        btnFiltrarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarAlunoActionPerformed(evt);
+            }
+        });
+
+        tblListarAluno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tblListarAluno);
+
+        jpTituloProdutoListar.setBackground(new java.awt.Color(102, 204, 0));
+
+        lblTituloOrientadorListar.setFont(new java.awt.Font("Dialog", 2, 24)); // NOI18N
+        lblTituloOrientadorListar.setText("Projeto Pesquisa");
+
+        javax.swing.GroupLayout jpTituloProdutoListarLayout = new javax.swing.GroupLayout(jpTituloProdutoListar);
+        jpTituloProdutoListar.setLayout(jpTituloProdutoListarLayout);
+        jpTituloProdutoListarLayout.setHorizontalGroup(
+            jpTituloProdutoListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpTituloProdutoListarLayout.createSequentialGroup()
+                .addGap(439, 439, 439)
+                .addComponent(lblTituloOrientadorListar)
+                .addContainerGap(380, Short.MAX_VALUE))
+        );
+        jpTituloProdutoListarLayout.setVerticalGroup(
+            jpTituloProdutoListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpTituloProdutoListarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTituloOrientadorListar)
+                .addGap(19, 19, 19))
+        );
+
+        jButton1.setText("Visualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Editar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Cancelar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jpTituloProdutoListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNomeOrientador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFiltrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 402, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jpTituloProdutoListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFiltrarAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNomeOrientador)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnFiltrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarAlunoActionPerformed
+        ProjetoPesquisa pr = new ProjetoPesquisa();
+        try {
+            pr.setTitulo(txtFiltrarA.getText());
+        }catch (Exception ex) {
+            System.out.printf("Erro");
+        }
+        
+        List<ProjetoPesquisa> lista = null;
+        try {
+           // lista = dao.buscar(pr);
+        } catch (Exception ex) {
+            System.out.printf("Erro");
+        }
+        
+        preencheTabela(lista);
+        
+    }//GEN-LAST:event_btnFiltrarAlunoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        /*       
+        try {
+            // TODO add your handling code here:
+             Object valor = tblListarAluno.getValueAt( tblListarAluno.getSelectedRow(), 0);
+                
+             Aluno a = null;
+             
+             a = dao.Abrir((int)valor);
+             ifrmlistarAlunoFull janela = new ifrmlistarAlunoFull(a, dao, 0);
+             this.getParent().add(janela);
+             janela.setVisible(true);
+             this.setVisible(false);
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(ifrmAlunoListar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        * */
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        /*
+        try {
+            // TODO add your handling code here:
+             Object valor = tblListarAluno.getValueAt( tblListarAluno.getSelectedRow(), 0);
+                    
+                    Aluno a = null;
+                        
+                    a = dao.Abrir((int)valor);
+                    ifrmlistarAlunoFull janela = new ifrmlistarAlunoFull(a, dao, 1);
+                    this.getParent().add(janela);
+                    janela.setVisible(true);
+                    this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(ifrmAlunoListar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        * */
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFiltrarAluno;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jpTituloProdutoListar;
+    private javax.swing.JLabel lblNomeOrientador;
+    private javax.swing.JLabel lblTituloOrientadorListar;
+    private javax.swing.JTable tblListarAluno;
+    private javax.swing.JTextField txtFiltrarA;
     // End of variables declaration//GEN-END:variables
 }
