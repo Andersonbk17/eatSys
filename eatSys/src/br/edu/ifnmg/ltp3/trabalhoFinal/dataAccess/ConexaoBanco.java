@@ -21,8 +21,8 @@ public class ConexaoBanco {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conexao = DriverManager
-            .getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","aluno");
-            //.getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","epo123");
+            //.getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","aluno");
+            .getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","epo123");
             //.getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","170737");
             //conexao.setAutoCommit(false);
         
@@ -50,8 +50,8 @@ public class ConexaoBanco {
     public void conectar(){
         try {
             conexao = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","aluno");
-                  //.getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","epo123");
+                  //.getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","aluno");
+                  .getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","epo123");
                   //.getConnection("jdbc:mysql://localhost:3306/trabalhoFinal","root","170737");
         } catch (SQLException ex) {
             Logger.getLogger(ConexaoBanco.class.getName()).log(Level.SEVERE, null, ex);
