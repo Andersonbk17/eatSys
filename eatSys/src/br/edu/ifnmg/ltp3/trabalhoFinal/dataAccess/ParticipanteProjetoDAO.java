@@ -42,7 +42,7 @@ public class ParticipanteProjetoDAO {
                 comando.execute();
             }else{
                 PreparedStatement comando1 = conexao.getConexao().prepareCall("UPDATE ParticipanteProjeto SET nome = ?,titulacao = ?,"
-                        + "observacao = ?,idCampus = ?,idProjetoPesquisa = ? WHERE idParticipanteProjeto = ?");
+                        + "observacao = ?,idCampus = ?,idProjetoPesquisa = ? WHERE idParticipantesProjeto = ?");
                 comando1.setString(1, obj.getNome());
                 comando1.setString(2, obj.getTitulacao());
                 comando1.setString(3, obj.getObservacao());

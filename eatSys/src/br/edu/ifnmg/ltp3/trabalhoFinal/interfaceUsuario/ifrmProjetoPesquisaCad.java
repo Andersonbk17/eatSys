@@ -6,6 +6,7 @@ package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AlunoDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AreaConhecimento_CnpqDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AreaConhecimento_CnpqSubAreasDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.CampusDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.ParticipanteProjetoDAO;
@@ -82,9 +83,9 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
     
     private void carregaCbxAreasConhecimento(){
         AreaConhecimento_CnpqDAO daoAreasConhecimentoCnpq = new AreaConhecimento_CnpqDAO();
-        AreaConhecimento_CnpqSubAreas daoAreasConhecimenroCnpq = new AreaConhecimento_CnpqSubAreas();
+        AreaConhecimento_CnpqSubAreasDAO daoAreasConhecimentoSub= new AreaConhecimento_CnpqSubAreasDAO();
         try {
-            for(AreaConhecimento_Cnpq a : daoAreasConhecimentoCnpq.ListarTodos()){
+            for(AreaConhecimento_CnpqSubAreas a : daoAreasConhecimentoSub.ListarTodos()){
                 jcbProjetoPesquisaAreaConhecimento.addItem(a);
             }
         } catch (SQLException ex) {
@@ -114,26 +115,26 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
          if(confirmacao == 1){
          //Reabrir campus
          txtProjetoPesquisaAgenciaFinan.setVisible(true);
-         txtProjetoPesquisaValorFinan.setVisible(true);
+         txtValorFinanciamento.setVisible(true);
          txtProjetoPesquisaDataFinan.setVisible(true);
          lblAgenciaFinan.setVisible(true);
          lblValorFinan.setVisible(true);
          lblDataFinan.setVisible(true);
          //setar Null
          txtProjetoPesquisaAgenciaFinan.setText(null);
-         txtProjetoPesquisaValorFinan.setText(null);
+         txtValorFinanciamento.setText(null);
          txtProjetoPesquisaDataFinan.setText(null);
          }else{
              //esconder campus
          txtProjetoPesquisaAgenciaFinan.setVisible(false);
-         txtProjetoPesquisaValorFinan.setVisible(false);
+         txtValorFinanciamento.setVisible(false);
          txtProjetoPesquisaDataFinan.setVisible(false);
          lblAgenciaFinan.setVisible(false);
          lblValorFinan.setVisible(false);
          lblDataFinan.setVisible(false);      
          //setar Null
          txtProjetoPesquisaAgenciaFinan.setText(null);
-         txtProjetoPesquisaValorFinan.setText(null);
+         txtValorFinanciamento.setText(null);
          txtProjetoPesquisaDataFinan.setText(null);
          }
     }
@@ -242,7 +243,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
         }
         catch (Exception e){
         }
-        txtProjetoPesquisaValorFinan = new javax.swing.JTextField();
+        txtValorFinanciamento = new javax.swing.JTextField();
         jrFinanCon = new javax.swing.JRadioButton();
         jrFinanSub = new javax.swing.JRadioButton();
         jLabel24 = new javax.swing.JLabel();
@@ -653,7 +654,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                             .addComponent(lblValorFinan))
                         .addGap(28, 28, 28)
                         .addGroup(jPanelFinanciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtProjetoPesquisaValorFinan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtValorFinanciamento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtProjetoPesquisaDataFinan, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtProjetoPesquisaAgenciaFinan, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jrFinanCon)
@@ -690,7 +691,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFinanciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblValorFinan)
-                    .addComponent(txtProjetoPesquisaValorFinan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtValorFinanciamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
                 .addComponent(lblPossuiBolsas)
                 .addGap(31, 31, 31)
@@ -1043,7 +1044,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
         projetoPesquisa.setCampus((Campus)jcbProjetoPesquisaCampus.getSelectedItem());
         projetoPesquisa.setNomeConvenio(txtQualConvenio.getText());
         projetoPesquisa.setFundacaoNome(txtQualFundacao.getText());
-        projetoPesquisa.setValorFinanciamento(Float.parseFloat(txtProjetoPesquisaValorFinan.getText()));
+        projetoPesquisa.setValorFinanciamento(Float.parseFloat(txtValorFinanciamento.getText()));
         //projetoPesquisa.setDataFinanciamento(null);
         
         projetoPesquisa.setNumeroBolsas(Integer.parseInt(txtNumeroBolsas.getText()));
@@ -1285,11 +1286,11 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtProjetoPesquisaDataFinan;
     private javax.swing.JTextArea txtProjetoPesquisaResumo;
     private javax.swing.JTextField txtProjetoPesquisaTitulo;
-    private javax.swing.JTextField txtProjetoPesquisaValorFinan;
     private javax.swing.JTextField txtQualConvenio;
     private javax.swing.JTextField txtQualFundacao;
     private javax.swing.JTextArea txtReferenciasBibliograficas;
     private javax.swing.JTextArea txtResultadosEsperados;
     private javax.swing.JTextField txtTitulacao;
+    private javax.swing.JTextField txtValorFinanciamento;
     // End of variables declaration//GEN-END:variables
 }

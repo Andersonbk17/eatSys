@@ -38,15 +38,18 @@ public class ProjetoPesquisaDAO {
                         + "bolsaIniciacao,numeroBolsas,agenciaFinanciadora,convenio,nomeConvenio,status,fundacao,fundacaoNome,projetoMulticampi,"
                         + "idAluno,idAreaConhecimento_CnpqSubAreas) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                 comando.setString(1, obj.getTitulo());
-                //comando.setString(2, obj.getTitulacao());
-                //comando.setString(3, obj.getObservacao());
+                java.sql.Date dataInicio = new java.sql.Date(obj.getDataInicio().getTime());
+                comando.setDate(2,dataInicio);
+                java.sql.Date dataTermino = new java.sql.Date(obj.getDataTermino().getTime());
+                comando.setDate(3, dataTermino);
                 comando.setString(4,obj.getGrupoPesquisa());
                 comando.setInt(5,obj.getCampus().getIdCampus());
                 comando.setString(6, obj.getResumo());
                 comando.setInt(7,obj.getOrientador().getIdOrientador());
                 comando.setInt(8, obj.getFinanciamentoAprovado());
                 comando.setFloat(9, obj.getValorFinanciamento());
-                //comando.setDate(10, null);
+                java.sql.Date dataFinanciamento = new java.sql.Date(obj.getDataFinanciamento().getTime());
+                comando.setDate(10, dataFinanciamento);
                 comando.setInt(11, obj.getBolsasIniciacao());
                 comando.setInt(12, obj.getNumeroBolsas());
                 comando.setString(13, obj.getAgenciaFinanciadora());
@@ -64,6 +67,7 @@ public class ProjetoPesquisaDAO {
                 PreparedStatement comando1 = conexao.getConexao().prepareStatement("SELECT max(idProjetoPesquisa) FROM "
                         + " ProjetoPesquisa WHERE status =1");
                 ResultSet consulta = comando1.executeQuery();
+                consulta.first();
                 for(ParticipanteProjeto p : obj.getListaParticipantes()){
                     ParticipanteProjetoDAO dao = new ParticipanteProjetoDAO();
                     dao.Salvar(p, consulta.getInt("max(idProjetoPesquisa)"));
@@ -74,16 +78,18 @@ public class ProjetoPesquisaDAO {
                         + "dataFinanciamento = ?,bolsaIniciacao = ?,numeroBolsas = ?,agenciaFinanciadora = ?,convenio = ?,nomeConvenio = ?,"
                         + "status = ?,fundacao = ?,fundacaoNome = ?,projetoMulticampi = ?,idAluno = ?,idAreaConhecimento_CnpqSubAreas = ? "
                         + "WHERE idProjetoPesquisa = ?");
-                comando1.setString(1, obj.getTitulo());
-                //comando1.setString(2, obj.getTitulacao());
-                //comando1.setString(3, obj.getObservacao());
+                comando1.setString(1, obj.getTitulo());java.sql.Date dataInicio = new java.sql.Date(obj.getDataInicio().getTime());
+                comando1.setDate(2,dataInicio);
+                java.sql.Date dataTermino = new java.sql.Date(obj.getDataTermino().getTime());
+                comando1.setDate(3, dataTermino);
                 comando1.setString(4,obj.getGrupoPesquisa());
                 comando1.setInt(5,obj.getCampus().getIdCampus());
                 comando1.setString(6, obj.getResumo());
                 comando1.setInt(7,obj.getOrientador().getIdOrientador());
                 comando1.setInt(8, obj.getFinanciamentoAprovado());
                 comando1.setFloat(9, obj.getValorFinanciamento());
-                //comando1.setDate(10, null);
+                java.sql.Date dataFinanciamento = new java.sql.Date(obj.getDataFinanciamento().getTime());
+                comando1.setDate(10, dataFinanciamento);
                 comando1.setInt(11, obj.getBolsasIniciacao());
                 comando1.setInt(12, obj.getNumeroBolsas());
                 comando1.setString(13, obj.getAgenciaFinanciadora());
