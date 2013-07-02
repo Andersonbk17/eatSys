@@ -281,7 +281,13 @@ public class frmBody extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAreaConhecimentoActionPerformed
 
     private void jmiListarOrientadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListarOrientadorActionPerformed
-     
+        try {
+            ifrmOrientadorListar janela = new ifrmOrientadorListar();
+            add(janela);
+            janela.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmBody.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jmiListarOrientadorActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
