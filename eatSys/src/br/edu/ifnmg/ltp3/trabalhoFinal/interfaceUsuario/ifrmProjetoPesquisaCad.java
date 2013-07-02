@@ -13,6 +13,7 @@ import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.ProjetoPesquisaDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Aluno;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.AreaConhecimento_CnpqSubAreas;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.CronogramaDeAtividade;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ParticipanteProjeto;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
@@ -302,6 +303,17 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
         lblReferenciasBibliograficas = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
         txtReferenciasBibliograficas = new javax.swing.JTextArea();
+        jPanel4 = new javax.swing.JPanel();
+        lblDescricaoAtividade = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        txtDescricaoAtividade = new javax.swing.JTextArea();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        tblCronogramaTrabalho = new javax.swing.JTable();
+        btnAdicionar = new javax.swing.JButton();
+        btnRemover = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtDataCronograma = new javax.swing.JFormattedTextField();
         btnSalvarProjetoPesquisa = new javax.swing.JButton();
         btnCancelarProjetoPesquisa = new javax.swing.JButton();
 
@@ -456,7 +468,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addComponent(lblResumo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jbtProjetoPesquisa.addTab("Geral", jPanelGeral);
@@ -578,7 +590,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addComponent(jrbMultiCampiSim)
                 .addGap(18, 18, 18)
                 .addComponent(jrbMultiCampiNao)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         jbtProjetoPesquisa.addTab("Convenio/Gestão", jPanelConvenio);
@@ -711,7 +723,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanelFinanciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumeroBolsas)
                     .addComponent(txtNumeroBolsas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jbtProjetoPesquisa.addTab("Financiamento/Iniciação", jPanelFinanciamento);
@@ -809,7 +821,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanelParticipanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(txtTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanelParticipanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(jcbProjetoPesquisaCampusPartici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -890,7 +902,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGroup(jPanelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblJustificativa)
                     .addGroup(jPanelResumoLayout.createSequentialGroup()
@@ -942,7 +954,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jbtProjetoPesquisa.addTab("cont", jPanel2);
@@ -989,10 +1001,113 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addComponent(lblReferenciasBibliograficas)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jbtProjetoPesquisa.addTab("conti", jPanel3);
+
+        lblDescricaoAtividade.setText("Descrição da Atividade");
+
+        txtDescricaoAtividade.setColumns(20);
+        txtDescricaoAtividade.setLineWrap(true);
+        txtDescricaoAtividade.setRows(5);
+        jScrollPane10.setViewportView(txtDescricaoAtividade);
+
+        tblCronogramaTrabalho.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tblCronogramaTrabalho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCronogramaTrabalhoMouseClicked(evt);
+            }
+        });
+        jScrollPane11.setViewportView(tblCronogramaTrabalho);
+
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
+
+        btnRemover.setText("Remover");
+
+        btnEditar.setText("Editar");
+
+        jLabel6.setText("Data");
+
+        try {
+            txtDataCronograma.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAdicionar)))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDataCronograma, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblDescricaoAtividade))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtDataCronograma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAdicionar)
+                .addGap(3, 3, 3)
+                .addComponent(lblDescricaoAtividade)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(btnRemover)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))))
+        );
+
+        jbtProjetoPesquisa.addTab("Cronograma de Atividades", jPanel4);
 
         btnSalvarProjetoPesquisa.setText("Salvar");
         btnSalvarProjetoPesquisa.addActionListener(new java.awt.event.ActionListener() {
@@ -1178,6 +1293,28 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
        tmpParticipante = jtbListaParcicipantesProjetoPesquisa.getSelectedRow();
         
     }//GEN-LAST:event_jtbListaParcicipantesProjetoPesquisaMouseClicked
+
+    private void tblCronogramaTrabalhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCronogramaTrabalhoMouseClicked
+       tmpAtividade = tblCronogramaTrabalho.getSelectedRow();
+        
+    }//GEN-LAST:event_tblCronogramaTrabalhoMouseClicked
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        if(!txtDataCronograma.getText().isEmpty() && !txtDescricaoAtividade.getText().isEmpty()){
+            CronogramaDeAtividade tmp = new CronogramaDeAtividade();
+            try {
+                tmp.setDataInicio(formatarData(txtDataCronograma.getText()));
+            } catch (ParseException ex) {
+                Logger.getLogger(ifrmProjetoPesquisaCad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            tmp.setDescricao(txtDescricaoAtividade.getText());
+            tmp.setNumeroAtividade(++tmpNumAtividade );
+            listaCronograma.add(tmp);
+            carregaListaCronograma();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Os Campos não podem ser vazios !");
+        }
+    }//GEN-LAST:event_btnAdicionarActionPerformed
     private void carregaListaParticipantes(){
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nome");
@@ -1199,19 +1336,44 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
         jtbListaParcicipantesProjetoPesquisa.repaint();
     }
     
+    private void carregaListaCronograma(){
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Atividade");
+        model.addColumn("Descricao da Atividade");
+        model.addColumn("Data");
+      
+        
+     
+        for (CronogramaDeAtividade c : listaCronograma) {
+            Vector valores = new Vector();
+            valores.add(0,c.getNumeroAtividade());
+            valores.add(1,c.getDescricao());
+//            valores.add(12,c.getDataInicio());
+     
+            model.addRow(valores);
+        }
+        jtbListaParcicipantesProjetoPesquisa.setModel(model);
+        jtbListaParcicipantesProjetoPesquisa.repaint();
+    }
     private void remover(ParticipanteProjeto p){
         listaParticipantes.remove(p);
         carregaListaParticipantes();
     }
     int tmpParticipante;
+    int tmpAtividade;
+    int tmpNumAtividade = 0;
     ProjetoPesquisa projetoPesquisa = new ProjetoPesquisa();
     List<ParticipanteProjeto> listaParticipantes = new LinkedList<>();
+    List<CronogramaDeAtividade> listaCronograma = new LinkedList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bolsa;
     private javax.swing.ButtonGroup bolsas;
+    private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnCancelarProjetoPesquisa;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnParticipanteAdicionar;
     private javax.swing.JButton btnParticipanteRemover;
+    private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalvarProjetoPesquisa;
     private javax.swing.ButtonGroup convenio;
     private javax.swing.ButtonGroup financiomento;
@@ -1225,16 +1387,20 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelConvenio;
     private javax.swing.JPanel jPanelFinanciamento;
     private javax.swing.JPanel jPanelGeral;
     private javax.swing.JPanel jPanelParticipante;
     private javax.swing.JPanel jPanelResumo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1271,6 +1437,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblDataFinan;
     private javax.swing.JLabel lblDataInicio;
     private javax.swing.JLabel lblDataTermino;
+    private javax.swing.JLabel lblDescricaoAtividade;
     private javax.swing.JLabel lblGerenciadoFundacao;
     private javax.swing.JLabel lblGrupoPesquisa;
     private javax.swing.JLabel lblJustificativa;
@@ -1287,9 +1454,12 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblValorFinan;
     private javax.swing.JLabel lblprogramaPlano;
     private javax.swing.ButtonGroup multicampi;
+    private javax.swing.JTable tblCronogramaTrabalho;
+    private javax.swing.JFormattedTextField txtDataCronograma;
     private javax.swing.JTextField txtDataFinanciamento;
     private javax.swing.JFormattedTextField txtDataInicio;
     private javax.swing.JFormattedTextField txtDataTermino;
+    private javax.swing.JTextArea txtDescricaoAtividade;
     private javax.swing.JTextField txtGrupoPesquisa;
     private javax.swing.JTextArea txtIntroducao;
     private javax.swing.JTextArea txtJustificativa;
