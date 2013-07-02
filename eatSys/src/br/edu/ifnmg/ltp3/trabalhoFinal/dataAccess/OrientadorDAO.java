@@ -132,29 +132,54 @@ public class OrientadorDAO {
     
     public Orientador Abrir(int idOrientador) throws SQLException{
         try{
-            PreparedStatement comando = conexao.getConexao().prepareStatement("SELECT * FROM Pessoa p "
-                    + "INNER JOIN Orientador o ON p.idPessoa = o.idPessoa WHERE p.status = 1 AND o.status = 1 AND idOrientador = ?");
+
+            PreparedStatement comando = conexao.getConexao().prepareStatement(""
+                    + "SELECT pe.idPessoa,pe.nome,pe.cpf,pe.rg,pe.dataNascimento,pe.orgaoExpedidor,pe.dataExpedicao,pe.status, "
+                    + "pe.idCampus,pe.idNacionalidade,pe.idEstado,pe.rua,pe.numero,pe.complemento,pe.bairro,pe.cep, "
+                    + "pe.telefoneResidencial,pe.celular,pe.email,pe.idCidade, "
+                    + "o.tituloAcademico,o.telefoneRamal,o.localPermanencia,o.matriculaSiape,o.formacaoUniversitaria, "
+                    + "o.idOrientador,o.idCurso "
+                    + "FROM Orientador o "
+                    + "INNER JOIN Pessoa pe ON (pe.idPessoa=o.idPessoa) "
+                    + "WHERE o.idOrientador = ? AND pe.status = 1 ");
+
             comando.setInt(1, idOrientador);
             ResultSet consulta = comando.executeQuery();
             Orientador novo = null;
             if(consulta.first()){
                 novo = new Orientador();
-                CursoAreaDAO novoCursoArea = new CursoAreaDAO();
+                CursoDAO novoCursoArea = new CursoDAO();
                 CampusDAO novoCampus = new CampusDAO();
                 CidadeDAO  novoCidade = new CidadeDAO();
                 EstadoDAO novoEstado = new EstadoDAO();
                 NacionalidadeDAO novoNacionaldiade = new NacionalidadeDAO();
-                novo.setCpf(consulta.getInt("cpf"));
-                novo.setCursoArea(novoCursoArea.Abrir(consulta.getInt("idCurso")));
-                //novo.setDataNascimento(null);
-                novo.setEmailEndereco(consulta.getString("email"));
-                novo.setEnderecoNumero(consulta.getString("numero"));
-                novo.setEnderecoBairro(consulta.getString("bairro"));
-                novo.setEnderecoCep(consulta.getInt("cep"));
-                novo.setEnderecoComplmento(consulta.getString("complemento"));
-                novo.setEnderecoRua(consulta.getString("rua"));
-                novo.setFormacaoUniversitaria(consulta.getString("formacaoUniversitaria"));
+                novo.setCpf(consulta.getInt("pe.cpf"));
+                novo.setCursoArea(novoCursoArea.Abrir(consulta.getInt("o.idCurso")));
+                novo.setDataNascimento(consulta.getDate("pe.dataNascimento"));
+                novo.setEmailEndereco(consulta.getString("pe.email"));
+                novo.setEnderecoNumero(consulta.getString("pe.numero"));
+                novo.setEnderecoBairro(consulta.getString("pe.bairro"));
+                novo.setEnderecoCep(consulta.getInt("pe.cep"));
+                novo.setEnderecoComplmento(consulta.getString("pe.complemento"));
+                novo.setEnderecoRua(consulta.getString("pe.rua"));
+                novo.setFormacaoUniversitaria(consulta.getString("o.formacaoUniversitaria"));
                 novo.setIdOrientador(idOrientador);
+
+                novo.setIdPessoa(consulta.getInt("pe.idPessoa"));
+                novo.setLocalPermanencia(consulta.getString("o.localPermanencia"));
+                novo.setMatriculaSiape(consulta.getInt("o.matriculaSiape"));
+                novo.setNome(consulta.getString("pe.nome"));
+                novo.setPessoaCampus(novoCampus.Abrir(consulta.getInt("pe.idCampus")));
+                novo.setPessoaCidade(novoCidade.Abrir(consulta.getInt("pe.idCidade")));
+                novo.setPessoaEstado(novoEstado.Abrir(consulta.getInt("pe.idEstado")));
+                novo.setPessoaNacionalidade(novoNacionaldiade.Abrir(consulta.getInt("pe.idNacionalidade")));
+                novo.setRg(consulta.getString("pe.rg"));
+                novo.setRgDataExpedicao(consulta.getDate("pe.dataExpedicao"));
+                novo.setRgOrgaoExpedidor(consulta.getString("pe.orgaoExpedidor"));
+                novo.setTelefoneCelular(consulta.getString("pe.celular"));
+                novo.setTelefoneFixo(consulta.getString("pe.telefoneResidencial"));
+                novo.setTelefoneRamal(consulta.getString("o.telefoneRamal"));
+                novo.setTituloAcademico(consulta.getString("o.tituloAcademico"));
                 novo.setIdPessoa(consulta.getInt("idPessoa"));
                 novo.setLocalPermanencia(consulta.getString("localPermanencia"));
                 novo.setMatriculaSiape(consulta.getInt("matriculaSiape"));
@@ -170,6 +195,7 @@ public class OrientadorDAO {
                 novo.setTelefoneFixo(consulta.getString("telefoneResidencial"));
                 novo.setTelefoneRamal(consulta.getString("telefoneRamal"));
                 novo.setTituloAcademico(consulta.getString("tituloAcademico"));
+
                 /*conferir a cidade*/
                 
             
@@ -213,7 +239,7 @@ public class OrientadorDAO {
     
                 novo.setCpf(consulta.getInt("cpf"));
                 novo.setCursoArea(novoCursoArea.Abrir(consulta.getInt("idCurso")));
-                //novo.setDataNascimento(null);
+                novo.setDataNascimento(consulta.getDate("dataNascimento"));
                 novo.setEmailEndereco(consulta.getString("email"));
                 novo.setEnderecoNumero(consulta.getString("numero"));
                 novo.setEnderecoBairro(consulta.getString("bairro"));
@@ -231,7 +257,7 @@ public class OrientadorDAO {
                 novo.setPessoaEstado(novoEstado.Abrir(consulta.getInt("idEstado")));
                 novo.setPessoaNacionalidade(novoNacionaldiade.Abrir(consulta.getInt("idNacionalidade")));
                 novo.setRg(consulta.getString("rg"));
-                //novo.setRgDataExpedicao(novoEstado);
+                novo.setRgDataExpedicao(consulta.getDate("dataExpedicao"));
                 novo.setRgOrgaoExpedidor(consulta.getString("orgaoExpedidor"));
                 novo.setTelefoneCelular(consulta.getString("celular"));
                 novo.setTelefoneFixo(consulta.getString("telefoneResidencial"));
@@ -266,4 +292,82 @@ public class OrientadorDAO {
         }
    
     }
+    
+     public List<Orientador> buscar(Orientador filtro) throws ErroValidacaoException {
+        try {
+            
+            String sql = ""
+                    + "SELECT pe.idPessoa,pe.nome,pe.cpf,pe.rg,pe.dataNascimento,pe.orgaoExpedidor,pe.dataExpedicao,pe.status, "
+                    + "pe.idCampus,pe.idNacionalidade,pe.idEstado,pe.rua,pe.numero,pe.complemento,pe.bairro,pe.cep, "
+                    + "pe.telefoneResidencial,pe.celular,pe.email,pe.idCidade, "
+                    + "o.tituloAcademico,o.telefoneRamal,o.localPermanencia,o.matriculaSiape,o.formacaoUniversitaria, "
+                    + "o.idOrientador,o.idCurso "
+                    + "FROM Orientador o "
+                    + "INNER JOIN Pessoa pe ON (pe.idPessoa=o.idPessoa) ";
+            String where = "";
+            
+            if(filtro.getNome().length() > 0){
+                where = "pe.nome like '%"+filtro.getNome()+"%' ";
+                where = where + " and pe.status=1 order by o.idOrientador ";
+            }   
+
+            if(where.length() > 0){
+                sql = sql + " where " + where;
+            }
+            
+            if(where.length() == 0){
+                where = where + " pe.status=1 order by o.idOrientador ";
+                sql = sql + " where " + where;
+            }
+            
+            Statement comando = conexao.getConexao().createStatement();
+            
+            ResultSet consulta = comando.executeQuery(sql);
+     
+            List<Orientador> lista = new LinkedList<>();
+            while (consulta.next()) {
+            
+                Orientador novo = new Orientador();
+                CursoDAO novoCursoArea = new CursoDAO();
+                CampusDAO novoCampus = new CampusDAO();
+                CidadeDAO  novoCidade = new CidadeDAO();
+                EstadoDAO novoEstado = new EstadoDAO();
+                NacionalidadeDAO novoNacionaldiade = new NacionalidadeDAO();
+    
+                novo.setCpf(consulta.getInt("pe.cpf"));
+                novo.setCursoArea(novoCursoArea.Abrir(consulta.getInt("o.idCurso")));
+                novo.setDataNascimento(consulta.getDate("pe.dataNascimento"));
+                novo.setEmailEndereco(consulta.getString("pe.email"));
+                novo.setEnderecoNumero(consulta.getString("pe.numero"));
+                novo.setEnderecoBairro(consulta.getString("pe.bairro"));
+                novo.setEnderecoCep(consulta.getInt("pe.cep"));
+                novo.setEnderecoComplmento(consulta.getString("pe.complemento"));
+                novo.setEnderecoRua(consulta.getString("pe.rua"));
+                novo.setFormacaoUniversitaria(consulta.getString("o.formacaoUniversitaria"));
+                novo.setIdOrientador(Integer.parseInt(consulta.getString("idOrientador")));
+                novo.setIdPessoa(consulta.getInt("pe.idPessoa"));
+                novo.setLocalPermanencia(consulta.getString("o.localPermanencia"));
+                novo.setMatriculaSiape(consulta.getInt("o.matriculaSiape"));
+                novo.setNome(consulta.getString("pe.nome"));
+                novo.setPessoaCampus(novoCampus.Abrir(consulta.getInt("pe.idCampus")));
+                novo.setPessoaCidade(novoCidade.Abrir(consulta.getInt("pe.idCidade")));
+                novo.setPessoaEstado(novoEstado.Abrir(consulta.getInt("pe.idEstado")));
+                novo.setPessoaNacionalidade(novoNacionaldiade.Abrir(consulta.getInt("pe.idNacionalidade")));
+                novo.setRg(consulta.getString("pe.rg"));
+                novo.setRgDataExpedicao(consulta.getDate("pe.dataExpedicao"));
+                novo.setRgOrgaoExpedidor(consulta.getString("pe.orgaoExpedidor"));
+                novo.setTelefoneCelular(consulta.getString("pe.celular"));
+                novo.setTelefoneFixo(consulta.getString("pe.telefoneResidencial"));
+                novo.setTelefoneRamal(consulta.getString("o.telefoneRamal"));
+                novo.setTituloAcademico(consulta.getString("o.tituloAcademico"));
+                
+                lista.add(novo);
+            }
+            return lista;
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+     }
 }
