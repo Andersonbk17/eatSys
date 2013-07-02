@@ -103,6 +103,7 @@ public class ifrmAlunoCad extends javax.swing.JInternalFrame {
         for(CursoArea cu: cursos){
             jcbAlunoCurso.addItem(cu);
         }
+        
      }catch(SQLException ex){
          ex.printStackTrace();
      }

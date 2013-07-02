@@ -4,11 +4,17 @@
  */
 package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 
+import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.AlunoDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.OrientadorDAO;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Aluno;
+import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Campus;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -18,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
     
-    OrientadorDAO odao;
+    OrientadorDAO dao;
     
     
    
@@ -28,9 +34,10 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
     public ifrmOrientadorListar() throws SQLException {
         initComponents();
         
-        odao = new OrientadorDAO();
+        List<Orientador> orientador = null;
+        dao = new OrientadorDAO();
         
-        List<Orientador> orientador = odao.ListarTodos();
+         orientador = dao.ListarTodos();
 
         preencheTabela(orientador);
         
@@ -46,9 +53,10 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
         model.addColumn("NOME");
         model.addColumn("RG");
         model.addColumn("CFP");
-        model.addColumn("NASCIMENTO");
         model.addColumn("TITULAÇÃO");
         model.addColumn("FORMAÇÃO");
+        model.addColumn("NASCIMENTO");
+       
 
         for (Orientador o : lista) {
             Vector valores = new Vector();
@@ -57,13 +65,14 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
             valores.add(2,o.getNome());
             valores.add(3,o.getRg());
             valores.add(4,o.getCpf());
-            valores.add(5,o.getDataNascimento());
-            valores.add(6,o.getTituloAcademico());
-            valores.add(7,o.getFormacaoUniversitaria());
+            valores.add(5,o.getTituloAcademico());
+            valores.add(6,o.getFormacaoUniversitaria());
+            valores.add(7,o.getDataNascimento());
+           
             model.addRow(valores);
         }
-        tblListagemOrientador.setModel(model);
-        tblListagemOrientador.repaint();
+        tblListar.setModel(model);
+        tblListar.repaint();
         
     }
     
@@ -77,14 +86,14 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblNomeOrientador = new javax.swing.JLabel();
-        txtFiltrarC = new javax.swing.JTextField();
-        btnFiltrarOrientador = new javax.swing.JButton();
+        txtFiltrar = new javax.swing.JTextField();
+        btnFiltrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblListagemOrientador = new javax.swing.JTable();
+        tblListar = new javax.swing.JTable();
         jpTituloProdutoListar = new javax.swing.JPanel();
         lblTituloOrientadorListar = new javax.swing.JLabel();
-        jpRemoverItemtbEndereco = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setClosable(true);
         setMinimumSize(new java.awt.Dimension(1024, 700));
@@ -92,14 +101,14 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
 
         lblNomeOrientador.setText("Nome");
 
-        btnFiltrarOrientador.setText("Filtrar");
-        btnFiltrarOrientador.addActionListener(new java.awt.event.ActionListener() {
+        btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFiltrarOrientadorActionPerformed(evt);
+                btnFiltrarActionPerformed(evt);
             }
         });
 
-        tblListagemOrientador.setModel(new javax.swing.table.DefaultTableModel(
+        tblListar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -110,26 +119,21 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
 
             }
         ));
-        tblListagemOrientador.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblListagemOrientadorMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblListagemOrientador);
+        jScrollPane1.setViewportView(tblListar);
 
         jpTituloProdutoListar.setBackground(new java.awt.Color(102, 204, 0));
 
         lblTituloOrientadorListar.setFont(new java.awt.Font("Dialog", 2, 24)); // NOI18N
-        lblTituloOrientadorListar.setText("Orientadores");
+        lblTituloOrientadorListar.setText("Orientador");
 
         javax.swing.GroupLayout jpTituloProdutoListarLayout = new javax.swing.GroupLayout(jpTituloProdutoListar);
         jpTituloProdutoListar.setLayout(jpTituloProdutoListarLayout);
         jpTituloProdutoListarLayout.setHorizontalGroup(
             jpTituloProdutoListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTituloProdutoListarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jpTituloProdutoListarLayout.createSequentialGroup()
+                .addGap(462, 462, 462)
                 .addComponent(lblTituloOrientadorListar)
-                .addGap(417, 417, 417))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpTituloProdutoListarLayout.setVerticalGroup(
             jpTituloProdutoListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,27 +143,19 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19))
         );
 
-        jpRemoverItemtbEndereco.setBackground(new java.awt.Color(102, 204, 0));
+        jButton1.setText("Visualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
-        jLabel3.setText("Clique sobre algum campo para ver versão FULL ");
-
-        javax.swing.GroupLayout jpRemoverItemtbEnderecoLayout = new javax.swing.GroupLayout(jpRemoverItemtbEndereco);
-        jpRemoverItemtbEndereco.setLayout(jpRemoverItemtbEnderecoLayout);
-        jpRemoverItemtbEnderecoLayout.setHorizontalGroup(
-            jpRemoverItemtbEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpRemoverItemtbEnderecoLayout.createSequentialGroup()
-                .addGap(305, 305, 305)
-                .addComponent(jLabel3)
-                .addContainerGap(359, Short.MAX_VALUE))
-        );
-        jpRemoverItemtbEnderecoLayout.setVerticalGroup(
-            jpRemoverItemtbEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpRemoverItemtbEnderecoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jButton2.setText("Editar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,59 +168,104 @@ public class ifrmOrientadorListar extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNomeOrientador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFiltrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnFiltrarOrientador)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 402, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jpRemoverItemtbEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1)
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(333, 333, 333)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jpTituloProdutoListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFiltrarC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNomeOrientador)
-                    .addComponent(btnFiltrarOrientador))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFiltrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNomeOrientador)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jpRemoverItemtbEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFiltrarOrientadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarOrientadorActionPerformed
-  
-    }//GEN-LAST:event_btnFiltrarOrientadorActionPerformed
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        Orientador o = new Orientador();
+        try {
+            o.setNome(txtFiltrar.getText());
+        }catch (Exception ex) {
+            System.out.printf("Erro");
+        }
+        
+        List<Orientador> lista = null;
+        try {
+            lista = dao.buscar(o);
+        } catch (Exception ex) {
+            System.out.printf("Erro");
+        }
+        
+        preencheTabela(lista);
+        
+    }//GEN-LAST:event_btnFiltrarActionPerformed
 
-    private void tblListagemOrientadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListagemOrientadorMouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            // TODO add your handling code here:
+             Object valor = tblListar.getValueAt( tblListar.getSelectedRow(), 0);
+                
+             Orientador o = null;
+                    
+             o = dao.Abrir((int)valor);
+             ifrmlistarOrientadorFull janela = new ifrmlistarOrientadorFull(o, dao, 0);
+             this.getParent().add(janela);
+             janela.setVisible(true);
+             this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(ifrmAlunoListar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-        ifrmlistarOrientadorFull janela = new ifrmlistarOrientadorFull();
-        add(janela);
-        janela.setVisible(true);
-        
-        this.dispose();
-        
-        
-    }//GEN-LAST:event_tblListagemOrientadorMouseClicked
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            // TODO add your handling code here:
+             Object valor = tblListar.getValueAt( tblListar.getSelectedRow(), 0);
+                    
+                    Orientador o = null;
+                        
+                    o = dao.Abrir((int)valor);
+                    ifrmlistarOrientadorFull janela = new ifrmlistarOrientadorFull(o, dao, 1);
+                    this.getParent().add(janela);
+                    janela.setVisible(true);
+                    this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(ifrmOrientadorListar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFiltrarOrientador;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btnFiltrar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel jpRemoverItemtbEndereco;
     private javax.swing.JPanel jpTituloProdutoListar;
     private javax.swing.JLabel lblNomeOrientador;
     private javax.swing.JLabel lblTituloOrientadorListar;
-    private javax.swing.JTable tblListagemOrientador;
-    private javax.swing.JTextField txtFiltrarC;
+    private javax.swing.JTable tblListar;
+    private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 }

@@ -160,7 +160,7 @@ public class ifrmlistarAlunoFull extends javax.swing.JInternalFrame {
   
             
         }else{
-            txtId.setEditable(true);
+            txtId.setEditable(false);
             txtMatricula.setEditable(true);
             txtNome.setEditable(true);
             txtCpf.setEditable(true);
