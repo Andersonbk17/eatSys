@@ -9,6 +9,7 @@ import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -235,4 +236,85 @@ public class ProjetoPesquisaDAO {
         }
    
     }
+    
+    
+    
+    public List<ProjetoPesquisa> filtro(ProjetoPesquisa filtro){
+        try{
+            String sql = "SELECT * FROM ProjetoPesquisa ";
+            String where = "";
+            
+            if(filtro.getTitulo().length() > 0){
+                where = "titulo like '%"+filtro.getTitulo()+"%'";
+           
+            }
+            
+            if(filtro.getIdProjetoPesquisa() > 0){
+                if(where.length() > 0)
+                    where = where + " AND ";
+                    where = " idProjetoPesquisa like '%"+filtro.getIdProjetoPesquisa()+"%'";
+            }
+           /* if(filtro.getIdProjetoPesquisa() > 0){
+                if(where.length() > 0)
+                    where = where + "AND";
+                    where = "idProjetoPesquisa like '%"+filtro.getIdProjetoPesquisa()+"%'";
+            }
+            * */
+            if(where.length() > 0){
+                sql = sql + " where " + where;
+            }
+            
+            Statement comando = conexao.getConexao().createStatement();
+            ResultSet consulta = comando.executeQuery(sql);
+            
+            List<ProjetoPesquisa> lista = new LinkedList<>();
+            
+            
+            while(consulta.next()){
+                ProjetoPesquisa novo = new ProjetoPesquisa();
+                CampusDAO campusdao = new CampusDAO();
+                AlunoDAO aluno = new AlunoDAO();
+                ParticipanteProjetoDAO participantes = new ParticipanteProjetoDAO();
+                OrientadorDAO orientador = new OrientadorDAO();
+                AreaConhecimento_CnpqSubAreasDAO areaConhecimento = new AreaConhecimento_CnpqSubAreasDAO();
+                novo.setAgenciaFinanciadora(consulta.getString("agenciaFinanciadora"));
+                novo.setAluno(aluno.Abrir(consulta.getInt("idAluno")));
+                novo.setAreaConhecimento(areaConhecimento.Abrir(consulta.getInt("idAreaConhecimento_CnpqSubAreas")));
+                novo.setBolsasIniciacao(consulta.getInt("bolsaIniciacao"));
+                novo.setCampus(campusdao.Abrir(consulta.getInt("idCampus")));
+                novo.setConvenio(consulta.getInt("convenio"));
+                //novo.setDataFinanciamento(null);
+                //novo.setDataInicio(null);
+                //novo.setDataTermino(null);
+                novo.setFinanciamentoAprovado(consulta.getInt("financiamentoAprovado"));
+                novo.setFuncadao(consulta.getInt("fundacao"));
+                novo.setFundacaoNome(consulta.getString("fundacaoNome"));
+                novo.setGrupoPesquisa(consulta.getString("grupoPesquisa"));
+                novo.setIdProjetoPesquisa(consulta.getInt("idProjetoPesquisa"));
+                novo.setListaParticipantes(participantes.ListarTodos(consulta.getInt("idProjetoPesquisa")));
+                novo.setNomeConvenio(consulta.getString("nomeConvenio"));
+                novo.setNumeroBolsas(consulta.getInt("numeroBolsas"));
+                novo.setOrientador(orientador.Abrir(consulta.getInt("idOrientador")));
+                novo.setProjetoMulticampi(consulta.getInt("projetoMulticampi"));
+                novo.setResumo(consulta.getString("resumo"));
+                novo.setTitulo(consulta.getString("titulo"));
+                novo.setValorFinanciamento(consulta.getFloat("valorFinanciamento"));
+              
+                lista.add(novo);
+            }
+            return lista;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }finally{
+            try {
+                conexao.getConexao().close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjetoPesquisaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
+    }
+    
 }

@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
     
     ProjetoPesquisaDAO dao;
-    
+     List<ProjetoPesquisa> listaProjetoPesquisa =  null;
     
    
     /**
@@ -30,15 +30,15 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
     public ifrmProjetoPesquisaListar()  {
         initComponents();
         
-        List<ProjetoPesquisa> projetoPesquisa =  null;
+       
         dao = new ProjetoPesquisaDAO();
         try {
-            projetoPesquisa = dao.ListarTodos();
+            listaProjetoPesquisa = dao.ListarTodos();
         } catch (SQLException ex) {
             Logger.getLogger(ifrmProjetoPesquisaListar.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        preencheTabela(projetoPesquisa);
+        preencheTabela(listaProjetoPesquisa);
         
 
     }
@@ -94,6 +94,7 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jcbxFiltro = new javax.swing.JComboBox();
 
         setClosable(true);
         setMinimumSize(new java.awt.Dimension(1024, 700));
@@ -159,6 +160,8 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
 
         jButton4.setText("Cancelar");
 
+        jcbxFiltro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sem Filtro", "Título", "Nº Cadastro" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,15 +171,17 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNomeOrientador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(69, 69, 69)
+                        .addComponent(jcbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFiltrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 402, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                        .addGap(158, 158, 158))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(237, 237, 237)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,11 +196,11 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jpTituloProdutoListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnFiltrarAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblNomeOrientador)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNomeOrientador)
+                    .addComponent(btnFiltrarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(jcbxFiltro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -210,21 +215,39 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFiltrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarAlunoActionPerformed
+        int opcao = jcbxFiltro.getSelectedIndex();
         ProjetoPesquisa pr = new ProjetoPesquisa();
-        try {
-            pr.setTitulo(txtFiltrarA.getText());
-        }catch (Exception ex) {
-            System.out.printf("Erro");
-        }
         
-        List<ProjetoPesquisa> lista = null;
-        try {
-           // lista = dao.buscar(pr);
-        } catch (Exception ex) {
-            System.out.printf("Erro");
-        }
         
-        preencheTabela(lista);
+        switch(opcao){
+            case 0:
+        try {
+            listaProjetoPesquisa.clear();
+            listaProjetoPesquisa = dao.ListarTodos();
+            preencheTabela(listaProjetoPesquisa);
+        } catch (SQLException ex) {
+            Logger.getLogger(ifrmProjetoPesquisaListar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                break;
+            case 1:
+                listaProjetoPesquisa.clear();
+                pr.setTitulo(txtFiltrarA.getText());
+                 listaProjetoPesquisa = dao.filtro(pr);
+                preencheTabela(listaProjetoPesquisa);
+                 System.out.print("1");
+                break;
+            case 2:
+                listaProjetoPesquisa.clear();
+                pr.setIdProjetoPesquisa(Integer.parseInt(txtFiltrarA.getText()));
+                listaProjetoPesquisa = dao.filtro(pr);
+                preencheTabela(listaProjetoPesquisa);
+                 System.out.print("2");
+                break;
+        
+        
+        }
+    
+
         
     }//GEN-LAST:event_btnFiltrarAlunoActionPerformed
 
@@ -273,6 +296,7 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox jcbxFiltro;
     private javax.swing.JPanel jpTituloProdutoListar;
     private javax.swing.JLabel lblNomeOrientador;
     private javax.swing.JLabel lblTituloOrientadorListar;
