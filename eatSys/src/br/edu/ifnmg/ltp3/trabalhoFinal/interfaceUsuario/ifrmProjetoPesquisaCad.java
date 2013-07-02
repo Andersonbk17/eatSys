@@ -17,6 +17,9 @@ import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.Orientador;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ParticipanteProjeto;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -34,6 +37,15 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
     /**
      * Creates new form ifrmCampusCad
      */
+    
+     public Date formatarData(String data) throws ParseException{
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");  
+        
+        Date dataFormatada = format.parse(data);
+        
+        return dataFormatada; 
+    }
+    
     
     /*########################## Funcoes #########################################3#*/
     private void carregacbxCampus(){
@@ -113,26 +125,26 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
          //Reabrir campus
          txtProjetoPesquisaAgenciaFinan.setVisible(true);
          txtValorFinanciamento.setVisible(true);
-         txtProjetoPesquisaDataFinan.setVisible(true);
+         txtDataFinanciamento.setVisible(true);
          lblAgenciaFinan.setVisible(true);
          lblValorFinan.setVisible(true);
          lblDataFinan.setVisible(true);
          //setar Null
          txtProjetoPesquisaAgenciaFinan.setText(null);
          txtValorFinanciamento.setText(null);
-         txtProjetoPesquisaDataFinan.setText(null);
+         txtDataFinanciamento.setText(null);
          }else{
              //esconder campus
          txtProjetoPesquisaAgenciaFinan.setVisible(false);
          txtValorFinanciamento.setVisible(false);
-         txtProjetoPesquisaDataFinan.setVisible(false);
+         txtDataFinanciamento.setVisible(false);
          lblAgenciaFinan.setVisible(false);
          lblValorFinan.setVisible(false);
          lblDataFinan.setVisible(false);      
          //setar Null
          txtProjetoPesquisaAgenciaFinan.setText(null);
          txtValorFinanciamento.setText(null);
-         txtProjetoPesquisaDataFinan.setText(null);
+         txtDataFinanciamento.setText(null);
          }
     }
 
@@ -233,10 +245,10 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
         lblDataFinan = new javax.swing.JLabel();
         lblAgenciaFinan = new javax.swing.JLabel();
         txtProjetoPesquisaAgenciaFinan = new javax.swing.JTextField();
-        txtProjetoPesquisaDataFinan = new javax.swing.JTextField();
+        txtDataFinanciamento = new javax.swing.JTextField();
         try{
             javax.swing.text.MaskFormatter data= new javax.swing.text.MaskFormatter("##/##/####");
-            txtProjetoPesquisaDataFinan = new javax.swing.JFormattedTextField(data);
+            txtDataFinanciamento = new javax.swing.JFormattedTextField(data);
         }
         catch (Exception e){
         }
@@ -652,7 +664,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanelFinanciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtValorFinanciamento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtProjetoPesquisaDataFinan, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDataFinanciamento, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtProjetoPesquisaAgenciaFinan, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jrFinanCon)
                             .addComponent(jrFinanSub)))
@@ -684,7 +696,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFinanciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDataFinan)
-                    .addComponent(txtProjetoPesquisaDataFinan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDataFinanciamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFinanciamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblValorFinan)
@@ -1037,17 +1049,23 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
         
         projetoPesquisa.setAluno((Aluno)jcbProjetoPesquisaAluno.getSelectedItem());
         projetoPesquisa.setAreaConhecimento((AreaConhecimento_CnpqSubAreas)jcbProjetoPesquisaAreaConhecimento.getSelectedItem());//verificaaar
-        //projetoPesquisa.setBolsasIniciacao(WIDTH);
+        
         projetoPesquisa.setCampus((Campus)jcbProjetoPesquisaCampus.getSelectedItem());
         projetoPesquisa.setNomeConvenio(txtQualConvenio.getText());
         projetoPesquisa.setFundacaoNome(txtQualFundacao.getText());
         projetoPesquisa.setValorFinanciamento(Float.parseFloat(txtValorFinanciamento.getText()));
-        //projetoPesquisa.setDataFinanciamento(null);
+        
         
         projetoPesquisa.setNumeroBolsas(Integer.parseInt(txtNumeroBolsas.getText()));
         projetoPesquisa.setAgenciaFinanciadora(txtProjetoPesquisaAgenciaFinan.getText());
-        //projetoPesquisa.setDataInicio(null);
-        //projetoPesquisa.setDataTermino(null);
+        try {
+            projetoPesquisa.setDataInicio(formatarData(txtDataInicio.getText()));
+            projetoPesquisa.setDataTermino(formatarData(txtDataTermino.getText()));
+            projetoPesquisa.setDataFinanciamento(formatarData(txtDataFinanciamento.getText()));
+        } catch (ParseException ex) {
+            Logger.getLogger(ifrmProjetoPesquisaCad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         projetoPesquisa.setGrupoPesquisa(txtGrupoPesquisa.getText());
         projetoPesquisa.setListaParticipantes(listaParticipantes);
         projetoPesquisa.setOrientador((Orientador)jcbProjetoPesquisaOrientador.getSelectedItem());
@@ -1269,6 +1287,7 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblValorFinan;
     private javax.swing.JLabel lblprogramaPlano;
     private javax.swing.ButtonGroup multicampi;
+    private javax.swing.JTextField txtDataFinanciamento;
     private javax.swing.JFormattedTextField txtDataInicio;
     private javax.swing.JFormattedTextField txtDataTermino;
     private javax.swing.JTextField txtGrupoPesquisa;
@@ -1281,7 +1300,6 @@ public class ifrmProjetoPesquisaCad extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea txtParticipanteObservacao;
     private javax.swing.JTextField txtProgramaPlanoEnvolvido;
     private javax.swing.JTextField txtProjetoPesquisaAgenciaFinan;
-    private javax.swing.JTextField txtProjetoPesquisaDataFinan;
     private javax.swing.JTextArea txtProjetoPesquisaResumo;
     private javax.swing.JTextField txtProjetoPesquisaTitulo;
     private javax.swing.JTextField txtQualConvenio;

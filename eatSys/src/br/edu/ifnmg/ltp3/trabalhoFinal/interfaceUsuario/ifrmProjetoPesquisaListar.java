@@ -7,6 +7,9 @@ package br.edu.ifnmg.ltp3.trabalhoFinal.interfaceUsuario;
 import br.edu.ifnmg.ltp3.trabalhoFinal.dataAccess.ProjetoPesquisaDAO;
 import br.edu.ifnmg.ltp3.trabalhoFinal.domainModel.ProjetoPesquisa;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -43,6 +46,14 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
 
     }
     
+    public Date formatarData(String data) throws ParseException{
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");  
+        
+        Date dataFormatada = format.parse(data);
+        
+        return dataFormatada; 
+    }
+    
     //Metodo para listar Produtos na Tabela tblListagemProd
     private void preencheTabela(List<ProjetoPesquisa> lista) {
        
@@ -61,7 +72,7 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
             Vector valores = new Vector();
             valores.add(0,a.getIdProjetoPesquisa());
             valores.add(1,a.getTitulo());
-            valores.add(2,a.getDataInicio());
+            valores.add(2,a. getDataInicio());
             valores.add(3,a.getDataTermino());
             valores.add(4,a.getOrientador().getNome());
             valores.add(5,a.getAluno().getNome());
@@ -196,11 +207,12 @@ public class ifrmProjetoPesquisaListar extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jpTituloProdutoListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNomeOrientador)
-                    .addComponent(btnFiltrarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jcbxFiltro))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcbxFiltro, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFiltrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNomeOrientador)
+                        .addComponent(btnFiltrarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)

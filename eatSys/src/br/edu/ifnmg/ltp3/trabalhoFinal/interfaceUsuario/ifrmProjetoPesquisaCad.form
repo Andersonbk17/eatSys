@@ -582,7 +582,7 @@
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtValorFinanciamento" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="txtProjetoPesquisaDataFinan" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Component id="txtDataFinanciamento" min="-2" pref="107" max="-2" attributes="0"/>
                                   <Component id="txtProjetoPesquisaAgenciaFinan" min="-2" pref="251" max="-2" attributes="0"/>
                                   <Component id="jrFinanCon" min="-2" max="-2" attributes="0"/>
                                   <Component id="jrFinanSub" min="-2" max="-2" attributes="0"/>
@@ -623,7 +623,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblDataFinan" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtProjetoPesquisaDataFinan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDataFinanciamento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -664,9 +664,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtProjetoPesquisaAgenciaFinan">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtProjetoPesquisaDataFinan">
+            <Component class="javax.swing.JTextField" name="txtDataFinanciamento">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="try{  &#xa;   javax.swing.text.MaskFormatter data= new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;);  &#xa;   txtProjetoPesquisaDataFinan = new javax.swing.JFormattedTextField(data);  &#xa;}  &#xa;   catch (Exception e){  &#xa;}   "/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="try{  &#xa;   javax.swing.text.MaskFormatter data= new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;);  &#xa;   txtDataFinanciamento = new javax.swing.JFormattedTextField(data);  &#xa;}  &#xa;   catch (Exception e){  &#xa;}   "/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtValorFinanciamento">
