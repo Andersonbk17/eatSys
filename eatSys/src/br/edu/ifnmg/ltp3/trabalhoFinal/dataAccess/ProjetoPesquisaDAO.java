@@ -254,6 +254,12 @@ public class ProjetoPesquisaDAO {
                     where = where + " AND ";
                     where = " idProjetoPesquisa like '%"+filtro.getIdProjetoPesquisa()+"%'";
             }
+            
+            if(filtro.getOrientador().getNome().length() > 0){
+                if(where.length() > 0)
+                    where = where + " AND ";
+                    where = " idProjetoPesquisa like '%"+filtro.getIdProjetoPesquisa()+"%'";
+            }
            /* if(filtro.getIdProjetoPesquisa() > 0){
                 if(where.length() > 0)
                     where = where + "AND";
